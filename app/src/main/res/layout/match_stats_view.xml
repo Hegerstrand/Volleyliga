@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.pocketpalsson.volleyball.views.MatchStatsLineView
+        android:id="@+id/totalPoints"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/stats_line_margin" />
+
+    <com.pocketpalsson.volleyball.views.MatchStatsLineView
+        android:id="@+id/attacks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/stats_line_margin" />
+
+    <com.pocketpalsson.volleyball.views.MatchStatsLineView
+        android:id="@+id/blocks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/stats_line_margin" />
+
+    <com.pocketpalsson.volleyball.views.MatchStatsLineView
+        android:id="@+id/serves"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/stats_line_margin" />
+
+    <com.pocketpalsson.volleyball.views.MatchStatsLineView
+        android:id="@+id/errors"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/stats_line_margin" />
+
+    <com.pocketpalsson.volleyball.views.MatchStatsLineView
+        android:id="@+id/receptionPercentage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/stats_line_margin" />
+
+</merge>

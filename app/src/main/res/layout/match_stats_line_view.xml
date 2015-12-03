@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tvLeftValue"
+            android:layout_width="@dimen/stats_line_value_width"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            tools:text="45"
+            android:textAppearance="@android:style/TextAppearance.Small" />
+
+        <TextView
+            android:id="@+id/tvLabel"
+            android:layout_width="@dimen/stats_line_label_width"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textAllCaps="true"
+            tools:text="Attacks"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:id="@+id/tvRightValue"
+            android:layout_width="@dimen/stats_line_value_width"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            tools:text="60"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.pocketpalsson.volleyball.views.MatchStatsBar
+            android:id="@+id/leftBar"
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:layout_weight="1"
+            app:isOnLeftSide="true" />
+
+        <com.pocketpalsson.volleyball.views.MatchStatsBar
+            android:id="@+id/rightBar"
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:layout_weight="1"
+            app:isOnLeftSide="false" />
+    </LinearLayout>
+</LinearLayout>
