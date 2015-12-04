@@ -16,11 +16,11 @@ import android.view.MenuItem;
 
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceActivity;
 import com.pocketpalsson.volleyball.R;
-import com.pocketpalsson.volleyball.models.MatchModel;
-import com.pocketpalsson.volleyball.presenters.MatchListPresenter;
+import com.pocketpalsson.volleyball.models.LeagueStandingModel;
+import com.pocketpalsson.volleyball.presenters.LeagueStandingPresenter;
+import com.pocketpalsson.volleyball.views.LeagueStandingView;
 import com.pocketpalsson.volleyball.views.MainActivityView;
-import com.pocketpalsson.volleyball.views.MatchListView;
-import com.pocketpalsson.volleyball.views.controllers.MatchListAdapter;
+import com.pocketpalsson.volleyball.views.controllers.LeagueStandingAdapter;
 import com.pocketpalsson.volleyball.views.controllers.SpacesItemDecoration;
 
 import java.util.List;
@@ -29,7 +29,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class MatchListActivity extends MvpLceActivity<SwipeRefreshLayout, List<MatchModel>, MatchListView, MatchListPresenter> implements MatchListView, OnRefreshListener, NavigationView.OnNavigationItemSelectedListener {
+public class LeagueStandingActivity extends MvpLceActivity<SwipeRefreshLayout, List<LeagueStandingModel>, LeagueStandingView, LeagueStandingPresenter> implements LeagueStandingView, OnRefreshListener, NavigationView.OnNavigationItemSelectedListener {
 
     @Bind(R.id.recyclerView)
     public RecyclerView recyclerView;
@@ -42,7 +42,7 @@ public class MatchListActivity extends MvpLceActivity<SwipeRefreshLayout, List<M
     @Bind(R.id.nav_view)
     public NavigationView navigationView;
 
-    private MatchListAdapter adapter;
+    private LeagueStandingAdapter adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,13 +58,14 @@ public class MatchListActivity extends MvpLceActivity<SwipeRefreshLayout, List<M
 
         navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.setCheckedItem(R.id.match_list);
+        navigationView.setCheckedItem(R.id.standings);
 
-        adapter = new MatchListAdapter(this);
-        adapter.setMatchClickListener(match -> {
-            if (getPresenter() != null) {
-                openMatch(match.federationMatchNumber);
-            }
+
+        adapter = new LeagueStandingAdapter(this);
+        adapter.setLeagueStandingClickListener(leagueStanding -> {
+//            if (getPresenter() != null) {
+//                openMatch(match.federationMatchNumber);
+//            }
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.default_card_padding);
@@ -115,8 +116,8 @@ public class MatchListActivity extends MvpLceActivity<SwipeRefreshLayout, List<M
     }
 
     @Override
-    public MatchListPresenter createPresenter() {
-        return new MatchListPresenter();
+    public LeagueStandingPresenter createPresenter() {
+        return new LeagueStandingPresenter();
     }
 
     @Override
@@ -125,7 +126,7 @@ public class MatchListActivity extends MvpLceActivity<SwipeRefreshLayout, List<M
     }
 
     @Override
-    public void setData(List<MatchModel> data) {
+    public void setData(List<LeagueStandingModel> data) {
         if (adapter != null) {
             adapter.setItems(data);
         }
@@ -135,7 +136,7 @@ public class MatchListActivity extends MvpLceActivity<SwipeRefreshLayout, List<M
     @Override
     public void loadData(boolean pullToRefresh) {
         if (getPresenter() != null) {
-            getPresenter().loadMatches();
+            getPresenter().loadStandings();
             setIsLoading(true);
         } else {
             setIsLoading(false);
@@ -146,15 +147,6 @@ public class MatchListActivity extends MvpLceActivity<SwipeRefreshLayout, List<M
     public void onRefresh() {
         loadData(true);
         setIsLoading(true);
-    }
-
-    public void openMatch(int federationMatchNumber) {
-        Intent intent = Henson.with(this).gotoMatchActivity().federationMatchNumber(federationMatchNumber).build();
-        startActivity(intent);
-//        Fragment fragment = null;
-//        fragment = new MatchFragmentBuilder(federationMatchNumber).build();
-//        addFragment(fragment, "" + federationMatchNumber, false);
-        closeNavDrawer();
     }
 
     private void setIsLoading(boolean value) {
@@ -171,12 +163,12 @@ public class MatchListActivity extends MvpLceActivity<SwipeRefreshLayout, List<M
         int id = item.getItemId();
         Intent intent = null;
         switch (id) {
-//            case R.id.match_list:
+            case R.id.match_list:
+                intent = new Intent(this, MatchListActivity.class);
+                break;
+//            case R.id.standings:
 //                intent = new Intent(this, MatchListActivity.class);
 //                break;
-            case R.id.standings:
-                intent = new Intent(this, LeagueStandingActivity.class);
-                break;
         }
         if(intent != null) {
             startActivity(intent);

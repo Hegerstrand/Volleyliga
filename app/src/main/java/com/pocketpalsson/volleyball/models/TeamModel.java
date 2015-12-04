@@ -6,6 +6,10 @@ public class TeamModel {
     public String name;
     public int logoRef;
 
+    public TeamModel(String name) {
+        setName(name);
+    }
+
     public TeamModel() {
     }
 
