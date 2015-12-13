@@ -12,20 +12,20 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 
-public class AllSetsView extends LinearLayout {
+public class SetSummaryView extends LinearLayout {
 
-    public AllSetsView(Context context) {
+    public SetSummaryView(Context context) {
         super(context);
         init();
     }
 
 
-    public AllSetsView(Context context, AttributeSet attrs) {
+    public SetSummaryView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public AllSetsView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SetSummaryView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }

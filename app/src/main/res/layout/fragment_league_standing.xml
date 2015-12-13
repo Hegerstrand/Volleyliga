@@ -4,12 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
     android:layout_alignParentTop="true"
-    android:layout_marginTop="?android:attr/actionBarSize"
     android:background="#EEE">
-
-    <include layout="@layout/loading_view" />
-
-    <include layout="@layout/error_view" />
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/contentView"

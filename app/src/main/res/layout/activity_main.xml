@@ -6,20 +6,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".activities.MatchListActivity"
-    tools:openDrawer="start">
+    tools:context=".activities.MainActivity">
 
-    <include
-        layout="@layout/activity_match_list_app_bar"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:theme="@style/CustomToolbarTheme"
+            app:title="Test"/>
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        android:background="#EEEEEE">
+        android:background="#EEEEEE"
+        android:fitsSystemWindows="true">
 
         <android.support.design.widget.NavigationView
             android:id="@+id/nav_view"

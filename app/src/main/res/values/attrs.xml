@@ -3,4 +3,10 @@
     <declare-styleable name="MatchStatsBar">
         <attr name="isOnLeftSide" format="boolean"/>
     </declare-styleable>
+    <declare-styleable name="MenuItem">
+        <attr name="itemIcon" format="reference"/>
+        <attr name="itemTitle" format="string"/>
+        <attr name="itemValue" format="string"/>
+        <attr name="includeArrow" format="boolean"/>
+    </declare-styleable>
 </resources>

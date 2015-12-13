@@ -3,7 +3,6 @@ package com.pocketpalsson.volleyball.presenters;
 import android.util.Log;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.pocketpalsson.volleyball.models.MatchModel;
 import com.pocketpalsson.volleyball.utilities.SimpleURLFetcher;
 import com.pocketpalsson.volleyball.utilities.volley.match.MatchXmlPullParser;
@@ -23,7 +22,7 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class MatchListPresenter extends MvpBasePresenter<MatchListView> implements MvpPresenter<MatchListView>, MatchClickListener {
+public class MatchListPresenter extends MvpBasePresenter<MatchListView> implements MatchClickListener {
     private static final String TAG = "MatchListPresenter";
     private List<MatchModel> matches = new ArrayList<>();
 
@@ -79,19 +78,6 @@ public class MatchListPresenter extends MvpBasePresenter<MatchListView> implemen
     @Override
     public void attachView(MatchListView view) {
         super.attachView(view);
-//        List<MatchModel> items = new ArrayList<>();
-//        items.add(new MatchModel());
-//        items.add(new MatchModel());
-//        items.add(new MatchModel());
-//        items.add(new MatchModel());
-//        items.add(new MatchModel());
-//        items.add(new MatchModel());
-//        items.add(new MatchModel());
-//        items.add(new MatchModel());
-//        items.add(new MatchModel());
-//        items.add(new MatchModel());
-//        items.add(new MatchModel());
-//        view.setData(items);
     }
 
     @Override
@@ -101,13 +87,13 @@ public class MatchListPresenter extends MvpBasePresenter<MatchListView> implemen
 
     @Override
     public void matchClicked(MatchModel match) {
-        MainActivityView activityListener = getActivity();
+        MainActivityView activityListener = getActivityView();
         if (activityListener != null) {
             activityListener.openMatch(match.federationMatchNumber);
         }
     }
 
-    private MainActivityView getActivity() {
+    private MainActivityView getActivityView() {
         if (isViewAttached()) {
             return getView().getActivityView();
         }

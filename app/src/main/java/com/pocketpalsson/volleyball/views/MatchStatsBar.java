@@ -27,6 +27,7 @@ public class MatchStatsBar extends View {
 
     private int value;
     private int maxValue;
+    private int absoluteMaxValue;
 
     public MatchStatsBar(Context context) {
         super(context);
@@ -57,7 +58,7 @@ public class MatchStatsBar extends View {
 //        Rect containerRect = new Rect(0, 0, getWidth(), getHeight());
 //        canvas.drawRect(containerRect, paint);
 
-        int barWidth = (int) ((float) value / maxValue * getWidth());
+        int barWidth = (int) ((float) value / absoluteMaxValue * getWidth());
         paint.setColor(value == maxValue ? ContextCompat.getColor(getContext(), R.color.accent) : Color.GRAY);
 
         String valueText = "" + value;
@@ -117,9 +118,10 @@ public class MatchStatsBar extends View {
         return path;
     }
 
-    public void setValues(int value, int maxValue) {
+    public void setValues(int value, int maxValue, int absoluteMaxValue) {
         this.value = value;
         this.maxValue = maxValue;
+        this.absoluteMaxValue = absoluteMaxValue;
         invalidate();
     }
 }

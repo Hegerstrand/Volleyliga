@@ -3,13 +3,9 @@
     <style name="AppTheme" parent="BaseTheme" />
     <!-- Base application theme. -->
     <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Main theme colors -->
-        <!--   your app branding color for the app bar -->
         <item name="colorPrimary">@color/primary</item>
-        <!--   darker variant for the status bar and contextual app bars -->
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorControlHighlight">@color/accent_translucent</item> 
-        <!--   theme UI controls like checkboxes and text fields -->
         <item name="colorAccent">@color/accent</item>
         <item name="selectableItemBackground">@drawable/selectable_item_background</item>
         <item name="android:selectableItemBackground">@drawable/selectable_item_background</item>
@@ -30,6 +26,33 @@
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
+    <style name="CustomToolbarTheme" parent="BaseTheme">
+        <!-- android:textColorPrimary is the  color of the title text
+             in the Toolbar, in the Theme.AppCompat theme:  -->
+        <item name="android:textColorPrimary">@android:color/white</item>
+
+        <!-- android:textColorPrimaryInverse is the  color of the title
+             text in the Toolbar, in the Theme.AppCompat.Light theme:  -->
+        <!-- <item name="android:textColorPrimaryInverse">@color/abc_primary_text_material_light</item> -->
+
+        <!-- android:actionMenuTextColor is the color of the text of
+              action (menu) items in the Toolbar, at least in the
+              Theme.AppCompat theme.
+              For some reason, they already get the textColorPrimary
+              when running on API 21, but not on older versions of
+              Android, so this is only necessary to support older
+              Android versions.-->
+        <item name="actionMenuTextColor">@android:color/white</item>
+        <!-- android:textColorSecondary is the color of the menu
+             overflow icon (three vertical dots) -->
+        <item name="android:textColorSecondary">@android:color/white</item>
+
+        <!-- This would set the toolbar's background color,
+              but setting this also changes the popup menu's background,
+              even if we define popupTheme for our <Toolbar> -->
+        <!-- <item name="android:background">@color/color_primary</item> -->
+    </style>
+
     <!--<color name="primary">#e91e63</color>-->
     <!--<color name="primary_dark">#880e4f</color>-->
     <!--<color name="accent">#f50057</color>-->
@@ -48,4 +71,73 @@
     <color name="guest_color">#ff222222</color>
     <color name="guest_color_light">#BB222222</color>
     <!--<color name="set_result_font_color"></color>-->
+
+
+    <!--<style name="DebugColors" parent="Theme.AppCompat">-->
+    <!--&lt;!&ndash; System colors &ndash;&gt;-->
+    <!--<item name="android:windowBackground">@color/__debugWindowBackground</item>-->
+
+    <!--<item name="android:colorPressedHighlight">#FF4400</item>-->
+    <!--<item name="android:colorLongPressedHighlight">#FF0044</item>-->
+    <!--<item name="android:colorFocusedHighlight">#44FF00</item>-->
+    <!--<item name="android:colorActivatedHighlight">#00FF44</item>-->
+    <!--<item name="android:colorMultiSelectHighlight">#4400FF</item>-->
+
+    <!--<item name="statusBarColor">#FFF000</item>-->
+    <!--<item name="navigationBarColor">#000FFF</item>-->
+
+    <!--<item name="android:colorForeground">#440000</item>-->
+    <!--<item name="android:colorForegroundInverse">#004400</item>-->
+    <!--<item name="android:colorBackground">#444400</item>-->
+    <!--<item name="android:colorBackgroundCacheHint">#440044</item>-->
+
+    <!--<item name="android:textColorPrimary">#FFFF00</item>-->
+    <!--<item name="android:textColorSecondary">#FF00FF</item>-->
+    <!--<item name="android:textColorTertiary">#00FFFF</item>-->
+
+    <!--<item name="android:textColorPrimaryInverse">#CCCC00</item>-->
+    <!--<item name="android:textColorSecondaryInverse">#CC00CC</item>-->
+    <!--<item name="android:textColorTertiaryInverse">#00CCCC</item>-->
+
+    <!--<item name="android:textColorPrimaryDisableOnly">#FFCC00</item>-->
+    <!--<item name="android:textColorPrimaryInverseDisableOnly">#FF00CC</item>-->
+
+    <!--<item name="android:textColorPrimaryNoDisable">#CCFF00</item>-->
+    <!--<item name="android:textColorSecondaryNoDisable">#00FFCC</item>-->
+
+    <!--<item name="android:textColorPrimaryInverseNoDisable">#CC00FF</item>-->
+    <!--<item name="android:textColorSecondaryInverseNoDisable">#00CCFF</item>-->
+
+    <!--<item name="android:textColorHint">#FF8800</item>-->
+    <!--<item name="android:textColorHintInverse">#FF0088</item>-->
+
+    <!--<item name="android:textColorHighlight">#88FF00</item>-->
+    <!--<item name="android:textColorHighlightInverse">#00FF88</item>-->
+
+    <!--<item name="android:textColorLink">#8800FF</item>-->
+    <!--<item name="android:textColorLinkInverse">#0088FF</item>-->
+
+    <!--<item name="android:textColorAlertDialogListItem">#444444</item>-->
+
+    <!--&lt;!&ndash; Color palette (via app-compat) &ndash;&gt;-->
+    <!--<item name="colorPrimary">#FF0000</item>-->
+    <!--<item name="colorPrimaryDark">#00FF00</item>-->
+    <!--<item name="colorAccent">#0000FF</item>-->
+
+    <!--<item name="colorControlNormal">#CC0000</item>-->
+    <!--<item name="colorControlActivated">#00CC00</item>-->
+    <!--<item name="colorControlHighlight">#0000CC</item>-->
+
+    <!--<item name="colorButtonNormal">#880000</item>-->
+    <!--<item name="colorSwitchThumbNormal">#008800</item>-->
+
+    <!--&lt;!&ndash; Random other things found in app-compat &ndash;&gt;-->
+    <!--<item name="actionMenuTextColor">#440000</item>-->
+    <!--<item name="editTextColor">#004400</item>-->
+    <!--<item name="textColorSearchUrl">#000044</item>-->
+
+    <!--</style>-->
+
+    <!--&lt;!&ndash; Also needed, since windowBackground is a reference, not a color &ndash;&gt;-->
+    <!--<color name="__debugWindowBackground">#888888</color>-->
 </resources>

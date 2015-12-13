@@ -5,6 +5,9 @@ import com.pocketpalsson.volleyball.R;
 public class TeamModel {
     public String name;
     public int logoRef;
+    public int Id;
+    public String shortName, initials, homePage, facebookId, email, stadium, stadiumAddress, mapsUrl, phoneNumber;
+    public double lat, lon;
 
     public TeamModel(String name) {
         setName(name);

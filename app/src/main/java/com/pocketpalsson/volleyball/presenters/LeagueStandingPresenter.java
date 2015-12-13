@@ -1,7 +1,6 @@
 package com.pocketpalsson.volleyball.presenters;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.pocketpalsson.volleyball.models.LeagueStandingModel;
 import com.pocketpalsson.volleyball.models.TeamModel;
 import com.pocketpalsson.volleyball.views.LeagueStandingView;
@@ -9,7 +8,7 @@ import com.pocketpalsson.volleyball.views.LeagueStandingView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LeagueStandingPresenter extends MvpBasePresenter<LeagueStandingView> implements MvpPresenter<LeagueStandingView> {
+public class LeagueStandingPresenter extends MvpBasePresenter<LeagueStandingView> {
     private List<LeagueStandingModel> standings = new ArrayList<>();
 
 
@@ -23,7 +22,7 @@ public class LeagueStandingPresenter extends MvpBasePresenter<LeagueStandingView
         standings.add(new LeagueStandingModel(new TeamModel("Randers Novo Volley"), 5, 1, 4, 4, 6));
         standings.add(new LeagueStandingModel(new TeamModel("Lyngby-Gladsaxe Volley"), 5, 1, 4, 4, 7));
         standings.add(new LeagueStandingModel(new TeamModel("Middelfart VK"), 5, 1, 4, 3, 8));
-        if(isViewAttached()){
+        if (isViewAttached()) {
             getView().setData(standings);
         }
 //        List<String> matchIds = Arrays.asList("110236");

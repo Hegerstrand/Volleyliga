@@ -3,24 +3,20 @@ package com.pocketpalsson.volleyball.activities;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.f2prateek.dart.Dart;
-import com.f2prateek.dart.InjectExtra;
 import com.hannesdorfmann.mosby.mvp.MvpActivity;
 import com.pocketpalsson.volleyball.R;
 import com.pocketpalsson.volleyball.models.MatchModel;
 import com.pocketpalsson.volleyball.presenters.MatchPresenter;
 import com.pocketpalsson.volleyball.utilities.volley.VolleyQueue;
 import com.pocketpalsson.volleyball.utilities.volley.match.GetMatchVolleyRequest;
-import com.pocketpalsson.volleyball.views.AllSetsView;
 import com.pocketpalsson.volleyball.views.MatchStatsView;
 import com.pocketpalsson.volleyball.views.MatchView;
+import com.pocketpalsson.volleyball.views.SetFullDetailView;
 import com.r0adkll.slidr.Slidr;
 
 import java.util.UUID;
@@ -30,9 +26,10 @@ import butterknife.ButterKnife;
 
 public class MatchActivity extends MvpActivity<MatchView, MatchPresenter> implements MatchView, SwipeRefreshLayout.OnRefreshListener {
 
+    public static final String FEDERATION_MATCH_NUMBER = "federationMatchNumber";
     @Bind(R.id.stats_view)
     public MatchStatsView statsView;
-//    @Bind(R.id.tvTeamHome)
+    //    @Bind(R.id.tvTeamHome)
 //    public TextView tvTeamHome;
 //    @Bind(R.id.tvTeamGuest)
 //    public TextView tvTeamGuest;
@@ -41,17 +38,16 @@ public class MatchActivity extends MvpActivity<MatchView, MatchPresenter> implem
     @Bind(R.id.scoreGuest)
     public TextView tvGuestScore;
     @Bind(R.id.contentView)
-    SwipeRefreshLayout refreshLayout;
+    public SwipeRefreshLayout refreshLayout;
     @Bind(R.id.allSetsView)
-    AllSetsView allSetsView;
-    @Bind(R.id.ivHomeLogo)
-    public ImageView ivHomeLogo;
-    @Bind(R.id.ivGuestLogo)
-    public ImageView ivGuestLogo;
+    public SetFullDetailView allSetsView;
+    //    @Bind(R.id.ivHomeLogo)
+//    public ImageView ivHomeLogo;
+//    @Bind(R.id.ivGuestLogo)
+//    public ImageView ivGuestLogo;
     @Bind(R.id.collapsing_toolbar)
     public CollapsingToolbarLayout collapsingToolbarLayout;
 
-    @InjectExtra
     public int federationMatchNumber;
 
     private MatchModel match;
@@ -61,16 +57,17 @@ public class MatchActivity extends MvpActivity<MatchView, MatchPresenter> implem
         super.onCreate(savedInstanceState);
 //        Icepick.restoreInstanceState(this, savedInstanceState);
         setContentView(R.layout.activity_match);
+        federationMatchNumber = getIntent().getExtras().getInt(FEDERATION_MATCH_NUMBER);
+
         ButterKnife.bind(this);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         ActionBar actionBar = getSupportActionBar();
 
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
-        if(actionBar != null){
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeButtonEnabled(true);
         }
-        Dart.inject(this);
         Slidr.attach(this);
         refreshLayout.setOnRefreshListener(this);
         loadData(false);
@@ -111,8 +108,8 @@ public class MatchActivity extends MvpActivity<MatchView, MatchPresenter> implem
 
     public void setMatchModel(MatchModel match) {
         statsView.setMatchStats(match.statistics);
-        ivHomeLogo.setImageDrawable(ContextCompat.getDrawable(this, match.teamHome.logoRef));
-        ivGuestLogo.setImageDrawable(ContextCompat.getDrawable(this, match.teamGuest.logoRef));
+//        ivHomeLogo.setImageDrawable(ContextCompat.getDrawable(this, match.teamHome.logoRef));
+//        ivGuestLogo.setImageDrawable(ContextCompat.getDrawable(this, match.teamGuest.logoRef));
 //        tvTeamHome.setText(match.teamHome.getName());
 //        tvTeamGuest.setText(match.teamGuest.getName());
         tvHomeScore.setText("" + match.setsWonByHome);

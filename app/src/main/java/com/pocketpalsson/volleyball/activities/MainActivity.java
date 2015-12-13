@@ -3,38 +3,30 @@ package com.pocketpalsson.volleyball.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.hannesdorfmann.mosby.mvp.lce.MvpLceActivity;
+import com.hannesdorfmann.mosby.mvp.MvpActivity;
 import com.pocketpalsson.volleyball.R;
-import com.pocketpalsson.volleyball.models.MatchModel;
-import com.pocketpalsson.volleyball.presenters.MatchListPresenter;
+import com.pocketpalsson.volleyball.fragment.LeagueStandingFragment;
+import com.pocketpalsson.volleyball.fragment.MatchListFragment;
+import com.pocketpalsson.volleyball.presenters.MainActivityPresenter;
 import com.pocketpalsson.volleyball.views.MainActivityView;
-import com.pocketpalsson.volleyball.views.MatchListView;
 import com.pocketpalsson.volleyball.views.controllers.MatchListAdapter;
-import com.pocketpalsson.volleyball.views.controllers.SpacesItemDecoration;
-
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class MatchListActivity extends MvpLceActivity<SwipeRefreshLayout, List<MatchModel>, MatchListView, MatchListPresenter> implements MatchListView, OnRefreshListener, NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends MvpActivity<MainActivityView, MainActivityPresenter> implements MainActivityView, NavigationView.OnNavigationItemSelectedListener {
 
-    @Bind(R.id.recyclerView)
-    public RecyclerView recyclerView;
-    @Bind(R.id.contentView)
-    public SwipeRefreshLayout refreshLayout;
     @Bind(R.id.drawer_layout)
     public DrawerLayout drawer;
     @Bind(R.id.toolbar)
@@ -47,7 +39,7 @@ public class MatchListActivity extends MvpLceActivity<SwipeRefreshLayout, List<M
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_match_list);
+        setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
@@ -66,14 +58,12 @@ public class MatchListActivity extends MvpLceActivity<SwipeRefreshLayout, List<M
                 openMatch(match.federationMatchNumber);
             }
         });
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.default_card_padding);
-        recyclerView.addItemDecoration(new SpacesItemDecoration(this, SpacesItemDecoration.VERTICAL_LIST, spacingInPixels));
-        contentView.setOnRefreshListener(this);
 
-        recyclerView.setAdapter(adapter);
-        loadData(false);
+        if (savedInstanceState == null) {
+            addFragment(new MatchListFragment(), "match_list", true, false);
+        }
     }
+
 
     @Override
     public void onBackPressed() {
@@ -81,14 +71,23 @@ public class MatchListActivity extends MvpLceActivity<SwipeRefreshLayout, List<M
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
+            if (getFragmentCount() == 1) {
+                finish();
+            }
             super.onBackPressed();
+            invalidateOptionsMenu();
         }
+    }
+
+    private int getFragmentCount() {
+        FragmentManager fm = getSupportFragmentManager();
+        return fm.getBackStackEntryCount();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.nav_drawer_menu, menu);
+//        getMenuInflater().inflate(R.menu.nav_drawer_menu, menu);
         return true;
     }
 
@@ -115,73 +114,53 @@ public class MatchListActivity extends MvpLceActivity<SwipeRefreshLayout, List<M
     }
 
     @Override
-    public MatchListPresenter createPresenter() {
-        return new MatchListPresenter();
-    }
-
-    @Override
-    protected String getErrorMessage(Throwable e, boolean pullToRefresh) {
-        return null;
-    }
-
-    @Override
-    public void setData(List<MatchModel> data) {
-        if (adapter != null) {
-            adapter.setItems(data);
-        }
-        setIsLoading(false);
-    }
-
-    @Override
-    public void loadData(boolean pullToRefresh) {
-        if (getPresenter() != null) {
-            getPresenter().loadMatches();
-            setIsLoading(true);
-        } else {
-            setIsLoading(false);
-        }
-    }
-
-    @Override
-    public void onRefresh() {
-        loadData(true);
-        setIsLoading(true);
+    public MainActivityPresenter createPresenter() {
+        return new MainActivityPresenter();
     }
 
     public void openMatch(int federationMatchNumber) {
-        Intent intent = Henson.with(this).gotoMatchActivity().federationMatchNumber(federationMatchNumber).build();
+        Intent intent = new Intent(this, MatchActivity.class);
+        intent.putExtra(MatchActivity.FEDERATION_MATCH_NUMBER, federationMatchNumber);
         startActivity(intent);
-//        Fragment fragment = null;
-//        fragment = new MatchFragmentBuilder(federationMatchNumber).build();
-//        addFragment(fragment, "" + federationMatchNumber, false);
         closeNavDrawer();
     }
 
-    private void setIsLoading(boolean value) {
-        refreshLayout.setRefreshing(value);
-    }
-
-    public MainActivityView getActivityView() {
-        return (MainActivityView) this;
+    private void addFragment(Fragment frag, String fragmentId, boolean allowStateLoss, boolean shouldAddToBackstack) {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+//        ft.setCustomAnimations(R.anim.fade_in, R.anim.pause_then_fade_out);
+        ft.replace(R.id.fragment_container, frag, fragmentId);
+        if (shouldAddToBackstack) {
+            ft.addToBackStack(null);
+        }
+        if (allowStateLoss) {
+            ft.commitAllowingStateLoss();
+        } else {
+            ft.commit();
+        }
+        invalidateOptionsMenu();
     }
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-        Intent intent = null;
-        switch (id) {
-//            case R.id.match_list:
-//                intent = new Intent(this, MatchListActivity.class);
-//                break;
+        switch (item.getItemId()) {
+            case R.id.match_list:
+                addFragment(new MatchListFragment(), "match_list", false, true);
+                break;
             case R.id.standings:
-                intent = new Intent(this, LeagueStandingActivity.class);
+                addFragment(new LeagueStandingFragment(), "league_standing", false, true);
+                break;
+            case R.id.asv_aarhus:
+                openTeam(1);
                 break;
         }
-        if(intent != null) {
-            startActivity(intent);
-            closeNavDrawer();
-        }
+        closeNavDrawer();
         return true;
+    }
+
+    private void openTeam(int id) {
+        Intent intent = new Intent(this, TeamDetailActivity.class);
+        intent.putExtra(TeamDetailActivity.TEAM_ID, id);
+        startActivity(intent);
     }
 }

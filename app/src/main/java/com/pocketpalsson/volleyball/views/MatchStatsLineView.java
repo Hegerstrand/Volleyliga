@@ -1,8 +1,7 @@
 package com.pocketpalsson.volleyball.views;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
+import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -50,9 +49,11 @@ public class MatchStatsLineView extends LinearLayout {
         label.setText(stat.name);
         leftValue.setText("" + stat.homeStat);
         rightValue.setText("" + stat.guestStat);
-        leftValue.setTextColor(stat.isHomeValueMax ? ContextCompat.getColor(getContext(), R.color.accent) : Color.GRAY);
-        rightValue.setTextColor(stat.isHomeValueMax ? Color.GRAY : ContextCompat.getColor(getContext(), R.color.accent));
-        leftBar.setValues(stat.homeStat, stat.maxValue);
-        rightBar.setValues(stat.guestStat, stat.maxValue);
+//        leftValue.setTextColor(stat.homeStat == stat.maxValue ? ContextCompat.getColor(getContext(), R.color.accent) : Color.GRAY);
+//        rightValue.setTextColor(stat.guestStat == stat.maxValue ? ContextCompat.getColor(getContext(), R.color.accent) : Color.GRAY);
+        leftValue.setTypeface(null, stat.homeStat == stat.maxValue ? Typeface.BOLD : Typeface.NORMAL);
+        rightValue.setTypeface(null, stat.guestStat == stat.maxValue ? Typeface.BOLD : Typeface.NORMAL);
+        leftBar.setValues(stat.homeStat, stat.maxValue, stat.absoluteMaxValue);
+        rightBar.setValues(stat.guestStat, stat.maxValue, stat.absoluteMaxValue);
     }
 }

@@ -26,6 +26,7 @@ public class MatchStatsView extends LinearLayout {
     public MatchStatsLineView receptionPercentage;
     public MatchStatisticsModel matchStats;
 
+
     public MatchStatsView(Context context) {
         super(context);
         init();

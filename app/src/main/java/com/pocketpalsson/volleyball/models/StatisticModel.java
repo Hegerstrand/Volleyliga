@@ -4,6 +4,7 @@ public class StatisticModel {
     public int homeStat;
     public int guestStat;
     public int maxValue;
+    public int absoluteMaxValue;
     public String name;
     public boolean isHomeValueMax = true;
 

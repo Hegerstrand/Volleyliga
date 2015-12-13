@@ -12,87 +12,93 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:background="#FFFFFF">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            android:paddingTop="25dp"
             app:contentScrim="?attr/colorPrimary"
-            app:expandedTitleMarginEnd="64dp"
-            app:expandedTitleMarginStart="48dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/match_view_logo_height"
+                android:layout_height="190dp"
                 android:fitsSystemWindows="true"
                 android:orientation="horizontal"
                 android:weightSum="2"
                 app:layout_collapseMode="parallax">
 
-                <LinearLayout
-                    android:layout_width="0dp"
+                <ImageView
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:weightSum="1">
+                    android:padding="8dp"
+                    android:src="@drawable/court"
+                    android:scaleType="centerCrop"/>
 
-                    <ImageView
-                        android:id="@+id/ivHomeLogo"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:background="@android:color/transparent"
-                        android:scaleType="fitCenter"
-                        tools:src="@drawable/gentofte" />
+                <!--<LinearLayout-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:weightSum="1">-->
 
-                    <!--<TextView-->
-                        <!--android:id="@+id/tvTeamHome"-->
+                    <!--<ImageView-->
+                        <!--android:id="@+id/ivHomeLogo"-->
                         <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:gravity="center"-->
-                        <!--android:lines="2"-->
-                        <!--android:textAllCaps="true"-->
-                        <!--android:textAppearance="@style/TextAppearance.AppCompat.Title"-->
-                        <!--tools:text="Gentofte Volley" />-->
-                </LinearLayout>
+                        <!--android:layout_height="0dp"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:background="@android:color/transparent"-->
+                        <!--android:scaleType="fitCenter"-->
+                        <!--tools:src="@drawable/gentofte" />-->
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:weightSum="1">
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/tvTeamHome"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:gravity="center"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:lines="2"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textAllCaps="true"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textAppearance="@style/TextAppearance.AppCompat.Title"&ndash;&gt;-->
+                        <!--&lt;!&ndash;tools:text="Gentofte Volley" />&ndash;&gt;-->
+                <!--</LinearLayout>-->
 
-                    <ImageView
-                        android:id="@+id/ivGuestLogo"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:background="@android:color/transparent"
-                        android:scaleType="fitCenter"
-                        tools:src="@drawable/marienlyst" />
+                <!--<LinearLayout-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:weightSum="1">-->
 
-                    <!--<TextView-->
-                        <!--android:id="@+id/tvTeamGuest"-->
+                    <!--<ImageView-->
+                        <!--android:id="@+id/ivGuestLogo"-->
                         <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:gravity="center"-->
-                        <!--android:lines="2"-->
-                        <!--android:textAllCaps="true"-->
-                        <!--android:textAppearance="@style/TextAppearance.AppCompat.Title"-->
-                        <!--tools:text="Boldklubben Marienlyst" />-->
-                </LinearLayout>
+                        <!--android:layout_height="0dp"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:background="@android:color/transparent"-->
+                        <!--android:scaleType="fitCenter"-->
+                        <!--tools:src="@drawable/marienlyst" />-->
+
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/tvTeamGuest"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:gravity="center"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:lines="2"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textAllCaps="true"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textAppearance="@style/TextAppearance.AppCompat.Title"&ndash;&gt;-->
+                        <!--&lt;!&ndash;tools:text="Boldklubben Marienlyst" />&ndash;&gt;-->
+                <!--</LinearLayout>-->
             </LinearLayout>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
+                app:layout_collapseMode="parallax"
+                app:titleTextColor="#FF0000"
+                app:subtitleTextColor="@android:color/white"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
@@ -166,7 +172,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1" />
 
-                    <com.pocketpalsson.volleyball.views.AllSetsView
+                    <com.pocketpalsson.volleyball.views.SetFullDetailView
                         android:id="@+id/allSetsView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />

@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.pocketpalsson.volleyball.R;
 import com.pocketpalsson.volleyball.models.MatchModel;
-import com.pocketpalsson.volleyball.views.AllSetsView;
+import com.pocketpalsson.volleyball.views.SetSummaryView;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;
@@ -21,7 +21,7 @@ public class SimpleMatchViewHolder extends RecyclerView.ViewHolder
         implements View.OnClickListener {
 
     @Bind(R.id.allSetsView)
-    public AllSetsView allSetsView;
+    public SetSummaryView allSetsView;
     @Bind(R.id.tvHomeTeam)
     public TextView tvHomeTeam;
     @Bind(R.id.ivHomeTeam)

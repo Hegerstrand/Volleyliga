@@ -45,6 +45,23 @@ public class MatchStatisticsModel {
         }
         receptionPercentage.setHomeStat(getRoundedValue((float) totalHomeReceptionWins / totalHomeReceptionTotal * 100));
         receptionPercentage.setGuestStat(getRoundedValue((float) totalGuestReceptionWins / totalGuestReceptionTotal * 100));
+
+        int maxValue = computeMaxValue();
+        totalPoints.absoluteMaxValue = maxValue;
+        attacks.absoluteMaxValue = maxValue;
+        blocks.absoluteMaxValue = maxValue;
+        serves.absoluteMaxValue = maxValue;
+        errors.absoluteMaxValue = maxValue;
+
+    }
+
+    private int computeMaxValue() {
+        int result = totalPoints.maxValue;
+        result = Math.max(result, attacks.maxValue);
+        result = Math.max(result, blocks.maxValue);
+        result = Math.max(result, serves.maxValue);
+        result = Math.max(result, errors.maxValue);
+        return result;
     }
 
     private int getRoundedValue(double value) {
