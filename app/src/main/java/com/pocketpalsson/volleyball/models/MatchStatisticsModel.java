@@ -1,30 +1,32 @@
 package com.pocketpalsson.volleyball.models;
 
+import com.pocketpalsson.volleyball.utilities.Util;
+
+import org.parceler.Parcel;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Parcel
 public class MatchStatisticsModel {
     public StatisticModel attacks = new StatisticModel("Attacks");
     public StatisticModel blocks = new StatisticModel("Blocks");
     public StatisticModel serves = new StatisticModel("Serves");
     public StatisticModel errors = new StatisticModel("Opp. errors");
-    public StatisticModel totalPoints = new StatisticModel("Total points");
-    public StatisticModel receptionPercentage = new StatisticModel("Reception %");
+//    public StatisticModel totalPoints = new StatisticModel("Total points");
+    public StatisticModel receptionPercentage = new StatisticModel("Rec. %");
     public List<PlayerStatisticsModel> statsByPlayerHome = new ArrayList<>();
     public List<PlayerStatisticsModel> statsByPlayerGuest = new ArrayList<>();
-
-    public MatchStatisticsModel() {
-    }
 
     public void processPlayerStatistics() {
         int totalHomeReceptionWins = 0;
         int totalHomeReceptionTotal = 0;
 
         for (PlayerStatisticsModel playerStat : statsByPlayerHome) {
-            attacks.addToHomeStat(getRoundedValue(playerStat.spikeWinPercentage * playerStat.spikeTotal / 100));
+            attacks.addToHomeStat(playerStat.spikeWins);
             blocks.addToHomeStat(playerStat.blockWins);
             serves.addToHomeStat(playerStat.serveWins);
-            totalHomeReceptionWins += getRoundedValue(playerStat.receptionsWinPercentage * playerStat.receptionsTotal / 100);
+            totalHomeReceptionWins += playerStat.receptionWins;
             totalHomeReceptionTotal += playerStat.receptionsTotal;
 
             errors.addToGuestStat(playerStat.receptionsErrors);
@@ -34,20 +36,21 @@ public class MatchStatisticsModel {
         int totalGuestReceptionWins = 0;
         int totalGuestReceptionTotal = 0;
         for (PlayerStatisticsModel playerStat : statsByPlayerGuest) {
-            attacks.addToGuestStat(getRoundedValue(playerStat.spikeWinPercentage * playerStat.spikeTotal / 100));
+            attacks.addToGuestStat(playerStat.spikeWins);
             blocks.addToGuestStat(playerStat.blockWins);
             serves.addToGuestStat(playerStat.serveWins);
-            totalGuestReceptionWins += getRoundedValue(playerStat.receptionsWinPercentage * playerStat.receptionsTotal / 100);
+            totalGuestReceptionWins += playerStat.receptionWins;
             totalGuestReceptionTotal += playerStat.receptionsTotal;
 
             errors.addToHomeStat(playerStat.receptionsErrors);
             errors.addToHomeStat(playerStat.serveError);
         }
-        receptionPercentage.setHomeStat(getRoundedValue((float) totalHomeReceptionWins / totalHomeReceptionTotal * 100));
-        receptionPercentage.setGuestStat(getRoundedValue((float) totalGuestReceptionWins / totalGuestReceptionTotal * 100));
+        receptionPercentage.setHomeStat(Util.getRoundedValue((float) totalHomeReceptionWins / totalHomeReceptionTotal * 100));
+        receptionPercentage.setGuestStat(Util.getRoundedValue((float) totalGuestReceptionWins / totalGuestReceptionTotal * 100));
+        receptionPercentage.absoluteMaxValue = receptionPercentage.maxValue;
 
         int maxValue = computeMaxValue();
-        totalPoints.absoluteMaxValue = maxValue;
+//        totalPoints.absoluteMaxValue = maxValue;
         attacks.absoluteMaxValue = maxValue;
         blocks.absoluteMaxValue = maxValue;
         serves.absoluteMaxValue = maxValue;
@@ -56,7 +59,8 @@ public class MatchStatisticsModel {
     }
 
     private int computeMaxValue() {
-        int result = totalPoints.maxValue;
+        int result = 0;
+//        result = totalPoints.maxValue;
         result = Math.max(result, attacks.maxValue);
         result = Math.max(result, blocks.maxValue);
         result = Math.max(result, serves.maxValue);
@@ -64,7 +68,4 @@ public class MatchStatisticsModel {
         return result;
     }
 
-    private int getRoundedValue(double value) {
-        return (int) Math.round(value);
-    }
 }

@@ -1,5 +1,10 @@
 package com.pocketpalsson.volleyball.models;
 
+import com.pocketpalsson.volleyball.utilities.Util;
+
+import org.parceler.Parcel;
+
+@Parcel
 public class PlayerStatisticsModel {
     public int shirtNumber; //Player Shirt Number
     public String name; //Player Name
@@ -13,5 +18,18 @@ public class PlayerStatisticsModel {
     public double receptionsWinPercentage; // of Perfect Receptions performed by the Player
     public int spikeTotal; //Total Number of Spikes performed by the Player
     public double spikeWinPercentage; // % of Spike Points performed by the Player
+    public int spikeWins;
     public int blockWins; //Number of Winning Blocks performed by the Player
+    public int receptionWins;
+    public int errorsTotal;
+
+    public void postProcess() {
+        spikeWins = Util.getRoundedValue(spikeWinPercentage * spikeTotal / 100);
+        receptionWins = Util.getRoundedValue(receptionsWinPercentage * receptionsTotal / 100);
+        errorsTotal = serveError + receptionsErrors;
+    }
+
+    public String getPlayerName() {
+        return name + " " + surname;
+    }
 }

@@ -11,6 +11,13 @@ import java.util.Locale;
 
 public class MatchModel {
 
+
+    public enum Type {
+        PAST,
+        LIVE,
+        FUTURE
+    }
+
     public String championshipName; //Name of the Championship
     public String seasonDescription; //Name of the Season
     public int championshipLegNumber; //Round Number
@@ -35,7 +42,7 @@ public class MatchModel {
     public String stadiumCity; //Stadium City
     public Calendar matchDateTime; //Date and Time of the Match
     public int matchId;
-    public TeamModel teamHome = new TeamModel(), teamGuest = new TeamModel();
+    public TeamModel teamHome = new TeamModel("Test 1"), teamGuest = new TeamModel("Test 2");
     public HashMap<Integer, SetInfoModel> setResults = new HashMap<>();
     public MatchStatisticsModel statistics = new MatchStatisticsModel();
     public boolean goldenSetPlayed;
@@ -69,17 +76,30 @@ public class MatchModel {
     }
 
     public void computeTotalPoints() {
-        statistics.totalPoints = new StatisticModel("Total points");
-        for (SetInfoModel setInfo : setResults.values()) {
-            statistics.totalPoints.addToHomeStat(setInfo.scoreHome);
-            statistics.totalPoints.addToGuestStat(setInfo.scoreGuest);
-        }
+//        statistics.totalPoints = new StatisticModel("Total points");
+//        for (SetInfoModel setInfo : setResults.values()) {
+//            statistics.totalPoints.addToHomeStat(setInfo.scoreHome);
+//            statistics.totalPoints.addToGuestStat(setInfo.scoreGuest);
+//        }
     }
 
     public String getTitle() {
-        return teamHome.getName() + " - " + teamGuest.getName();
+        return teamHome.shortName + " " + setsWonByHome + " - " + setsWonByGuest + " " + teamGuest.shortName;
     }
 
+    public boolean isInFuture() {
+        return System.currentTimeMillis() < matchDateTime.getTimeInMillis();
+    }
+
+    public Type getType() {
+        if(isInFuture()){
+            return Type.FUTURE;
+        }
+        if(setsWonByGuest == 3 || setsWonByHome == 3){
+            return Type.PAST;
+        }
+        return Type.LIVE;
+    }
 
     public static class MatchComparator implements Comparator<MatchModel> {
         public int compare(MatchModel entry1, MatchModel entry2) {

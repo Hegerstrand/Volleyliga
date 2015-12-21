@@ -5,8 +5,8 @@ import com.pocketpalsson.volleyball.models.MatchModel;
 
 import java.util.List;
 
-public interface MatchListView extends MvpView {
-    MainActivityView getActivityView();
+public interface TeamDetailMatchListView extends MvpView {
+    void openMatch(int federationMatchNumber);
 
     void setData(List<MatchModel> data);
 }

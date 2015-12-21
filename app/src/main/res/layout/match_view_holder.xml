@@ -1,97 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    card_view:cardCornerRadius="4dp">
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="4dp">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="1">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
-            <ImageView
-                android:id="@+id/ivHomeTeam"
-                android:layout_width="@dimen/match_view_holder_logo_dimension"
-                android:layout_height="@dimen/match_view_holder_logo_dimension"
-                android:layout_marginRight="8dp"
-                tools:src="@drawable/gentofte" />
-
-            <TextView
-                android:id="@+id/tvHomeTeam"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/home_color"
-                android:textSize="@dimen/match_view_holder_title_size"
-                tools:text="Gentofte volley" />
-
-            <TextView
-                android:id="@+id/tvHomeTeamScore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/home_color"
-                android:textSize="@dimen/match_view_holder_title_size"
-                tools:text="3" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
-            <ImageView
-                android:id="@+id/ivGuestTeam"
-                android:layout_width="@dimen/match_view_holder_logo_dimension"
-                android:layout_height="@dimen/match_view_holder_logo_dimension"
-                android:layout_marginRight="8dp"
-                tools:src="@drawable/marienlyst" />
-
-            <TextView
-                android:id="@+id/tvGuestTeam"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/guest_color"
-                android:textSize="@dimen/match_view_holder_title_size"
-                tools:text="Boldklubben Marienlyst" />
-
-            <TextView
-                android:id="@+id/tvGuestTeamScore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/guest_color"
-                android:textSize="@dimen/match_view_holder_title_size"
-                tools:text="3" />
-
-        </LinearLayout>
-
-        <com.pocketpalsson.volleyball.views.SetSummaryView
-            android:id="@+id/allSetsView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/ivHomeTeam"
+            android:layout_width="@dimen/match_view_holder_logo_dimension"
+            android:layout_height="@dimen/match_view_holder_logo_dimension"
+            android:layout_marginRight="8dp"
+            tools:src="@drawable/gentofte" />
 
         <TextView
-            android:id="@+id/tvMatchDate"
-            android:layout_width="match_parent"
+            android:id="@+id/tvHomeTeam"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:textSize="8dp"
-            android:gravity="right"/>
+            android:layout_weight="1"
+            android:textColor="@color/home_color"
+            android:textSize="@dimen/match_view_holder_title_size"
+            tools:text="Gentofte volley" />
+
+        <TextView
+            android:id="@+id/tvHomeTeamScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/home_color"
+            android:textSize="@dimen/match_view_holder_title_size"
+            tools:text="3" />
+
     </LinearLayout>
-</android.support.v7.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:weightSum="1">
+
+        <ImageView
+            android:id="@+id/ivGuestTeam"
+            android:layout_width="@dimen/match_view_holder_logo_dimension"
+            android:layout_height="@dimen/match_view_holder_logo_dimension"
+            android:layout_marginRight="8dp"
+            tools:src="@drawable/marienlyst" />
+
+        <TextView
+            android:id="@+id/tvGuestTeam"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/guest_color"
+            android:textSize="@dimen/match_view_holder_title_size"
+            tools:text="Boldklubben Marienlyst" />
+
+        <TextView
+            android:id="@+id/tvGuestTeamScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/guest_color"
+            android:textSize="@dimen/match_view_holder_title_size"
+            tools:text="3" />
+
+    </LinearLayout>
+
+    <com.pocketpalsson.volleyball.views.SetSummaryView
+        android:id="@+id/allSetsView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tvMatchDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textSize="12sp"
+        tools:text="04.10.15 - 13:00"/>
+</LinearLayout>

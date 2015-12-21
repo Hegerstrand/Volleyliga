@@ -2,233 +2,39 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:weightSum="2">
+
+    <TextView
+        android:id="@+id/scoreHome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textSize="@dimen/match_view_result_font_size"
+        tools:text="3" />
 
     <LinearLayout
-        android:id="@+id/headerContainer"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:id="@+id/setContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:weightSum="6">
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-        <View
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:visibility="invisible" />
-
-        <TextView
-            android:id="@+id/tvHeader1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="1st"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <TextView
-            android:id="@+id/tvHeader2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="2nd"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <TextView
-            android:id="@+id/tvHeader3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="3rd"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <TextView
-            android:id="@+id/tvHeader4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="4th"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <TextView
-            android:id="@+id/tvHeader5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="5th"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <TextView
-            android:id="@+id/tvHeader6"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Golden"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginTop="4dp"
-        android:background="?android:attr/listDivider" />
-
-    <LinearLayout
-        android:id="@+id/homeContainer"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:weightSum="6">
-
-        <ImageView
-            android:id="@+id/ivHome"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/gentofte" />
-
-        <TextView
-            android:id="@+id/tvHomeSetResult1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            tools:text="25"
-            tools:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvHomeSetResult2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            tools:text="21" />
-
-        <TextView
-            android:id="@+id/tvHomeSetResult3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            tools:text="23" />
-
-        <TextView
-            android:id="@+id/tvHomeSetResult4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            tools:text="25"
-            tools:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvHomeSetResult5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            tools:text="15"
-            tools:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvHomeSetResult6"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            tools:text="25"
-            tools:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/guestContainer"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:weightSum="6">
-
-        <ImageView
-            android:id="@+id/ivGuest"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/marienlyst" />
-
-        <TextView
-            android:id="@+id/tvGuestSetResult1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            tools:text="21" />
-
-        <TextView
-            android:id="@+id/tvGuestSetResult2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            tools:text="25"
-            tools:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvGuestSetResult3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            tools:text="25"
-            tools:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvGuestSetResult4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            tools:text="23" />
-
-        <TextView
-            android:id="@+id/tvGuestSetResult5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            tools:text="13" />
-
-        <TextView
-            android:id="@+id/tvGuestSetResult6"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            tools:text="23" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/scoreGuest"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textSize="@dimen/match_view_result_font_size"
+        tools:text="1" />
 </LinearLayout>

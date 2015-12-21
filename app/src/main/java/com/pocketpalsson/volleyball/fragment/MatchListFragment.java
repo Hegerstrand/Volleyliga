@@ -3,6 +3,7 @@ package com.pocketpalsson.volleyball.fragment;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,37 +11,71 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-import com.hannesdorfmann.mosby.mvp.MvpFragment;
+import com.hannesdorfmann.fragmentargs.FragmentArgs;
+import com.hannesdorfmann.fragmentargs.annotation.Arg;
+import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 import com.pocketpalsson.volleyball.R;
 import com.pocketpalsson.volleyball.models.MatchModel;
-import com.pocketpalsson.volleyball.presenters.MatchListPresenter;
-import com.pocketpalsson.volleyball.views.MainActivityView;
-import com.pocketpalsson.volleyball.views.MatchListView;
+import com.pocketpalsson.volleyball.utilities.CustomBus;
+import com.pocketpalsson.volleyball.utilities.busEvents.MatchListResultsReceivedEvent;
+import com.pocketpalsson.volleyball.utilities.busEvents.TriggerMatchListLoadingEvent;
+import com.pocketpalsson.volleyball.views.MatchListActivityView;
+import com.pocketpalsson.volleyball.views.controllers.DividerItemDecoration;
 import com.pocketpalsson.volleyball.views.controllers.MatchListAdapter;
-import com.pocketpalsson.volleyball.views.controllers.SpacesItemDecoration;
+import com.squareup.otto.Subscribe;
 
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
+@FragmentWithArgs
+public class MatchListFragment extends Fragment implements OnRefreshListener {
 
-public class MatchListFragment extends MvpFragment<MatchListView, MatchListPresenter> implements MatchListView, OnRefreshListener {
+    @Arg
+    public MatchModel.Type matchType;
 
     @Bind(R.id.recyclerView)
     public RecyclerView recyclerView;
     @Bind(R.id.contentView)
-    public SwipeRefreshLayout refreshLayout;
+    public SwipeRefreshLayout contentView;
+    @Bind(R.id.emptyView)
+    public RelativeLayout emptyView;
+    @Bind(R.id.tvNoMatchesFound)
+    public TextView tvNoMatchesFound;
+
 
     private MatchListAdapter adapter;
 
-    private MainActivityView activityListener;
+    private MatchListActivityView activityListener;
+    private CustomBus bus;
+    private List<MatchModel> matches;
+    private boolean isRegistered = false;
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        activityListener = (MainActivityView) activity;
+        activityListener = (MatchListActivityView) activity;
+        bus = activityListener.getBus();
+    }
+
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (bus != null && isRegistered) {
+            bus.unregister(this);
+            isRegistered = false;
+        }
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        FragmentArgs.inject(this);
     }
 
     @Nullable
@@ -54,60 +89,71 @@ public class MatchListFragment extends MvpFragment<MatchListView, MatchListPrese
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
 
+        if (bus != null && !isRegistered) {
+            bus.register(this);
+            isRegistered = true;
+        }
+
         adapter = new MatchListAdapter(getActivity());
-        adapter.setMatchClickListener(match -> {
-            if (getPresenter() != null) {
-                openMatch(match.federationMatchNumber);
-            }
-        });
+        adapter.setMatchClickListener(match -> openMatch(match.federationMatchNumber));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.default_card_padding);
-        recyclerView.addItemDecoration(new SpacesItemDecoration(getActivity(), SpacesItemDecoration.VERTICAL_LIST, spacingInPixels));
-        refreshLayout.setOnRefreshListener(this);
+        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
+        contentView.setOnRefreshListener(this);
 
         recyclerView.setAdapter(adapter);
-        loadData(false);
+        setData(matches);
     }
 
-    @Override
-    public MatchListPresenter createPresenter() {
-        return new MatchListPresenter();
+    @Subscribe
+    public void matchDataReceived(MatchListResultsReceivedEvent event) {
+        matches = event.getMatches(matchType);
+        if (matches != null) {
+            setData(matches);
+        }
     }
-
 
     public void setData(List<MatchModel> data) {
-        if (adapter != null) {
+        if (adapter != null && data != null) {
+            if (data.isEmpty()) {
+                contentView.setVisibility(View.GONE);
+                emptyView.setVisibility(View.VISIBLE);
+                tvNoMatchesFound.setText("No " + getTypeName() + " matches found");
+            } else {
+                contentView.setVisibility(View.VISIBLE);
+                emptyView.setVisibility(View.GONE);
+            }
             adapter.setItems(data);
         }
         setIsLoading(false);
     }
 
-    public void loadData(boolean pullToRefresh) {
-        if (getPresenter() != null) {
-            getPresenter().loadMatches();
-            setIsLoading(true);
-        } else {
-            setIsLoading(false);
+    private String getTypeName() {
+        switch (matchType) {
+            case PAST:
+                return "archived";
+            case LIVE:
+                return "live";
+            case FUTURE:
+                return "future";
         }
+        return "";
     }
 
     @Override
     public void onRefresh() {
-        loadData(true);
-        setIsLoading(true);
+        bus.post(new TriggerMatchListLoadingEvent());
     }
 
+
     public void openMatch(int federationMatchNumber) {
-        if(activityListener != null) {
+        if (activityListener != null) {
             activityListener.openMatch(federationMatchNumber);
         }
     }
 
-    public MainActivityView getActivityView() {
-        return activityListener;
-    }
-
     private void setIsLoading(boolean value) {
-        refreshLayout.setRefreshing(value);
+        if (contentView != null) {
+            contentView.setRefreshing(value);
+        }
     }
 }

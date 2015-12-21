@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.pocketpalsson.volleyball.R;
 import com.pocketpalsson.volleyball.models.MatchModel;
-import com.pocketpalsson.volleyball.views.SetSummaryView;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;
@@ -17,32 +16,29 @@ import java.util.Locale;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class SimpleMatchViewHolder extends RecyclerView.ViewHolder
+public class MatchFutureViewHolder extends RecyclerView.ViewHolder
         implements View.OnClickListener {
 
-    @Bind(R.id.allSetsView)
-    public SetSummaryView allSetsView;
     @Bind(R.id.tvHomeTeam)
     public TextView tvHomeTeam;
     @Bind(R.id.ivHomeTeam)
     public ImageView ivHomeTeam;
-    @Bind(R.id.tvHomeTeamScore)
-    public TextView tvHomeTeamScore;
     @Bind(R.id.tvGuestTeam)
     public TextView tvGuestTame;
     @Bind(R.id.ivGuestTeam)
     public ImageView ivGuestTame;
-    @Bind(R.id.tvGuestTeamScore)
-    public TextView tvGuestTeamScore;
-    @Bind(R.id.tvMatchDate)
-    public TextView tvMatchDate;
+    @Bind(R.id.tvDate)
+    public TextView tvDate;
+    @Bind(R.id.tvTime)
+    public TextView tvTime;
 
 
     private ClickListener clickListener;
     private MatchModel match;
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yy - HH:mm", Locale.getDefault());
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MMM", Locale.getDefault());
+    private SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
 
-    public SimpleMatchViewHolder(View itemView) {
+    public MatchFutureViewHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
 
@@ -55,21 +51,17 @@ public class SimpleMatchViewHolder extends RecyclerView.ViewHolder
         this.match = match;
         int homeTypeface = match.setsWonByHome > match.setsWonByGuest ? Typeface.BOLD : Typeface.NORMAL;
         int guestTypeface = match.setsWonByHome < match.setsWonByGuest ? Typeface.BOLD : Typeface.NORMAL;
-        allSetsView.setStats(match.getSetList());
 
         ivHomeTeam.setImageDrawable(ContextCompat.getDrawable(itemView.getContext(), match.teamHome.logoRef));
         tvHomeTeam.setText("" + match.teamHome.name);
-        tvHomeTeamScore.setText("" + match.setsWonByHome);
         tvHomeTeam.setTypeface(null, homeTypeface);
-        tvHomeTeamScore.setTypeface(null, homeTypeface);
 
         ivGuestTame.setImageDrawable(ContextCompat.getDrawable(itemView.getContext(), match.teamGuest.logoRef));
         tvGuestTame.setText("" + match.teamGuest.name);
         tvGuestTame.setTypeface(null, guestTypeface);
-        tvGuestTeamScore.setTypeface(null, guestTypeface);
-        tvGuestTeamScore.setText("" + match.setsWonByGuest);
 
-        tvMatchDate.setText(dateFormat.format(match.matchDateTime.getTime()));
+        tvDate.setText(dateFormat.format(match.matchDateTime.getTime()).toLowerCase());
+        tvTime.setText(timeFormat.format(match.matchDateTime.getTime()));
     }
 
 
@@ -84,7 +76,9 @@ public class SimpleMatchViewHolder extends RecyclerView.ViewHolder
 
     @Override
     public void onClick(View v) {
-        clickListener.onClick(match);
+        if(clickListener != null) {
+            clickListener.onClick(match);
+        }
     }
 
 //    @Override

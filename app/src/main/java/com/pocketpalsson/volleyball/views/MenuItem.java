@@ -64,6 +64,46 @@ public class MenuItem extends FrameLayout {
         setClickable(true);
         setForeground(ContextCompat.getDrawable(getContext(), R.drawable.selectable_item_background));
 
+        updateUI();
+    }
+
+    public int getIconRef() {
+        return iconRef;
+    }
+
+    public void setIconRef(int iconRef) {
+        this.iconRef = iconRef;
+        updateUI();
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+        updateUI();
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+        updateUI();
+    }
+
+    public boolean isIncludeArrow() {
+        return includeArrow;
+    }
+
+    public void setIncludeArrow(boolean includeArrow) {
+        this.includeArrow = includeArrow;
+        updateUI();
+    }
+
+    private void updateUI() {
         tvTitle.setText(title);
         tvValue.setText(value);
         arrow.setVisibility(includeArrow ? View.VISIBLE : View.GONE);

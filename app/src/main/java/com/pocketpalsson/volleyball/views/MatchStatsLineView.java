@@ -23,6 +23,7 @@ public class MatchStatsLineView extends LinearLayout {
     public TextView leftValue;
     @Bind(R.id.tvRightValue)
     public TextView rightValue;
+    private String suffix = "";
 
     public MatchStatsLineView(Context context) {
         super(context);
@@ -47,13 +48,18 @@ public class MatchStatsLineView extends LinearLayout {
 
     public void setStat(StatisticModel stat) {
         label.setText(stat.name);
-        leftValue.setText("" + stat.homeStat);
-        rightValue.setText("" + stat.guestStat);
+        leftValue.setText("" + stat.homeStat + suffix);
+        rightValue.setText("" + stat.guestStat + suffix);
 //        leftValue.setTextColor(stat.homeStat == stat.maxValue ? ContextCompat.getColor(getContext(), R.color.accent) : Color.GRAY);
 //        rightValue.setTextColor(stat.guestStat == stat.maxValue ? ContextCompat.getColor(getContext(), R.color.accent) : Color.GRAY);
         leftValue.setTypeface(null, stat.homeStat == stat.maxValue ? Typeface.BOLD : Typeface.NORMAL);
         rightValue.setTypeface(null, stat.guestStat == stat.maxValue ? Typeface.BOLD : Typeface.NORMAL);
         leftBar.setValues(stat.homeStat, stat.maxValue, stat.absoluteMaxValue);
         rightBar.setValues(stat.guestStat, stat.maxValue, stat.absoluteMaxValue);
+    }
+
+    public void setStat(StatisticModel stat, String suffix) {
+        this.suffix = suffix;
+        setStat(stat);
     }
 }

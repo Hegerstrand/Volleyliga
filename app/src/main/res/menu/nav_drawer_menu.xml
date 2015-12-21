@@ -7,45 +7,90 @@
         <item
             android:id="@+id/match_list"
             android:icon="@android:drawable/sym_def_app_icon"
-            android:title="All matches" />
-        <item
-            android:id="@+id/standings"
-            android:icon="@android:drawable/sym_def_app_icon"
-            android:title="League standings" />
+            android:title="Matches" />
+        <!--<item-->
+        <!--android:id="@+id/standings"-->
+        <!--android:icon="@android:drawable/sym_def_app_icon"-->
+        <!--android:title="League standings" />-->
     </group>
-    <group android:id="@+id/teamGroup"
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/asv_aarhus"
-            android:icon="@drawable/asvaarhus"
-            android:title="ASV Århus" />
-        <item
-            android:id="@+id/marienlyst"
-            android:icon="@drawable/marienlyst"
-            android:title="Boldklubben Marienlyst" />
-        <item
-            android:id="@+id/gentofte"
-            android:icon="@drawable/gentofte"
-            android:title="Gentofte Volley" />
-        <item
-            android:id="@+id/hvidovre"
-            android:icon="@drawable/hvidovre"
-            android:title="Hvidovre VK" />
-        <item
-            android:id="@+id/ishoj"
-            android:icon="@drawable/ishoj"
-            android:title="Ishøj Volley" />
-        <item
-            android:id="@+id/lyngby_gladsaxe"
-            android:icon="@drawable/lyngby"
-            android:title="Lyngby-Gladsaxe Volley" />
-        <item
-            android:id="@+id/middelfart"
-            android:icon="@drawable/middelfart"
-            android:title="Middelfart VK" />
-        <item
-            android:id="@+id/randers"
-            android:icon="@drawable/randers"
-            android:title="Randers Novo Volley" />
-    </group>
+    <item android:title="Male">
+        <menu>
+            <group
+                android:id="@+id/maleTeamGroup"
+                android:checkableBehavior="single">
+                <item
+                    android:id="@+id/asv_aarhus"
+                    android:icon="@drawable/asvaarhus"
+                    android:title="ASV Århus" />
+                <item
+                    android:id="@+id/marienlyst"
+                    android:icon="@drawable/marienlyst"
+                    android:title="Boldklubben Marienlyst" />
+                <item
+                    android:id="@+id/gentofte"
+                    android:icon="@drawable/gentofte"
+                    android:title="Gentofte Volley" />
+                <item
+                    android:id="@+id/hvidovre"
+                    android:icon="@drawable/hvidovre"
+                    android:title="Hvidovre VK" />
+                <item
+                    android:id="@+id/ishoj"
+                    android:icon="@drawable/ishoj"
+                    android:title="Ishøj Volley" />
+                <item
+                    android:id="@+id/lyngby_gladsaxe"
+                    android:icon="@drawable/lyngby"
+                    android:title="Lyngby-Gladsaxe Volley" />
+                <item
+                    android:id="@+id/middelfart"
+                    android:icon="@drawable/middelfart"
+                    android:title="Middelfart VK" />
+                <item
+                    android:id="@+id/randers"
+                    android:icon="@drawable/randers"
+                    android:title="Randers Novo Volley" />
+            </group>
+        </menu>
+    </item>
+    <item android:title="Female">
+        <menu>
+            <group
+                android:id="@+id/femaleTeamGroup"
+                android:checkableBehavior="single">
+                <item
+                    android:id="@+id/amager"
+                    android:icon="@drawable/amager"
+                    android:title="Amager VK" />
+                <item
+                    android:id="@+id/brondby"
+                    android:icon="@drawable/brondby"
+                    android:title="Brøndby VK" />
+                <item
+                    android:id="@+id/odense"
+                    android:icon="@drawable/dhv"
+                    android:title="DHV Odense" />
+                <item
+                    android:id="@+id/eliteVolleyAarhus"
+                    android:icon="@drawable/eva"
+                    android:title="Elite Volley Aarhus" />
+                <item
+                    android:id="@+id/fortuna"
+                    android:icon="@drawable/fortuna"
+                    android:title="Fortuna Odense Volley" />
+                <item
+                    android:id="@+id/holte"
+                    android:icon="@drawable/holte"
+                    android:title="Holte IF" />
+                <item
+                    android:id="@+id/lyngbyVolleyFemale"
+                    android:icon="@drawable/lyngby"
+                    android:title="Lyngby Volley" />
+                <item
+                    android:id="@+id/koge"
+                    android:icon="@drawable/koge"
+                    android:title="Team Køge Volley" />
+            </group>
+        </menu>
+    </item>
 </menu>

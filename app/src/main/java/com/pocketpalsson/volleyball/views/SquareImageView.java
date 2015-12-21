@@ -20,10 +20,10 @@ public class SquareImageView extends ImageView {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, widthMeasureSpec);
 
-        int size = Math.max(widthMeasureSpec, heightMeasureSpec);
-        super.onMeasure(size, size);
-        setMeasuredDimension(size, size);
+        int width = getMeasuredWidth();
+        setMeasuredDimension(width, width);
+
     }
-
 }

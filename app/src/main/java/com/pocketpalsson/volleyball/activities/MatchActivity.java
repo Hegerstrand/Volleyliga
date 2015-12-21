@@ -1,24 +1,38 @@
 package com.pocketpalsson.volleyball.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
-import android.widget.TextView;
+import android.view.MenuItem;
+import android.view.ViewGroup;
 
 import com.hannesdorfmann.mosby.mvp.MvpActivity;
 import com.pocketpalsson.volleyball.R;
+import com.pocketpalsson.volleyball.fragment.MatchStatFragment;
+import com.pocketpalsson.volleyball.fragment.MatchStatFragmentBuilder;
+import com.pocketpalsson.volleyball.fragment.PlayerStatsFragment;
+import com.pocketpalsson.volleyball.fragment.PlayerStatsFragmentBuilder;
 import com.pocketpalsson.volleyball.models.MatchModel;
 import com.pocketpalsson.volleyball.presenters.MatchPresenter;
+import com.pocketpalsson.volleyball.utilities.CustomBus;
+import com.pocketpalsson.volleyball.utilities.busEvents.MatchLoadingResultEvent;
+import com.pocketpalsson.volleyball.utilities.busEvents.OpenTeamEvent;
+import com.pocketpalsson.volleyball.utilities.busEvents.TriggerMatchLoadingEvent;
 import com.pocketpalsson.volleyball.utilities.volley.VolleyQueue;
 import com.pocketpalsson.volleyball.utilities.volley.match.GetMatchVolleyRequest;
-import com.pocketpalsson.volleyball.views.MatchStatsView;
 import com.pocketpalsson.volleyball.views.MatchView;
-import com.pocketpalsson.volleyball.views.SetFullDetailView;
-import com.r0adkll.slidr.Slidr;
+import com.squareup.otto.Produce;
+import com.squareup.otto.Subscribe;
 
+import java.util.HashMap;
 import java.util.UUID;
 
 import butterknife.Bind;
@@ -27,77 +41,51 @@ import butterknife.ButterKnife;
 public class MatchActivity extends MvpActivity<MatchView, MatchPresenter> implements MatchView, SwipeRefreshLayout.OnRefreshListener {
 
     public static final String FEDERATION_MATCH_NUMBER = "federationMatchNumber";
-    @Bind(R.id.stats_view)
-    public MatchStatsView statsView;
+    public final CustomBus bus = new CustomBus();
+    //    @Bind(R.id.stats_view)
+//    public MatchStatsView statsView;
     //    @Bind(R.id.tvTeamHome)
 //    public TextView tvTeamHome;
 //    @Bind(R.id.tvTeamGuest)
 //    public TextView tvTeamGuest;
-    @Bind(R.id.scoreHome)
-    public TextView tvHomeScore;
-    @Bind(R.id.scoreGuest)
-    public TextView tvGuestScore;
-    @Bind(R.id.contentView)
-    public SwipeRefreshLayout refreshLayout;
-    @Bind(R.id.allSetsView)
-    public SetFullDetailView allSetsView;
-    //    @Bind(R.id.ivHomeLogo)
-//    public ImageView ivHomeLogo;
-//    @Bind(R.id.ivGuestLogo)
-//    public ImageView ivGuestLogo;
-    @Bind(R.id.collapsing_toolbar)
-    public CollapsingToolbarLayout collapsingToolbarLayout;
+    @Bind(R.id.toolbar)
+    public Toolbar toolbar;
+    @Bind(R.id.viewPager)
+    public ViewPager viewPager;
+    @Bind(R.id.tabLayout)
+    public TabLayout tabLayout;
 
     public int federationMatchNumber;
 
     private MatchModel match;
+    private StatPagerAdapter pagerAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        Icepick.restoreInstanceState(this, savedInstanceState);
         setContentView(R.layout.activity_match);
+        bus.register(this);
         federationMatchNumber = getIntent().getExtras().getInt(FEDERATION_MATCH_NUMBER);
 
         ButterKnife.bind(this);
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
-
-        collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeButtonEnabled(true);
         }
-        Slidr.attach(this);
-        refreshLayout.setOnRefreshListener(this);
+
+        pagerAdapter = new StatPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(pagerAdapter);
+
+        tabLayout.setupWithViewPager(viewPager);
+
         loadData(false);
+        viewPager.setCurrentItem(1, false);
     }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-//        Icepick.saveInstanceState(this, outState);
-    }
-
-//    @Override
-//    public void showError(Throwable e, boolean pullToRefresh) {
-//        super.showError(e, pullToRefresh);
-//        setIsLoading(false);
-//    }
-//
-//    @Override
-//    public void showLoading(boolean pullToRefresh) {
-//        super.showLoading(pullToRefresh);
-//    }
-//
-//    @Override
-//    public void showContent() {
-//        super.showContent();
-//        setIsLoading(false);
-//    }
 
     private void setIsLoading(boolean value) {
-        refreshLayout.setRefreshing(value);
+
     }
 
     public void setData(MatchModel data) {
@@ -107,15 +95,21 @@ public class MatchActivity extends MvpActivity<MatchView, MatchPresenter> implem
     }
 
     public void setMatchModel(MatchModel match) {
-        statsView.setMatchStats(match.statistics);
-//        ivHomeLogo.setImageDrawable(ContextCompat.getDrawable(this, match.teamHome.logoRef));
-//        ivGuestLogo.setImageDrawable(ContextCompat.getDrawable(this, match.teamGuest.logoRef));
-//        tvTeamHome.setText(match.teamHome.getName());
-//        tvTeamGuest.setText(match.teamGuest.getName());
-        tvHomeScore.setText("" + match.setsWonByHome);
-        tvGuestScore.setText("" + match.setsWonByGuest);
-        allSetsView.setStats(match.getSetList());
-        collapsingToolbarLayout.setTitle(match.getTitle());
+        getSupportActionBar().setTitle(match.getTitle());
+        tabLayout.getTabAt(0).setText(match.teamHome.shortName);
+        tabLayout.getTabAt(2).setText(match.teamGuest.shortName);
+        pagerAdapter.notifyDataSetChanged();
+        bus.post(new MatchLoadingResultEvent(match));
+    }
+
+    @Produce
+    public MatchLoadingResultEvent produceMatchEvent() {
+        return new MatchLoadingResultEvent(match);
+    }
+
+    @Override
+    public CustomBus getBus() {
+        return bus;
     }
 
     @NonNull
@@ -123,11 +117,6 @@ public class MatchActivity extends MvpActivity<MatchView, MatchPresenter> implem
     public MatchPresenter createPresenter() {
         return new MatchPresenter();
     }
-
-//    @Override
-//    protected String getErrorMessage(Throwable e, boolean pullToRefresh) {
-//        return e.getMessage();
-//    }
 
 
     public void loadData(boolean pullToRefresh) {
@@ -139,5 +128,100 @@ public class MatchActivity extends MvpActivity<MatchView, MatchPresenter> implem
     public void onRefresh() {
         loadData(true);
         setIsLoading(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Subscribe
+    public void loadingTriggered(TriggerMatchLoadingEvent event) {
+        loadData(true);
+    }
+
+
+    @Subscribe
+    public void openTeam(OpenTeamEvent event) {
+        Intent intent = new Intent(this, TeamDetailActivity.class);
+        intent.putExtra(TeamDetailActivity.TEAM_ID, event.id);
+        startActivity(intent);
+    }
+
+
+    public class StatPagerAdapter extends FragmentPagerAdapter {
+        private HashMap<Integer, Fragment> mPageReferenceMap = new HashMap<>();
+
+        public StatPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            if (position == 1) {
+                return "Match stats";
+            }
+            if (match == null) {
+                return "";
+            }
+            if (position == 0) {
+                return match.teamHome.getName();
+            } else if (position == 2) {
+                return match.teamGuest.getName();
+            }
+            return "";
+        }
+
+        @Override
+        public int getCount() {
+            return 3;
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            Fragment result = null;
+            if (position == 0) {
+                result = new PlayerStatsFragmentBuilder(true).build();
+            } else if (position == 1) {
+                result = new MatchStatFragmentBuilder().build();
+            } else if (position == 2) {
+                result = new PlayerStatsFragmentBuilder(false).build();
+            }
+            if (result != null) {
+                mPageReferenceMap.put(position, result);
+            }
+            return result;
+        }
+
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            super.destroyItem(container, position, object);
+            mPageReferenceMap.remove(position);
+        }
+
+        public PlayerStatsFragment getHomeStatFragment() {
+            if (mPageReferenceMap.containsKey(0)) {
+                return (PlayerStatsFragment) mPageReferenceMap.get(0);
+            }
+            return null;
+        }
+
+        public PlayerStatsFragment getGuestStatFragment() {
+            if (mPageReferenceMap.containsKey(2)) {
+                return (PlayerStatsFragment) mPageReferenceMap.get(2);
+            }
+            return null;
+        }
+
+        public MatchStatFragment getMatchStatFragment() {
+            if (mPageReferenceMap.containsKey(1)) {
+                return (MatchStatFragment) mPageReferenceMap.get(1);
+            }
+            return null;
+        }
     }
 }

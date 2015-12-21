@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,8 +18,8 @@ import com.pocketpalsson.volleyball.models.LeagueStandingModel;
 import com.pocketpalsson.volleyball.presenters.LeagueStandingPresenter;
 import com.pocketpalsson.volleyball.views.LeagueStandingView;
 import com.pocketpalsson.volleyball.views.MainActivityView;
+import com.pocketpalsson.volleyball.views.controllers.DividerItemDecoration;
 import com.pocketpalsson.volleyball.views.controllers.LeagueStandingAdapter;
-import com.pocketpalsson.volleyball.views.controllers.SpacesItemDecoration;
 
 import java.util.List;
 
@@ -60,10 +61,9 @@ public class LeagueStandingFragment extends MvpFragment<LeagueStandingView, Leag
 //                openMatch(match.federationMatchNumber);
 //            }
         });
-
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("League standing");
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.default_card_padding);
-        recyclerView.addItemDecoration(new SpacesItemDecoration(getActivity(), SpacesItemDecoration.VERTICAL_LIST, spacingInPixels));
+        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
         refreshLayout.setOnRefreshListener(this);
 
         recyclerView.setAdapter(adapter);

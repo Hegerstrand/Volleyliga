@@ -16,7 +16,7 @@
     <dimen name="stats_line_margin">10dp</dimen>
     <dimen name="stats_line_label_size">18sp</dimen>
     <dimen name="stats_bar_height">4dp</dimen>
-    <dimen name="stats_line_label_width">90dp</dimen>
+    <dimen name="stats_line_label_width">110dp</dimen>
     <dimen name="stats_line_value_width">30dp</dimen>
     <dimen name="match_view_holder_title_size">20sp</dimen>
     <dimen name="default_card_padding">10dp</dimen>

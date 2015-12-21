@@ -1,9 +1,7 @@
 package com.pocketpalsson.volleyball.views;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -18,19 +16,26 @@ import butterknife.ButterKnife;
 
 public class SetFullDetailView extends LinearLayout {
 
-    @Bind({R.id.tvHeader1, R.id.tvHeader2, R.id.tvHeader3, R.id.tvHeader4, R.id.tvHeader5, R.id.tvHeader6})
-    public List<TextView> tvHeaders;
-    @Bind({R.id.tvHomeSetResult1, R.id.tvHomeSetResult2, R.id.tvHomeSetResult3, R.id.tvHomeSetResult4, R.id.tvHomeSetResult5, R.id.tvHomeSetResult6})
-    public List<TextView> tvHomeViews;
-    @Bind({R.id.tvGuestSetResult1, R.id.tvGuestSetResult2, R.id.tvGuestSetResult3, R.id.tvGuestSetResult4, R.id.tvGuestSetResult5, R.id.tvGuestSetResult6})
-    public List<TextView> tvGuestViews;
+//    @Bind({R.id.tvHeader1, R.id.tvHeader2, R.id.tvHeader3, R.id.tvHeader4, R.id.tvHeader5, R.id.tvHeader6})
+//    public List<TextView> tvHeaders;
+//    @Bind({R.id.tvHomeSetResult1, R.id.tvHomeSetResult2, R.id.tvHomeSetResult3, R.id.tvHomeSetResult4, R.id.tvHomeSetResult5, R.id.tvHomeSetResult6})
+//    public List<TextView> tvHomeViews;
+//    @Bind({R.id.tvGuestSetResult1, R.id.tvGuestSetResult2, R.id.tvGuestSetResult3, R.id.tvGuestSetResult4, R.id.tvGuestSetResult5, R.id.tvGuestSetResult6})
+//    public List<TextView> tvGuestViews;
 
-    @Bind(R.id.headerContainer)
-    public LinearLayout headerContainer;
-    @Bind(R.id.homeContainer)
-    public LinearLayout homeContainer;
-    @Bind(R.id.guestContainer)
-    public LinearLayout guestContainer;
+    //    @Bind(R.id.headerContainer)
+//    public LinearLayout headerContainer;
+//    @Bind(R.id.homeContainer)
+//    public LinearLayout homeContainer;
+//    @Bind(R.id.guestContainer)
+//    public LinearLayout guestContainer;
+    @Bind(R.id.setContainer)
+    public LinearLayout setContainer;
+    @Bind(R.id.scoreHome)
+    public TextView scoreHome;
+    @Bind(R.id.scoreGuest)
+    public TextView scoreGuest;
+
 
 
     public SetFullDetailView(Context context) {
@@ -55,31 +60,20 @@ public class SetFullDetailView extends LinearLayout {
         ButterKnife.bind(this);
     }
 
-    public void setStats(List<SetInfoModel> stats) {
-        int leftMargin = 0;
-        int rightMargin = ContextHelper.dpToPixels(getContext(), 2);
-
-        headerContainer.setWeightSum(stats.size());
-        homeContainer.setWeightSum(stats.size());
-        guestContainer.setWeightSum(stats.size());
-
-        for (int i = 0; i < 6; i++) {
-            if(i < stats.size()){
-                SetInfoModel setInfo = stats.get(i);
-                tvHeaders.get(i).setVisibility(View.VISIBLE);
-                TextView homeView = tvHomeViews.get(i);
-                TextView guestView = tvGuestViews.get(i);
-                homeView.setVisibility(View.VISIBLE);
-                homeView.setTypeface(null, setInfo.homeWon ? Typeface.BOLD : Typeface.NORMAL);
-                homeView.setText("" + setInfo.scoreHome);
-                guestView.setVisibility(View.VISIBLE);
-                guestView.setText("" + setInfo.scoreGuest);
-                guestView.setTypeface(null, setInfo.homeWon ? Typeface.NORMAL : Typeface.BOLD);
-            } else {
-                tvHeaders.get(i).setVisibility(View.GONE);
-                tvHomeViews.get(i).setVisibility(View.GONE);
-                tvGuestViews.get(i).setVisibility(View.GONE);
-            }
+    public void setStats(List<SetInfoModel> stats, int setsWonByHome, int setsWonByGuest) {
+        setContainer.removeAllViews();
+        scoreHome.setText("" + setsWonByHome);
+        scoreGuest.setText("" + setsWonByGuest);
+        int topMargin = 0;
+        int bottomMargin = ContextHelper.dpToPixels(getContext(), 4);
+        for (SetInfoModel stat : stats) {
+            LargeSetView setView = new LargeSetView(getContext());
+            setContainer.addView(setView);
+            setView.setStat(stat);
+            LayoutParams layoutParams = (LayoutParams) setView.getLayoutParams();
+            layoutParams.setMargins(0, topMargin, 0, bottomMargin);
+            setView.setLayoutParams(layoutParams);
+            topMargin = bottomMargin;
         }
     }
 }

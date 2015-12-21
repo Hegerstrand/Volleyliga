@@ -9,11 +9,13 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TeamXmlPullParser {
-    private TeamModel team;
+    private List<TeamModel> teams;
 
-    public TeamModel parse(String input) {
+    public List<TeamModel> parse(String input) {
         XmlPullParser parser = Xml.newPullParser();
         try {
             input = input.replaceAll("\n", "");
@@ -21,30 +23,33 @@ public class TeamXmlPullParser {
             parser.setInput(new StringReader(input));
             parser.nextTag();
             readFeed(parser);
-            return team;
+            return teams;
         } catch (XmlPullParserException | IOException ignored) {
             ignored.printStackTrace();
         }
         return null;
     }
 
-    private TeamModel readFeed(XmlPullParser parser) throws XmlPullParserException, IOException {
-        team = new TeamModel();
-        while (!parser.getName().equalsIgnoreCase("team")) {
+    private void readFeed(XmlPullParser parser) throws XmlPullParserException, IOException {
+        teams = new ArrayList<>();
+        while (parser.getName() == null || !parser.getName().equalsIgnoreCase("team")) {
             parser.next();
         }
-        while (parser.next() == XmlPullParser.START_TAG) {
-            readFromTag(parser);
-        }
-        return team;
+        do {
+            TeamModel team = new TeamModel();
+            teams.add(team);
+            while (parser.next() == XmlPullParser.START_TAG) {
+                readFromTag(team, parser);
+            }
+        } while (parser.next() == XmlPullParser.START_TAG);
     }
 
-    private void readFromTag(XmlPullParser parser) throws IOException, XmlPullParserException {
+    private void readFromTag(TeamModel team, XmlPullParser parser) throws IOException, XmlPullParserException {
         String name = parser.getName();
-        parser.next();
+        int currentTag = parser.next();
         switch (name) {
             case "teamID":
-                team.Id = Integer.parseInt(parser.getText());
+                team.id = Integer.parseInt(parser.getText());
                 break;
             case "teamName":
                 team.setName(parser.getText());
@@ -83,7 +88,9 @@ public class TeamXmlPullParser {
                 team.lon = Double.parseDouble(parser.getText());
                 break;
         }
-        parser.next();
+        if(currentTag == XmlPullParser.TEXT) {
+            currentTag = parser.next();
+        }
     }
 
 

@@ -1,8 +1,6 @@
 package com.pocketpalsson.volleyball.presenters;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
-import com.pocketpalsson.volleyball.models.TeamModel;
-import com.pocketpalsson.volleyball.utilities.volley.match.TeamXmlPullParser;
 import com.pocketpalsson.volleyball.views.TeamDetailView;
 
 public class TeamDetailPresenter extends MvpBasePresenter<TeamDetailView> {
@@ -17,13 +15,5 @@ public class TeamDetailPresenter extends MvpBasePresenter<TeamDetailView> {
     @Override
     public void detachView(boolean retainInstance) {
         super.detachView(retainInstance);
-    }
-
-    public void loadTeamData() {
-        if (isViewAttached()) {
-            TeamXmlPullParser parser = new TeamXmlPullParser();
-            TeamModel team = parser.parse(teamXml);
-            getView().setTeamModel(team);
-        }
     }
 }

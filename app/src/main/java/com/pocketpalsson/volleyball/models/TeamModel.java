@@ -2,10 +2,13 @@ package com.pocketpalsson.volleyball.models;
 
 import com.pocketpalsson.volleyball.R;
 
-public class TeamModel {
+import org.parceler.Parcel;
+
+@Parcel
+public class TeamModel{
     public String name;
     public int logoRef;
-    public int Id;
+    public int id;
     public String shortName, initials, homePage, facebookId, email, stadium, stadiumAddress, mapsUrl, phoneNumber;
     public double lat, lon;
 
@@ -23,6 +26,22 @@ public class TeamModel {
     public void setName(String name) {
         this.name = name;
         logoRef = getLogoRef();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        TeamModel teamModel = (TeamModel) o;
+
+        return name.equalsIgnoreCase(teamModel.name);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return name != null ? name.hashCode() : 0;
     }
 
     private int getLogoRef() {

@@ -20,8 +20,6 @@ public class MatchStatsView extends LinearLayout {
     public MatchStatsLineView serves;
     @Bind(R.id.errors)
     public MatchStatsLineView errors;
-    @Bind(R.id.totalPoints)
-    public MatchStatsLineView totalPoints;
     @Bind(R.id.receptionPercentage)
     public MatchStatsLineView receptionPercentage;
     public MatchStatisticsModel matchStats;
@@ -56,7 +54,7 @@ public class MatchStatsView extends LinearLayout {
         blocks.setStat(matchStats.blocks);
         serves.setStat(matchStats.serves);
         errors.setStat(matchStats.errors);
-        totalPoints.setStat(matchStats.totalPoints);
-        receptionPercentage.setStat(matchStats.receptionPercentage);
+//        totalPoints.setEntry(matchStats.totalPoints);
+        receptionPercentage.setStat(matchStats.receptionPercentage, "%");
     }
 }

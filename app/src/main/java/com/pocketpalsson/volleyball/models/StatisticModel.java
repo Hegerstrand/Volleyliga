@@ -1,5 +1,9 @@
 package com.pocketpalsson.volleyball.models;
 
+import org.parceler.Parcel;
+import org.parceler.ParcelConstructor;
+
+@Parcel
 public class StatisticModel {
     public int homeStat;
     public int guestStat;
@@ -7,6 +11,10 @@ public class StatisticModel {
     public int absoluteMaxValue;
     public String name;
     public boolean isHomeValueMax = true;
+
+    @ParcelConstructor
+    public StatisticModel() {
+    }
 
     public StatisticModel(String name) {
         this.name = name;

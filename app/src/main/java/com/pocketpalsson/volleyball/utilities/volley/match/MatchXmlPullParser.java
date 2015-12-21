@@ -5,6 +5,8 @@ import android.util.Xml;
 import com.pocketpalsson.volleyball.models.MatchModel;
 import com.pocketpalsson.volleyball.models.PlayerStatisticsModel;
 import com.pocketpalsson.volleyball.models.SetInfoModel;
+import com.pocketpalsson.volleyball.repositories.TeamRepository;
+import com.pocketpalsson.volleyball.utilities.Util;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -77,7 +79,7 @@ public class MatchXmlPullParser {
         if(rawSetInfo.goldenSetHome > 0 && rawSetInfo.goldenSetGuest > 0){
             match.setSetInfo(new SetInfoModel(rawSetInfo.goldenSetHome, rawSetInfo.goldenSetGuest, rawSetInfo.goldenSetTime), 6);
         }
-        match.computeTotalPoints();
+//        match.computeTotalPoints();
     }
 
     private void readFromTag(XmlPullParser parser) throws IOException, XmlPullParserException {
@@ -117,10 +119,10 @@ public class MatchXmlPullParser {
                 match.matchDateTime = getDateFromText(parser.getText());
                 break;
             case "HomeTeam":
-                match.teamHome.setName(parser.getText());
+                match.teamHome = TeamRepository.instance.getTeam(parser.getText());
                 break;
             case "GuestTeam":
-                match.teamGuest.setName(parser.getText());
+                match.teamGuest = TeamRepository.instance.getTeam(parser.getText());
                 break;
             case "WonSetHome":
                 match.setsWonByHome = Integer.parseInt(parser.getText());
@@ -230,6 +232,7 @@ public class MatchXmlPullParser {
                 while (parser.next() != XmlPullParser.END_TAG) {
                     readPlayerStatisticTag(result, parser);
                 }
+                result.postProcess();
                 return result;
             } catch (XmlPullParserException | IOException e) {
                 e.printStackTrace();
@@ -246,7 +249,7 @@ public class MatchXmlPullParser {
                 statistic.shirtNumber = Integer.parseInt(parser.getText());
                 break;
             case "Surname":
-                statistic.surname = parser.getText();
+                statistic.surname = correctSurnameCase(parser.getText());
                 break;
             case "Name":
                 statistic.name = parser.getText();
@@ -283,6 +286,13 @@ public class MatchXmlPullParser {
                 break;
         }
         parser.next();
+    }
+
+    private String correctSurnameCase(String text) {
+        if(Util.isNullOrEmpty(text)){
+            return "";
+        }
+        return text.substring(0, 1) + text.substring(1).toLowerCase();
     }
 
     private void skip(XmlPullParser parser) throws XmlPullParserException, IOException {
