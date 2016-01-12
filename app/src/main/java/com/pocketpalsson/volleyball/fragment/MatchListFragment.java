@@ -98,9 +98,9 @@ public class MatchListFragment extends Fragment implements OnRefreshListener {
         adapter.setMatchClickListener(match -> openMatch(match.federationMatchNumber));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
-        contentView.setOnRefreshListener(this);
-
         recyclerView.setAdapter(adapter);
+
+        contentView.setOnRefreshListener(this);
         setData(matches);
     }
 

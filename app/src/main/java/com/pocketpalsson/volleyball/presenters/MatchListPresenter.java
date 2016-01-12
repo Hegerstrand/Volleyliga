@@ -9,6 +9,7 @@ import com.pocketpalsson.volleyball.utilities.volley.match.MatchXmlPullParser;
 import com.pocketpalsson.volleyball.views.MatchListActivityView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -28,14 +29,15 @@ public class MatchListPresenter extends MvpBasePresenter<MatchListActivityView> 
         matches = new ArrayList<>();
         updateView();
 
-//        List<String> matchIds = Arrays.asList("110236", "110237", "110238", "110243", "110241", "110240", "110242", "110255", "110246", "110245", "110244", "110247", "110248", "110249", "110251", "110250", "110252", "110254", "110239", "110253", "110257", "110256", "110259", "110258", "110262", "110260", "110261", "110291", "110268", "110271", "110270", "110269", "110264", "110266", "110265", "110267", "110272", "110274", "110275", "110273", "110277", "110276", "110279", "110263", "110278", "110281", "110282", "110280", "110283", "110286", "110285", "110287", "110284", "110288", "110290", "110289", "110292", "110294", "110293", "110299", "110296", "110297", "110298", "110295", "110301", "110303", "110300", "110304", "110305", "110306", "110307", "110311", "110309", "110308", "110310", "110302", "110313", "110312", "110314", "110315", "110319", "110317", "110316", "110318", "110327", "110324", "110325", "110326", "110321", "110322", "110320", "110323", "110330", "110331", "110328", "110329", "110332", "110335", "110333", "110334", "110337", "110339", "110336", "110338", "110344", "110341", "110342", "110340", "110343", "110345", "110346", "110347");
+        List<String> matchIds = Arrays.asList("110236", "110237", "110238", "110243", "110241", "110240", "110242", "110255", "110246", "110245", "110244", "110247", "110248", "110249", "110251", "110250", "110252", "110254", "110239", "110253", "110257", "110256", "110259", "110258", "110262", "110260", "110261", "110291", "110268", "110271", "110270", "110269", "110264", "110266", "110265", "110267", "110272", "110274", "110275", "110273", "110277", "110276", "110279", "110263", "110278", "110281", "110282", "110280", "110283", "110286", "110285", "110287", "110284", "110288", "110290", "110289", "110292", "110294", "110293", "110299", "110296", "110297", "110298", "110295", "110301", "110303", "110300", "110304", "110305", "110306", "110307", "110311", "110309", "110308", "110310", "110302", "110313", "110312", "110314", "110315", "110319", "110317", "110316", "110318", "110327", "110324", "110325", "110326", "110321", "110322", "110320", "110323", "110330", "110331", "110328", "110329", "110332", "110335", "110333", "110334", "110337", "110339", "110336", "110338", "110344", "110341", "110342", "110340", "110343", "110345", "110346", "110347");
 //        List<String> matchIds = Arrays.asList("110236");
-        SimpleURLFetcher.getInstance("http://pocketpalsson.com").getResponse("matches.txt")
-                .flatMap(response -> {
-                    String stringResponse = new String(((TypedByteArray) response.getBody()).getBytes());
-                    String[] split = stringResponse.split(";");
-                    return Observable.from(split);
-                })
+//        SimpleURLFetcher.getInstance("http://pocketpalsson.com").getResponse("matches.txt")
+//                .flatMap(response -> {
+//                    String stringResponse = new String(((TypedByteArray) response.getBody()).getBytes());
+//                    String[] split = stringResponse.split(";");
+//                    return Observable.from(split);
+//                })
+        Observable.from(matchIds)
                 .flatMap(federationMatchNumber -> {
                     Log.d(TAG, "loadMatches: Loading url: " + federationMatchNumber);
                     return SimpleURLFetcher.getInstance("http://caspermunk.dk/livescore/xml").getResponse(federationMatchNumber + ".xml");
