@@ -1,4 +1,4 @@
-package com.pocketpalsson.volleyball;
+package com.sportsapp.volleyliga;
 
 import org.junit.Test;
 

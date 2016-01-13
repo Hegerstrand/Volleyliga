@@ -29,7 +29,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <com.pocketpalsson.volleyball.views.MenuItem
+                    <com.sportsapp.volleyliga.views.MenuItem
                         android:id="@+id/homePage"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
@@ -44,7 +44,7 @@
                         android:layout_height="1dp"
                         android:background="?android:attr/listDivider" />
 
-                    <com.pocketpalsson.volleyball.views.MenuItem
+                    <com.sportsapp.volleyliga.views.MenuItem
                         android:id="@+id/email"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
@@ -59,7 +59,7 @@
                         android:layout_height="1dp"
                         android:background="?android:attr/listDivider" />
 
-                    <com.pocketpalsson.volleyball.views.MenuItem
+                    <com.sportsapp.volleyliga.views.MenuItem
                         android:id="@+id/phone"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"

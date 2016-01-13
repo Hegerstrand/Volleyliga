@@ -78,7 +78,7 @@
 
     </LinearLayout>
 
-    <com.pocketpalsson.volleyball.views.SetSummaryView
+    <com.sportsapp.volleyliga.views.SetSummaryView
         android:id="@+id/allSetsView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

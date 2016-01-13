@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <com.pocketpalsson.volleyball.views.MatchStatsBar
+        <com.sportsapp.volleyliga.views.MatchStatsBar
             android:id="@+id/leftBar"
             android:layout_width="0dp"
             android:layout_height="10dp"
@@ -62,7 +62,7 @@
             android:layout_weight="1"
             app:isOnLeftSide="true" />
 
-        <com.pocketpalsson.volleyball.views.MatchStatsBar
+        <com.sportsapp.volleyliga.views.MatchStatsBar
             android:id="@+id/rightBar"
             android:layout_width="0dp"
             android:layout_marginRight="1dp"
