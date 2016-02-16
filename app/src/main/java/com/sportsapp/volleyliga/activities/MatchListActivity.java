@@ -12,10 +12,16 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Spinner;
 
 import com.hannesdorfmann.mosby.mvp.MvpActivity;
 import com.sportsapp.volleyliga.R;
+import com.sportsapp.volleyliga.fragment.MatchListFragment;
 import com.sportsapp.volleyliga.fragment.MatchListFragmentBuilder;
 import com.sportsapp.volleyliga.models.MatchModel;
 import com.sportsapp.volleyliga.presenters.MatchListPresenter;
@@ -29,6 +35,7 @@ import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.Bind;
@@ -52,10 +59,14 @@ public class MatchListActivity extends MvpActivity<MatchListActivityView, MatchL
 
     @Bind(R.id.nav_view)
     public NavigationView navigationView;
+    @Bind(R.id.spinner)
+    public Spinner spinner;
+
 
     private MatchListAdapter adapter;
-    private ArrayList<MatchModel> past, live, future;
+    private List<MatchModel> past, live, future, allMatches;
     private MatchListPagerAdapter pagerAdapter;
+    private MatchModel.League selectedLeague = MatchModel.League.MALE;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,25 +74,38 @@ public class MatchListActivity extends MvpActivity<MatchListActivityView, MatchL
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                setLeague(position == 0 ? MatchModel.League.MALE : MatchModel.League.FEMALE);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         bus.register(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Matches");
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-        toolbar.inflateMenu(R.menu.main);
+        toolbar.inflateMenu(R.menu.match_list_menu);
         invalidateOptionsMenu();
 
         pagerAdapter = new MatchListPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
+        viewPager.setOffscreenPageLimit(3);
         tabLayout.setupWithViewPager(viewPager);
         viewPager.setCurrentItem(1, false);
 
         navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.match_list);
-        loadData();
+        refresh();
     }
 
 
@@ -89,7 +113,6 @@ public class MatchListActivity extends MvpActivity<MatchListActivityView, MatchL
     public MatchListResultsReceivedEvent produceMatchListEvent() {
         return new MatchListResultsReceivedEvent(past, live, future);
     }
-
 
     @Override
     public void onBackPressed() {
@@ -102,10 +125,16 @@ public class MatchListActivity extends MvpActivity<MatchListActivityView, MatchL
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.match_list_menu, menu);
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.refresh:
-                loadData();
+                refresh();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -132,10 +161,19 @@ public class MatchListActivity extends MvpActivity<MatchListActivityView, MatchL
 
     @Override
     public void setData(List<MatchModel> data) {
+        allMatches = data;
+        setLeague(selectedLeague);
+    }
+
+    public void setLeague(MatchModel.League league) {
+        selectedLeague = league;
         past = new ArrayList<>();
         live = new ArrayList<>();
         future = new ArrayList<>();
-        for (MatchModel match : data) {
+        for (MatchModel match : allMatches) {
+            if (match.league != selectedLeague) {
+                continue;
+            }
             MatchModel.Type type = match.getType();
             switch (type) {
                 case PAST:
@@ -158,9 +196,19 @@ public class MatchListActivity extends MvpActivity<MatchListActivityView, MatchL
         return bus;
     }
 
+    @Override
+    public void loadFinished() {
+        pagerAdapter.setIsLoading(false);
+    }
+
     @Subscribe
-    public void loadingTriggered(TriggerMatchListLoadingEvent event){
+    public void loadingTriggered(TriggerMatchListLoadingEvent event) {
+        refresh();
+    }
+
+    private void refresh() {
         loadData();
+        pagerAdapter.setIsLoading(true);
     }
 
     public void loadData() {
@@ -237,6 +285,8 @@ public class MatchListActivity extends MvpActivity<MatchListActivityView, MatchL
 
     public class MatchListPagerAdapter extends FragmentPagerAdapter {
 
+        private HashMap<Integer, Fragment> mPageReferenceMap = new HashMap<>();
+
         public MatchListPagerAdapter(FragmentManager fm) {
             super(fm);
         }
@@ -244,11 +294,11 @@ public class MatchListActivity extends MvpActivity<MatchListActivityView, MatchL
         @Override
         public CharSequence getPageTitle(int position) {
             if (position == 0) {
-                return "Live";
+                return getString(R.string.tab_today_name);
             } else if (position == 1) {
-                return "Archive";
+                return getString(R.string.tab_archive_name);
             } else if (position == 2) {
-                return "Future";
+                return getString(R.string.tab_future_name);
             }
             return "";
         }
@@ -260,15 +310,38 @@ public class MatchListActivity extends MvpActivity<MatchListActivityView, MatchL
 
         @Override
         public Fragment getItem(int position) {
+            Fragment result = null;
             if (position == 0) {
-                return new MatchListFragmentBuilder(MatchModel.Type.LIVE).build();
+                result = new MatchListFragmentBuilder(MatchModel.Type.LIVE).build();
             } else if (position == 1) {
-                return new MatchListFragmentBuilder(MatchModel.Type.PAST).build();
+                result = new MatchListFragmentBuilder(MatchModel.Type.PAST).build();
             } else if (position == 2) {
-                return new MatchListFragmentBuilder(MatchModel.Type.FUTURE).build();
+                result = new MatchListFragmentBuilder(MatchModel.Type.FUTURE).build();
             }
-            return null;
+            if (result != null) {
+                mPageReferenceMap.put(position, result);
+            }
+            return result;
         }
 
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            super.destroyItem(container, position, object);
+            mPageReferenceMap.remove(position);
+        }
+
+        public void setIsLoading(boolean value) {
+            if(mPageReferenceMap.containsKey(0)){
+                MatchListFragment fragment = (MatchListFragment) mPageReferenceMap.get(0);
+                fragment.setIsLoading(value);
+            }
+            if(mPageReferenceMap.containsKey(1)){
+                MatchListFragment fragment = (MatchListFragment) mPageReferenceMap.get(1);
+                fragment.setIsLoading(value);
+            }
+            if(mPageReferenceMap.containsKey(2)){
+                MatchListFragment fragment = (MatchListFragment) mPageReferenceMap.get(2);
+                fragment.setIsLoading(value);
+            }
+        }
     }
 }

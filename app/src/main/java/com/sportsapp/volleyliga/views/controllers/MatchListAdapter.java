@@ -47,7 +47,7 @@ public class MatchListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public int getItemViewType(int position) {
         MatchModel match = items.get(position);
-        if(match.isInFuture()){
+        if(match.isOnFutureDay()){
             return FUTURE_MATCH;
         }
         return MATCH_WITH_SCORE;

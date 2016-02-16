@@ -10,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 import com.sportsapp.volleyliga.R;
 import com.sportsapp.volleyliga.models.MatchModel;
 import com.sportsapp.volleyliga.utilities.CustomBus;
@@ -27,25 +27,27 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-@FragmentWithArgs
 public class MatchStatFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     public MatchModel match;
 
     @Bind(R.id.stats_view)
     public MatchStatsView statsView;
-    @Bind(R.id.ivHomeLogo)
-    public ImageView ivHomeLogo;
-    @Bind(R.id.ivGuestLogo)
-    public ImageView ivGuestLogo;
     @Bind(R.id.contentView)
     public SwipeRefreshLayout refreshLayout;
     @Bind(R.id.allSetsView)
     public SetFullDetailView allSetsView;
-//    @Bind(R.id.tvReferee1)
-//    public TextView tvReferee1;
-//    @Bind(R.id.tvReferee2)
-//    public TextView tvReferee2;
+    @Bind(R.id.tvReferee1)
+    public TextView tvReferee1;
+    @Bind(R.id.tvReferee2)
+    public TextView tvReferee2;
+    @Bind(R.id.tvRefereeTitle)
+    public TextView tvRefereeTitle;
+    @Bind(R.id.ivHomeLogo)
+    public ImageView ivHomeLogo;
+    @Bind(R.id.ivGuestLogo)
+    public ImageView ivGuestLogo;
+
 
     private boolean initialized = false;
     private MatchView activityListener;
@@ -87,9 +89,22 @@ public class MatchStatFragment extends Fragment implements SwipeRefreshLayout.On
         statsView.setMatchStats(match.statistics);
         ivHomeLogo.setImageDrawable(ContextCompat.getDrawable(getContext(), match.teamHome.logoRef));
         ivGuestLogo.setImageDrawable(ContextCompat.getDrawable(getContext(), match.teamGuest.logoRef));
-        allSetsView.setStats(match.getSetList(), match.setsWonByHome, match.setsWonByGuest);
-//        tvReferee1.setText(match.referee1Name);
-//        tvReferee2.setText(match.referee2Name);
+        allSetsView.setStats(match.getSetList());
+        if(match.referee1Name.equalsIgnoreCase("")){
+            tvReferee1.setVisibility(View.GONE);
+        } else {
+            tvReferee1.setText(match.referee1Name);
+        }
+        if(match.referee2Name.equalsIgnoreCase("")){
+            tvReferee2.setVisibility(View.GONE);
+        } else {
+            tvReferee2.setText(match.referee2Name);
+        }
+        if(match.referee1Name.equalsIgnoreCase("") && match.referee2Name.equalsIgnoreCase("")){
+            tvRefereeTitle.setVisibility(View.GONE);
+        } else {
+            tvRefereeTitle.setVisibility(View.VISIBLE);
+        }
         updateUI();
     }
 
@@ -123,7 +138,7 @@ public class MatchStatFragment extends Fragment implements SwipeRefreshLayout.On
         setIsLoading(false);
     }
 
-    private void setIsLoading(boolean value) {
+    public void setIsLoading(boolean value) {
         if(refreshLayout != null) {
             refreshLayout.setRefreshing(value);
         }

@@ -11,9 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hannesdorfmann.fragmentargs.FragmentArgs;
-import com.hannesdorfmann.fragmentargs.annotation.Arg;
-import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 import com.sportsapp.volleyliga.R;
 import com.sportsapp.volleyliga.models.MatchModel;
 import com.sportsapp.volleyliga.models.PlayerStatisticModelWrapper;
@@ -35,10 +32,9 @@ import rx.Observable;
 import rx.functions.Func1;
 import rx.observables.BlockingObservable;
 
-@FragmentWithArgs
 public class PlayerStatsFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
-    @Arg
+    private static final String ARG_IS_HOME_TEAM = "isHomeTeam";
     public boolean isHomeTeam;
 
     @Bind(R.id.contentView)
@@ -50,6 +46,14 @@ public class PlayerStatsFragment extends Fragment implements SwipeRefreshLayout.
     private CustomBus bus;
     private PlayerStatsListAdapter adapter;
     private MatchModel match;
+
+    public static PlayerStatsFragment newInstance(boolean isHomeTeam) {
+        PlayerStatsFragment fragment = new PlayerStatsFragment();
+        Bundle args = new Bundle();
+        args.putBoolean(ARG_IS_HOME_TEAM, isHomeTeam);
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     public void onAttach(Activity activity) {
@@ -69,7 +73,10 @@ public class PlayerStatsFragment extends Fragment implements SwipeRefreshLayout.
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FragmentArgs.inject(this);
+        Bundle arguments = getArguments();
+        if (arguments != null && arguments.containsKey(ARG_IS_HOME_TEAM)) {
+            isHomeTeam = arguments.getBoolean(ARG_IS_HOME_TEAM);
+        }
     }
 
     @Nullable
@@ -185,9 +192,10 @@ public class PlayerStatsFragment extends Fragment implements SwipeRefreshLayout.
         return value1 < value2 ? 1 : -1;
     }
 
-    private void setIsLoading(boolean value) {
+    public void setIsLoading(boolean value) {
         if(refreshLayout != null) {
             refreshLayout.setRefreshing(value);
         }
     }
+
 }

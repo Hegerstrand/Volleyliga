@@ -1,5 +1,6 @@
 package com.sportsapp.volleyliga.utilities.volley.match;
 
+import android.util.Log;
 import android.util.Xml;
 
 import com.sportsapp.volleyliga.models.MatchModel;
@@ -17,14 +18,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 public class MatchXmlPullParser {
 
-    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault());
+    private final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault());
     private MatchModel match;
     private RawSetInfo rawSetInfo;
 
@@ -36,6 +36,7 @@ public class MatchXmlPullParser {
             parser.setInput(new StringReader(input));
             parser.nextTag();
             readFeed(parser);
+            match.xml = input;
             return match;
         } catch (XmlPullParserException | IOException ignored) {
             ignored.printStackTrace();
@@ -92,24 +93,24 @@ public class MatchXmlPullParser {
             case "Players_GuestTeam":
                 match.statistics.statsByPlayerGuest = parsePlayerStatistics(parser);
                 return;
-            case "Referee1Name":
-                String refeere1 = parser.getText();
-                if(refeere1 == null){
-                    //Exit right away since otherwise we go out of sync
-                    match.referee1Name = "";
-                    parser.next();
-                    return;
-                }
-                break;
-            case "Referee2Name":
-                String refeere2 = parser.getText();
-                if(refeere2 == null){
-                    //Exit right away since otherwise we go out of sync
-                    match.referee2Name = "";
-                    parser.next();
-                    return;
-                }
-                break;
+//            case "Referee1Name":
+//                String refeere1 = parser.getText();
+//                if(refeere1 == null){
+//                    //Exit right away since otherwise we go out of sync
+//                    match.referee1Name = "";
+//                    parser.next();
+//                    return;
+//                }
+//                break;
+//            case "Referee2Name":
+//                String refeere2 = parser.getText();
+//                if(refeere2 == null){
+//                    //Exit right away since otherwise we go out of sync
+//                    match.referee2Name = "";
+//                    parser.next();
+//                    return;
+//                }
+//                break;
         }
         parser.next();
         switch (name) {
@@ -121,6 +122,14 @@ public class MatchXmlPullParser {
                 break;
             case "ChampionshipName":
                 match.championshipName = parser.getText();
+                if(match.championshipName.equalsIgnoreCase("VolleyLiga Herrer")){
+                    match.league = MatchModel.League.MALE;
+                }
+                else if(match.championshipName.equalsIgnoreCase("VolleyLiga Damer")){
+                    match.league = MatchModel.League.FEMALE;
+                } else {
+                    match.league = MatchModel.League.UNKNOWN;
+                }
                 break;
             case "SeasonDescription":
                 match.seasonDescription = parser.getText();
@@ -207,10 +216,24 @@ public class MatchXmlPullParser {
                 rawSetInfo.goldenSetTime = Integer.parseInt(parser.getText());
                 break;
             case "Referee1Name":
-                match.referee1Name = parseRefereeName(parser.getText());
+                String referee1 = parser.getText();
+                if (referee1 == null) {
+                    //Exit right away since otherwise we go out of sync
+                    match.referee1Name = "";
+                    return;
+                } else {
+                    match.referee1Name = parseRefereeName(referee1);
+                }
                 break;
             case "Referee2Name":
-                match.referee2Name = parseRefereeName(parser.getText());
+                String referee2 = parser.getText();
+                if (referee2 == null) {
+                    //Exit right away since otherwise we go out of sync
+                    match.referee2Name = "";
+                    return;
+                } else {
+                    match.referee2Name = parseRefereeName(referee2);
+                }
                 break;
             case "Stadium":
                 match.stadium = parser.getText();
@@ -350,12 +373,16 @@ public class MatchXmlPullParser {
         }
     }
 
-    private Calendar getDateFromText(String dateText) {
+    private Date getDateFromText(String dateText) {
         try {
             Date arrivalTime = DATE_FORMAT.parse(dateText);
-            Calendar result = Calendar.getInstance();
-            result.setTime(arrivalTime);
-            return result;
+//            Calendar result = Calendar.getInstance();
+//            result.setTime(arrivalTime);
+//            Log.d("TestVolley", dateText);
+            if(arrivalTime.getTime() < 1420070400000L){
+                Log.d("TestVolley", dateText);
+            }
+            return arrivalTime;
         } catch (ParseException e) {
             return null;
         }

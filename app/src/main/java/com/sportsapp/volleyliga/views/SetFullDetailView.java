@@ -2,8 +2,8 @@ package com.sportsapp.volleyliga.views;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.sportsapp.volleyliga.R;
 import com.sportsapp.volleyliga.models.SetInfoModel;
@@ -15,28 +15,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class SetFullDetailView extends LinearLayout {
-
-//    @Bind({R.id.tvHeader1, R.id.tvHeader2, R.id.tvHeader3, R.id.tvHeader4, R.id.tvHeader5, R.id.tvHeader6})
-//    public List<TextView> tvHeaders;
-//    @Bind({R.id.tvHomeSetResult1, R.id.tvHomeSetResult2, R.id.tvHomeSetResult3, R.id.tvHomeSetResult4, R.id.tvHomeSetResult5, R.id.tvHomeSetResult6})
-//    public List<TextView> tvHomeViews;
-//    @Bind({R.id.tvGuestSetResult1, R.id.tvGuestSetResult2, R.id.tvGuestSetResult3, R.id.tvGuestSetResult4, R.id.tvGuestSetResult5, R.id.tvGuestSetResult6})
-//    public List<TextView> tvGuestViews;
-
-    //    @Bind(R.id.headerContainer)
-//    public LinearLayout headerContainer;
-//    @Bind(R.id.homeContainer)
-//    public LinearLayout homeContainer;
-//    @Bind(R.id.guestContainer)
-//    public LinearLayout guestContainer;
     @Bind(R.id.setContainer)
     public LinearLayout setContainer;
-    @Bind(R.id.scoreHome)
-    public TextView scoreHome;
-    @Bind(R.id.scoreGuest)
-    public TextView scoreGuest;
-
-
 
     public SetFullDetailView(Context context) {
         super(context);
@@ -56,18 +36,16 @@ public class SetFullDetailView extends LinearLayout {
 
     private void init() {
         inflate(getContext(), R.layout.set_full_detail_view, this);
-        setOrientation(VERTICAL);
         ButterKnife.bind(this);
     }
 
-    public void setStats(List<SetInfoModel> stats, int setsWonByHome, int setsWonByGuest) {
+    public void setStats(List<SetInfoModel> stats) {
         setContainer.removeAllViews();
-        scoreHome.setText("" + setsWonByHome);
-        scoreGuest.setText("" + setsWonByGuest);
         int topMargin = 0;
         int bottomMargin = ContextHelper.dpToPixels(getContext(), 4);
         for (SetInfoModel stat : stats) {
             LargeSetView setView = new LargeSetView(getContext());
+            setView.setGravity(stat.homeWon ? Gravity.LEFT : Gravity.RIGHT);
             setContainer.addView(setView);
             setView.setStat(stat);
             LayoutParams layoutParams = (LayoutParams) setView.getLayoutParams();
@@ -75,5 +53,23 @@ public class SetFullDetailView extends LinearLayout {
             setView.setLayoutParams(layoutParams);
             topMargin = bottomMargin;
         }
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        // Adjust width as necessary
+        int measuredWidth = MeasureSpec.getSize(widthMeasureSpec);
+        int mBoundedWidth = ContextHelper.dpToPixels(getContext(), 150);
+        if(mBoundedWidth > 0 && mBoundedWidth < measuredWidth) {
+            int measureMode = MeasureSpec.getMode(widthMeasureSpec);
+            widthMeasureSpec = MeasureSpec.makeMeasureSpec(mBoundedWidth, measureMode);
+        }
+        // Adjust height as necessary
+//        int measuredHeight = MeasureSpec.getSize(heightMeasureSpec);
+//        if(mBoundedHeight > 0 && mBoundedHeight < measuredHeight) {
+//            int measureMode = MeasureSpec.getMode(heightMeasureSpec);
+//            heightMeasureSpec = MeasureSpec.makeMeasureSpec(mBoundedHeight, measureMode);
+//        }
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 }

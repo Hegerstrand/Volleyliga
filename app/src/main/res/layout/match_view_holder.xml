@@ -1,94 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/selectableItemBackground"
-    android:orientation="vertical"
-    android:paddingBottom="8dp"
+    android:paddingBottom="4dp"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:paddingTop="8dp">
+    android:paddingTop="4dp">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/homeContainer"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
         android:layout_marginBottom="8dp"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:weightSum="1">
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/ivHomeTeam"
             android:layout_width="@dimen/match_view_holder_logo_dimension"
             android:layout_height="@dimen/match_view_holder_logo_dimension"
-            android:layout_marginRight="8dp"
             tools:src="@drawable/gentofte" />
 
         <TextView
             android:id="@+id/tvHomeTeam"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:gravity="center"
             android:textColor="@color/home_color"
             android:textSize="@dimen/match_view_holder_title_size"
-            tools:text="Gentofte volley" />
+            android:visibility="gone"
+            tools:text="Gentofte" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/ivGuestTeam"
+            android:layout_width="@dimen/match_view_holder_logo_dimension"
+            android:layout_height="@dimen/match_view_holder_logo_dimension"
+            tools:src="@drawable/marienlyst" />
+
+        <TextView
+            android:id="@+id/tvGuestTeam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/guest_color"
+            android:textSize="@dimen/match_view_holder_title_size"
+            android:visibility="gone"
+            tools:text="Marienlyst" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/scoreContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/rounded_rect"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp">
 
         <TextView
             android:id="@+id/tvHomeTeamScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/home_color"
-            android:textSize="@dimen/match_view_holder_title_size"
+            android:textSize="@dimen/match_view_holder_score_size"
             tools:text="3" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:weightSum="1">
-
-        <ImageView
-            android:id="@+id/ivGuestTeam"
-            android:layout_width="@dimen/match_view_holder_logo_dimension"
-            android:layout_height="@dimen/match_view_holder_logo_dimension"
-            android:layout_marginRight="8dp"
-            tools:src="@drawable/marienlyst" />
-
         <TextView
-            android:id="@+id/tvGuestTeam"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="@color/guest_color"
-            android:textSize="@dimen/match_view_holder_title_size"
-            tools:text="Boldklubben Marienlyst" />
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:textColor="@color/home_color"
+            android:textSize="@dimen/match_view_holder_score_size"
+            android:text="-" />
 
         <TextView
             android:id="@+id/tvGuestTeamScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/guest_color"
-            android:textSize="@dimen/match_view_holder_title_size"
+            android:textSize="@dimen/match_view_holder_score_size"
             tools:text="3" />
-
     </LinearLayout>
-
-    <com.sportsapp.volleyliga.views.SetSummaryView
-        android:id="@+id/allSetsView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/tvMatchDate"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="right"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textSize="12sp"
-        tools:text="04.10.15 - 13:00" />
-</LinearLayout>
+        tools:text="2.may 2016" />
+
+
+</RelativeLayout>

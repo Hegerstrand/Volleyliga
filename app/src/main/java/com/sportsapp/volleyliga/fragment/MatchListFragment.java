@@ -151,7 +151,7 @@ public class MatchListFragment extends Fragment implements OnRefreshListener {
         }
     }
 
-    private void setIsLoading(boolean value) {
+    public void setIsLoading(boolean value) {
         if (contentView != null) {
             contentView.setRefreshing(value);
         }

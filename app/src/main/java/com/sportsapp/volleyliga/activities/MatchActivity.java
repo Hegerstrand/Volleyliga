@@ -11,32 +11,36 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.hannesdorfmann.mosby.mvp.MvpActivity;
 import com.sportsapp.volleyliga.R;
 import com.sportsapp.volleyliga.fragment.MatchStatFragment;
-import com.sportsapp.volleyliga.fragment.MatchStatFragmentBuilder;
 import com.sportsapp.volleyliga.fragment.PlayerStatsFragment;
-import com.sportsapp.volleyliga.fragment.PlayerStatsFragmentBuilder;
 import com.sportsapp.volleyliga.models.MatchModel;
 import com.sportsapp.volleyliga.presenters.MatchPresenter;
+import com.sportsapp.volleyliga.repositories.MatchRepository;
 import com.sportsapp.volleyliga.utilities.CustomBus;
 import com.sportsapp.volleyliga.utilities.busEvents.MatchLoadingResultEvent;
 import com.sportsapp.volleyliga.utilities.busEvents.OpenTeamEvent;
 import com.sportsapp.volleyliga.utilities.busEvents.TriggerMatchLoadingEvent;
-import com.sportsapp.volleyliga.utilities.volley.VolleyQueue;
-import com.sportsapp.volleyliga.utilities.volley.match.GetMatchVolleyRequest;
 import com.sportsapp.volleyliga.views.MatchView;
 import com.squareup.otto.Produce;
 import com.squareup.otto.Subscribe;
 
 import java.util.HashMap;
-import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import rx.Observable;
+import rx.Subscriber;
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class MatchActivity extends MvpActivity<MatchView, MatchPresenter> implements MatchView, SwipeRefreshLayout.OnRefreshListener {
 
@@ -59,6 +63,7 @@ public class MatchActivity extends MvpActivity<MatchView, MatchPresenter> implem
 
     private MatchModel match;
     private StatPagerAdapter pagerAdapter;
+    private Subscription updateSubscription;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -77,15 +82,41 @@ public class MatchActivity extends MvpActivity<MatchView, MatchPresenter> implem
 
         pagerAdapter = new StatPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
-
+        viewPager.setOffscreenPageLimit(3);
         tabLayout.setupWithViewPager(viewPager);
 
-        loadData(false);
+        loadData();
         viewPager.setCurrentItem(1, false);
     }
 
-    private void setIsLoading(boolean value) {
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (match != null && match.getType() == MatchModel.Type.LIVE) {
+            updateSubscription = Observable.interval(20, TimeUnit.SECONDS)
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(timestamp -> refresh());
+        }
+    }
 
+    @Override
+    protected void onPause() {
+        if (updateSubscription != null && !updateSubscription.isUnsubscribed()) {
+            updateSubscription.unsubscribe();
+            updateSubscription = null;
+        }
+        super.onPause();
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.match_list_menu, menu);
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    private void setIsLoading(boolean value) {
+        pagerAdapter.setIsLoading(value);
     }
 
     public void setData(MatchModel data) {
@@ -119,14 +150,39 @@ public class MatchActivity extends MvpActivity<MatchView, MatchPresenter> implem
     }
 
 
-    public void loadData(boolean pullToRefresh) {
-        VolleyQueue.instance.add(new GetMatchVolleyRequest(VolleyQueue.instance, "http://caspermunk.dk/livescore/xml/" + federationMatchNumber + ".xml", UUID.randomUUID().toString(), true,
-                (value, isLastResponse) -> setData(value)));
+    public void loadData() {
+        MatchRepository.instance.getMatch(federationMatchNumber)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<MatchModel>() {
+                    @Override
+                    public void onCompleted() {
+                        String s = "";
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        e.printStackTrace();
+                        Toast.makeText(MatchActivity.this, "Error occured while fetching match", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onNext(MatchModel matchModelReply) {
+                        setData(matchModelReply);
+                    }
+                });
+
+//        VolleyQueue.instance.add(new GetMatchVolleyRequest(VolleyQueue.instance, "http://caspermunk.dk/livescore/xml/" + federationMatchNumber + ".xml", UUID.randomUUID().toString(), true,
+//                (value, isLastResponse) -> setData(value)));
     }
 
     @Override
     public void onRefresh() {
-        loadData(true);
+        refresh();
+    }
+
+    private void refresh() {
+        loadData();
         setIsLoading(true);
     }
 
@@ -136,13 +192,16 @@ public class MatchActivity extends MvpActivity<MatchView, MatchPresenter> implem
             case android.R.id.home:
                 onBackPressed();
                 return true;
+            case R.id.refresh:
+                refresh();
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
     @Subscribe
     public void loadingTriggered(TriggerMatchLoadingEvent event) {
-        loadData(true);
+        loadData();
     }
 
 
@@ -186,11 +245,11 @@ public class MatchActivity extends MvpActivity<MatchView, MatchPresenter> implem
         public Fragment getItem(int position) {
             Fragment result = null;
             if (position == 0) {
-                result = new PlayerStatsFragmentBuilder(true).build();
+                result = PlayerStatsFragment.newInstance(true);
             } else if (position == 1) {
-                result = new MatchStatFragmentBuilder().build();
+                result = new MatchStatFragment();
             } else if (position == 2) {
-                result = new PlayerStatsFragmentBuilder(false).build();
+                result = PlayerStatsFragment.newInstance(false);
             }
             if (result != null) {
                 mPageReferenceMap.put(position, result);
@@ -222,6 +281,21 @@ public class MatchActivity extends MvpActivity<MatchView, MatchPresenter> implem
                 return (MatchStatFragment) mPageReferenceMap.get(1);
             }
             return null;
+        }
+
+        public void setIsLoading(boolean value) {
+            PlayerStatsFragment guestStatFragment = getGuestStatFragment();
+            if (guestStatFragment != null) {
+                guestStatFragment.setIsLoading(value);
+            }
+            PlayerStatsFragment getHomeStatFragment = getHomeStatFragment();
+            if (getHomeStatFragment != null) {
+                getHomeStatFragment.setIsLoading(value);
+            }
+            MatchStatFragment matchStatFragment = getMatchStatFragment();
+            if (matchStatFragment != null) {
+                matchStatFragment.setIsLoading(value);
+            }
         }
     }
 }

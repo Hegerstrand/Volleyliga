@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group
-        android:id="@+id/mainGroup"
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/match_list"
-            android:icon="@android:drawable/sym_def_app_icon"
-            android:title="Matches" />
-        <!--<item-->
-        <!--android:id="@+id/standings"-->
-        <!--android:icon="@android:drawable/sym_def_app_icon"-->
-        <!--android:title="League standings" />-->
-    </group>
+    <item
+        android:id="@+id/match_list"
+        android:icon="@android:drawable/sym_def_app_icon"
+        android:title="Matches" />
+    <item
+        android:id="@+id/standings"
+        android:icon="@android:drawable/sym_def_app_icon"
+        android:title="League standings" />
     <item android:title="Male">
         <menu>
             <group

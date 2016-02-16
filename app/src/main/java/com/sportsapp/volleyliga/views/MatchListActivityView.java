@@ -11,4 +11,6 @@ public interface MatchListActivityView extends MvpView {
 
     void setData(List<MatchModel> data);
     CustomBus getBus();
+
+    void loadFinished();
 }

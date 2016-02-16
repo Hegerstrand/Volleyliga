@@ -31,6 +31,9 @@ public class MatchFutureViewHolder extends RecyclerView.ViewHolder
     public TextView tvDate;
     @Bind(R.id.tvTime)
     public TextView tvTime;
+    @Bind(R.id.tvStadium)
+    public TextView tvStadium;
+
 
 
     private ClickListener clickListener;
@@ -60,8 +63,14 @@ public class MatchFutureViewHolder extends RecyclerView.ViewHolder
         tvGuestTame.setText("" + match.teamGuest.name);
         tvGuestTame.setTypeface(null, guestTypeface);
 
-        tvDate.setText(dateFormat.format(match.matchDateTime.getTime()).toLowerCase());
-        tvTime.setText(timeFormat.format(match.matchDateTime.getTime()));
+        String stadiumText = match.stadium;
+        if(!match.stadiumCity.equalsIgnoreCase("")){
+            stadiumText += " (" + match.stadiumCity + ")";
+        }
+        tvStadium.setText(stadiumText);
+
+        tvDate.setText(dateFormat.format(match.matchDateTime).toLowerCase());
+        tvTime.setText(timeFormat.format(match.matchDateTime));
     }
 
 
@@ -76,7 +85,7 @@ public class MatchFutureViewHolder extends RecyclerView.ViewHolder
 
     @Override
     public void onClick(View v) {
-        if(clickListener != null) {
+        if (clickListener != null) {
             clickListener.onClick(match);
         }
     }

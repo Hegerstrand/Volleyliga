@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Comparator;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -17,7 +19,13 @@ public class MatchModel {
         LIVE,
         FUTURE
     }
+    public enum League{
+        MALE,
+        FEMALE,
+        UNKNOWN,
+    }
 
+    public String xml;
     public String championshipName; //Name of the Championship
     public String seasonDescription; //Name of the Season
     public int championshipLegNumber; //Round Number
@@ -35,12 +43,13 @@ public class MatchModel {
 
 
     //Cleaned up parameters
+    public League league;
     public int championshipMatchID; //ID of the Match in Data Project's DB
     public int federationMatchNumber = 110236; //Identifies in unique way the match in Organization's DB
     public String federationMatchID; //Identifies in unique way the match in Organization's DB
     public String stadium; //Stadium Name
     public String stadiumCity; //Stadium City
-    public Calendar matchDateTime; //Date and Time of the Match
+    public Date matchDateTime; //Date and Time of the Match
     public int matchId;
     public TeamModel teamHome = new TeamModel("Test 1"), teamGuest = new TeamModel("Test 2");
     public HashMap<Integer, SetInfoModel> setResults = new HashMap<>();
@@ -87,16 +96,19 @@ public class MatchModel {
         return teamHome.shortName + " " + setsWonByHome + " - " + setsWonByGuest + " " + teamGuest.shortName;
     }
 
-    public boolean isInFuture() {
-        return System.currentTimeMillis() < matchDateTime.getTimeInMillis();
+    public boolean isOnFutureDay() {
+        Calendar calendar = Calendar.getInstance();
+        GregorianCalendar nextMidnight = new GregorianCalendar(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        nextMidnight.add(Calendar.DAY_OF_YEAR, 1);
+        return nextMidnight.getTimeInMillis() < matchDateTime.getTime();
     }
 
     public Type getType() {
-        if(isInFuture()){
-            return Type.FUTURE;
-        }
         if(setsWonByGuest == 3 || setsWonByHome == 3){
             return Type.PAST;
+        }
+        if(isOnFutureDay()){
+            return Type.FUTURE;
         }
         return Type.LIVE;
     }

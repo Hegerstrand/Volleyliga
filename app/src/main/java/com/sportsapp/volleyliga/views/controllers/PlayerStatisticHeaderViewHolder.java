@@ -8,20 +8,16 @@ import android.widget.TextView;
 import com.sportsapp.volleyliga.R;
 import com.sportsapp.volleyliga.models.PlayerStatisticModelWrapper;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-
 public class PlayerStatisticHeaderViewHolder extends RecyclerView.ViewHolder {
 
-    @Bind(R.id.tvTitle)
     public TextView tvTitle;
-    @Bind(R.id.tvValue)
     public TextView tvValue;
 
 
     public PlayerStatisticHeaderViewHolder(View itemView) {
         super(itemView);
-        ButterKnife.bind(this, itemView);
+        tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
+        tvValue = (TextView) itemView.findViewById(R.id.tvValue);
     }
 
     public void setEntry(PlayerStatisticModelWrapper entry) {

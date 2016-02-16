@@ -21,6 +21,9 @@ public class LargeSetView extends LinearLayout {
     public TextView tvHomeTeamScore;
     @Bind(R.id.tvGuestTeamScore)
     public TextView tvGuestTeamScore;
+    @Bind(R.id.scoreContainer)
+    public LinearLayout scoreContainer;
+
 
     private GradientDrawable backgroundDrawable;
 
@@ -42,16 +45,16 @@ public class LargeSetView extends LinearLayout {
 
     private void init() {
         inflate(getContext(), R.layout.large_set_view, this);
-        backgroundDrawable = (GradientDrawable) ContextCompat.getDrawable(getContext(), R.drawable.set_result_background);
-        setBackgroundDrawable(backgroundDrawable);
         setOrientation(HORIZONTAL);
         ButterKnife.bind(this);
+        backgroundDrawable = (GradientDrawable) ContextCompat.getDrawable(getContext(), R.drawable.set_result_background);
+        scoreContainer.setBackgroundDrawable(backgroundDrawable);
     }
 
     public void setStat(SetInfoModel stat) {
         tvHomeTeamScore.setText("" + stat.scoreHome);
         tvGuestTeamScore.setText("" + stat.scoreGuest);
-        if(stat.homeWon){
+        if (stat.homeWon) {
             tvHomeTeamScore.setTypeface(null, Typeface.BOLD);
             tvHomeTeamScore.setTextColor(Color.BLACK);
             tvGuestTeamScore.setTypeface(null, Typeface.NORMAL);

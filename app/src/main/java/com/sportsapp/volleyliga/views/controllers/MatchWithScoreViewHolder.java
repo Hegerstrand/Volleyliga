@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.sportsapp.volleyliga.R;
 import com.sportsapp.volleyliga.models.MatchModel;
-import com.sportsapp.volleyliga.views.SetSummaryView;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;
@@ -20,8 +19,8 @@ import butterknife.ButterKnife;
 public class MatchWithScoreViewHolder extends RecyclerView.ViewHolder
         implements View.OnClickListener {
 
-    @Bind(R.id.allSetsView)
-    public SetSummaryView allSetsView;
+//    @Bind(R.id.allSetsView)
+//    public SetSummaryView allSetsView;
     @Bind(R.id.tvHomeTeam)
     public TextView tvHomeTeam;
     @Bind(R.id.ivHomeTeam)
@@ -55,21 +54,21 @@ public class MatchWithScoreViewHolder extends RecyclerView.ViewHolder
         this.match = match;
         int homeTypeface = match.setsWonByHome > match.setsWonByGuest ? Typeface.BOLD : Typeface.NORMAL;
         int guestTypeface = match.setsWonByHome < match.setsWonByGuest ? Typeface.BOLD : Typeface.NORMAL;
-        allSetsView.setStats(match.getSetList());
+//        allSetsView.setStats(match.getSetList());
 
         ivHomeTeam.setImageDrawable(ContextCompat.getDrawable(itemView.getContext(), match.teamHome.logoRef));
-        tvHomeTeam.setText("" + match.teamHome.name);
+        tvHomeTeam.setText(match.teamHome.initials);
         tvHomeTeamScore.setText("" + match.setsWonByHome);
         tvHomeTeam.setTypeface(null, homeTypeface);
         tvHomeTeamScore.setTypeface(null, homeTypeface);
 
         ivGuestTame.setImageDrawable(ContextCompat.getDrawable(itemView.getContext(), match.teamGuest.logoRef));
-        tvGuestTame.setText("" + match.teamGuest.name);
+        tvGuestTame.setText(match.teamGuest.initials);
         tvGuestTame.setTypeface(null, guestTypeface);
         tvGuestTeamScore.setTypeface(null, guestTypeface);
         tvGuestTeamScore.setText("" + match.setsWonByGuest);
 
-        tvMatchDate.setText(dateFormat.format(match.matchDateTime.getTime()));
+        tvMatchDate.setText(dateFormat.format(match.matchDateTime));
     }
 
 
