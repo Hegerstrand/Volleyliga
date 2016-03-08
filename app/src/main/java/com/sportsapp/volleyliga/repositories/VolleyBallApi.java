@@ -1,12 +1,14 @@
 package com.sportsapp.volleyliga.repositories;
 
 import com.sportsapp.volleyliga.models.MatchModel;
+import com.squareup.okhttp.ResponseBody;
 
+import retrofit.Response;
 import retrofit.http.GET;
 import retrofit.http.Path;
 import rx.Observable;
 
-public interface MatchApi {
+public interface VolleyBallApi {
 
 //
 //    public static URLFetcher getInstance(String url) {
@@ -17,6 +19,9 @@ public interface MatchApi {
 //        return restAdapter.create(URLFetcher.class);
 //    }
 
-    @GET("/livescore/xml/{fileName}.xml")
+    @GET("/xml/{fileName}.xml")
     Observable<MatchModel> getMatch(@Path("fileName") int matchNumber);
+
+    @GET("/teamsandplayers.xml")
+    Observable<Response<ResponseBody>> getTeamXml();
 }

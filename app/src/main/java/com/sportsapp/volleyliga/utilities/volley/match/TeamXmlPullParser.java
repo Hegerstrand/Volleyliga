@@ -3,6 +3,7 @@ package com.sportsapp.volleyliga.utilities.volley.match;
 import android.util.Xml;
 
 import com.sportsapp.volleyliga.models.TeamModel;
+import com.sportsapp.volleyliga.models.TeamPlayer;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -19,6 +20,7 @@ public class TeamXmlPullParser {
         XmlPullParser parser = Xml.newPullParser();
         try {
             input = input.replaceAll("\n", "");
+            input = input.replaceAll("\t", "");
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
             parser.setInput(new StringReader(input));
             parser.nextTag();
@@ -37,10 +39,10 @@ public class TeamXmlPullParser {
         }
         do {
             TeamModel team = new TeamModel();
-            teams.add(team);
             while (parser.next() == XmlPullParser.START_TAG) {
                 readFromTag(team, parser);
             }
+            teams.add(team);
         } while (parser.next() == XmlPullParser.START_TAG);
     }
 
@@ -87,10 +89,63 @@ public class TeamXmlPullParser {
             case "teamLon":
                 team.lon = Double.parseDouble(parser.getText());
                 break;
+            case "players":
+                team.players = parsePlayers(parser);
         }
-        if(currentTag == XmlPullParser.TEXT) {
+        if (currentTag == XmlPullParser.TEXT) {
             currentTag = parser.next();
         }
+    }
+
+    private List<TeamPlayer> parsePlayers(XmlPullParser parser) {
+        List<TeamPlayer> result = new ArrayList<>();
+        try {
+            do {
+                TeamPlayer parseResult = parseSinglePlayer(parser);
+                if (parseResult != null) {
+                    result.add(parseResult);
+                }
+            } while (parser.next() == XmlPullParser.START_TAG);
+
+        } catch (XmlPullParserException | IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    private TeamPlayer parseSinglePlayer(XmlPullParser parser) {
+        if (parser.getName().equalsIgnoreCase("player")) {
+            try {
+                TeamPlayer result = new TeamPlayer();
+                while (parser.next() != XmlPullParser.END_TAG) {
+                    readPlayerTag(result, parser);
+                }
+                return result;
+            } catch (XmlPullParserException | IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    private void readPlayerTag(TeamPlayer player, XmlPullParser parser) throws IOException, XmlPullParserException {
+        String name = parser.getName();
+        if (name == null) {
+            return;
+        }
+        parser.next();
+        switch (name) {
+            case "id":
+                player.id = parser.getText();
+                break;
+            case "number":
+                player.number = Integer.parseInt(parser.getText());
+                break;
+            case "name":
+                player.name = parser.getText();
+                break;
+        }
+        parser.next();
     }
 
 

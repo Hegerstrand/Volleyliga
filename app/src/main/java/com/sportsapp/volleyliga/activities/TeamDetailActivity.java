@@ -13,9 +13,7 @@ import android.view.MenuItem;
 import com.hannesdorfmann.mosby.mvp.MvpActivity;
 import com.sportsapp.volleyliga.R;
 import com.sportsapp.volleyliga.fragment.TeamDetailMatchFragment;
-import com.sportsapp.volleyliga.fragment.TeamDetailMatchFragmentBuilder;
 import com.sportsapp.volleyliga.fragment.TeamInfoFragment;
-import com.sportsapp.volleyliga.fragment.TeamInfoFragmentBuilder;
 import com.sportsapp.volleyliga.models.TeamModel;
 import com.sportsapp.volleyliga.presenters.TeamDetailPresenter;
 import com.sportsapp.volleyliga.repositories.TeamRepository;
@@ -119,9 +117,9 @@ public class TeamDetailActivity extends MvpActivity<TeamDetailView, TeamDetailPr
         @Override
         public Fragment getItem(int position) {
             if (position == 0) {
-                return new TeamDetailMatchFragmentBuilder(team).build();
+                return TeamDetailMatchFragment.newInstance(team.id);
             } else if (position == 1) {
-                return new TeamInfoFragmentBuilder(team).build();
+                return TeamInfoFragment.newInstance(team.id);
             }
             return null;
         }

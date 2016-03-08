@@ -13,6 +13,6 @@ public class CustomApplication extends Application {
         super.onCreate();
         MatchRepository.setup(getFilesDir());
         VolleyQueue.setup(this);
-        TeamRepository.initialize();
+        TeamRepository.initialize(getFilesDir());
     }
 }

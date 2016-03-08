@@ -12,13 +12,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.hannesdorfmann.fragmentargs.FragmentArgs;
-import com.hannesdorfmann.fragmentargs.annotation.Arg;
-import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
-import com.hannesdorfmann.fragmentargs.bundler.ParcelerArgsBundler;
 import com.koushikdutta.ion.Ion;
 import com.sportsapp.volleyliga.R;
 import com.sportsapp.volleyliga.models.TeamModel;
+import com.sportsapp.volleyliga.repositories.TeamRepository;
 import com.sportsapp.volleyliga.utilities.Util;
 import com.sportsapp.volleyliga.views.MenuItem;
 
@@ -26,10 +23,11 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-@FragmentWithArgs
 public class TeamInfoFragment extends Fragment {
 
-    @Arg(bundler = ParcelerArgsBundler.class)
+    private static final String ARG_TEAM_ID = "teamID";
+
+    public int teamId;
     public TeamModel team;
 
     @Bind(R.id.ivMap)
@@ -56,10 +54,22 @@ public class TeamInfoFragment extends Fragment {
 
     private boolean initialized = false;
 
+    public static TeamInfoFragment newInstance(int teamID) {
+        TeamInfoFragment myFragment = new TeamInfoFragment();
+        Bundle args = new Bundle();
+        args.putInt(ARG_TEAM_ID, teamID);
+        myFragment.setArguments(args);
+        return myFragment;
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FragmentArgs.inject(this);
+        Bundle arguments = getArguments();
+        if (arguments != null && arguments.containsKey(ARG_TEAM_ID)) {
+            teamId = arguments.getInt(ARG_TEAM_ID);
+            team = TeamRepository.instance.getTeam(teamId);
+        }
     }
 
     @Nullable

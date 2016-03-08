@@ -1,6 +1,7 @@
 package com.sportsapp.volleyliga.repositories;
 
 import com.sportsapp.volleyliga.models.MatchModel;
+import com.sportsapp.volleyliga.utilities.Constants;
 
 import java.io.File;
 
@@ -10,9 +11,8 @@ import rx.Observable;
 
 public class MatchRepository {
 
-    public static final String URL_BASE = "http://caspermunk.dk";
     public static MatchRepository instance;
-    private final MatchApi matchApi;
+    private final VolleyBallApi volleyBallApi;
     private final MatchCache cache;
 
     public static void setup(File cacheDir) {
@@ -21,15 +21,15 @@ public class MatchRepository {
 
     public MatchRepository(File cacheDir) {
         cache = new MatchCache(cacheDir);
-        matchApi = new Retrofit.Builder()
-                .baseUrl(URL_BASE)
+        volleyBallApi = new Retrofit.Builder()
+                .baseUrl(Constants.URL_BASE)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(new MatchRetrofitConverterFactory())
-                .build().create(MatchApi.class);
+                .build().create(VolleyBallApi.class);
     }
 
     public Observable<MatchModel> getMatch(int matchNumber) {
-        return Observable.concat(Observable.just(cache.retrieve(matchNumber)).filter(matchModel -> matchModel != null), matchApi.getMatch(matchNumber).doOnNext(cache::save)).onErrorResumeNext(throwable -> {
+        return Observable.concat(Observable.just(cache.retrieve(matchNumber)).filter(matchModel -> matchModel != null), volleyBallApi.getMatch(matchNumber).doOnNext(cache::save)).onErrorResumeNext(throwable -> {
             return Observable.empty();
         });
     }

@@ -9,15 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hannesdorfmann.fragmentargs.FragmentArgs;
-import com.hannesdorfmann.fragmentargs.annotation.Arg;
-import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
-import com.hannesdorfmann.fragmentargs.bundler.ParcelerArgsBundler;
 import com.hannesdorfmann.mosby.mvp.MvpFragment;
 import com.sportsapp.volleyliga.R;
 import com.sportsapp.volleyliga.models.MatchModel;
 import com.sportsapp.volleyliga.models.TeamModel;
 import com.sportsapp.volleyliga.presenters.TeamDetailMatchPresenter;
+import com.sportsapp.volleyliga.repositories.TeamRepository;
 import com.sportsapp.volleyliga.views.MainActivityView;
 import com.sportsapp.volleyliga.views.TeamDetailMatchListView;
 import com.sportsapp.volleyliga.views.controllers.DividerItemDecoration;
@@ -28,11 +25,11 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-@FragmentWithArgs
 public class TeamDetailMatchFragment extends MvpFragment<TeamDetailMatchListView, TeamDetailMatchPresenter> implements TeamDetailMatchListView{
 
-    @Arg(bundler = ParcelerArgsBundler.class)
-    public TeamModel team;
+    private static final String ARG_TEAM_ID = "teamID";
+
+    public int teamId;
 
     @Bind(R.id.recyclerView)
     public RecyclerView recyclerView;
@@ -40,6 +37,16 @@ public class TeamDetailMatchFragment extends MvpFragment<TeamDetailMatchListView
     private MatchListAdapter adapter;
 
     private MainActivityView activityListener;
+    private TeamModel team;
+
+
+    public static TeamDetailMatchFragment newInstance(int teamID) {
+        TeamDetailMatchFragment myFragment = new TeamDetailMatchFragment();
+        Bundle args = new Bundle();
+        args.putInt(ARG_TEAM_ID, teamID);
+        myFragment.setArguments(args);
+        return myFragment;
+    }
 
     @Override
     public void onAttach(Activity activity) {
@@ -50,7 +57,11 @@ public class TeamDetailMatchFragment extends MvpFragment<TeamDetailMatchListView
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FragmentArgs.inject(this);
+        Bundle arguments = getArguments();
+        if (arguments != null && arguments.containsKey(ARG_TEAM_ID)) {
+            teamId = arguments.getInt(ARG_TEAM_ID);
+            team = TeamRepository.instance.getTeam(teamId);
+        }
     }
 
     @Nullable

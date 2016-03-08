@@ -2,15 +2,15 @@ package com.sportsapp.volleyliga.models;
 
 import com.sportsapp.volleyliga.R;
 
-import org.parceler.Parcel;
+import java.util.List;
 
-@Parcel
 public class TeamModel{
     public String name;
     public int logoRef;
     public int id;
     public String shortName, initials, homePage, facebookId, email, stadium, stadiumAddress, mapsUrl, phoneNumber;
     public double lat, lon;
+    public List<TeamPlayer> players;
 
     public TeamModel(String name) {
         setName(name);
