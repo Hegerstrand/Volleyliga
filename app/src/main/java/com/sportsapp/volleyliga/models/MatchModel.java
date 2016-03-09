@@ -14,6 +14,7 @@ import java.util.Locale;
 public class MatchModel {
 
 
+
     public enum Type {
         PAST,
         LIVE,
@@ -24,6 +25,8 @@ public class MatchModel {
         FEMALE,
         UNKNOWN,
     }
+
+    public Type matchType;
 
     public String xml;
     public String championshipName; //Name of the Championship

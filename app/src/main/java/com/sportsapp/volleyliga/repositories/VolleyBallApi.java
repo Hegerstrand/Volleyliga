@@ -22,6 +22,15 @@ public interface VolleyBallApi {
     @GET("/xml/{fileName}.xml")
     Observable<MatchModel> getMatch(@Path("fileName") int matchNumber);
 
+    @GET("/collections/past.xml")
+    Observable<MatchModel> updatePastMatches();
+
+    @GET("/collections/today.xml")
+    Observable<MatchModel> updateTodayMatches();
+
+    @GET("/collections/future.xml")
+    Observable<MatchModel> updateFutureMatches();
+
     @GET("/teamsandplayers.xml")
     Observable<Response<ResponseBody>> getTeamXml();
 }

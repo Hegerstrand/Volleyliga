@@ -8,6 +8,8 @@ import java.io.File;
 import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;
 import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class MatchRepository {
 
@@ -34,4 +36,20 @@ public class MatchRepository {
         });
     }
 
+    public Observable<MatchModel> getMatchesFromCache(MatchModel.Type matchType) {
+        return cache.getMatchesByType(matchType)
+                .filter(matchModel -> matchModel != null)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<MatchModel> updatePastMatches() {
+        return volleyBallApi.updatePastMatches()
+                .doOnNext(match -> cache.save(match, MatchModel.Type.PAST))
+                .onErrorResumeNext(throwable -> {
+                    return Observable.empty();
+                })
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
 }

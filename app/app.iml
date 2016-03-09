@@ -115,6 +115,7 @@
     <orderEntry type="library" exported="" name="okio-1.6.0" level="project" />
     <orderEntry type="library" exported="" name="ChipView-1.1.4" level="project" />
     <orderEntry type="library" exported="" name="okhttp-2.5.0" level="project" />
+    <orderEntry type="library" exported="" name="activeandroid-3.1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" exported="" name="recyclerview-v7-23.1.1" level="project" />
     <orderEntry type="library" exported="" name="javax.annotation-10.0-b28" level="project" />
     <orderEntry type="library" exported="" name="slidableactivity-2.0.4" level="project" />
@@ -125,8 +126,8 @@
     <orderEntry type="library" exported="" name="appcompat-v7-23.1.1" level="project" />
     <orderEntry type="library" exported="" name="materialdrawer-4.6.4" level="project" />
     <orderEntry type="library" exported="" name="RxCache-0.4.2" level="project" />
-    <orderEntry type="library" exported="" name="parceler-api-1.0.4" level="project" />
     <orderEntry type="library" exported="" name="adapter-rxjava-2.0.0-beta1" level="project" />
+    <orderEntry type="library" exported="" name="parceler-api-1.0.4" level="project" />
     <orderEntry type="library" exported="" name="guava-19.0" level="project" />
     <orderEntry type="library" exported="" name="materialize-0.5.1" level="project" />
     <orderEntry type="library" exported="" name="gson-2.5" level="project" />
@@ -141,8 +142,8 @@
     <orderEntry type="library" exported="" name="androidasync-2.1.6" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="hamcrest-core-1.3" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="junit-4.12" level="project" />
-    <orderEntry type="library" exported="" name="ion-2.1.6" level="project" />
     <orderEntry type="library" exported="" name="mvp-common-2.0.0" level="project" />
+    <orderEntry type="library" exported="" name="ion-2.1.6" level="project" />
     <orderEntry type="library" exported="" name="viewstate-2.0.0" level="project" />
     <orderEntry type="library" exported="" name="barber-api-1.3.1" level="project" />
     <orderEntry type="library" exported="" name="bundler-parceler-3.0.0" level="project" />

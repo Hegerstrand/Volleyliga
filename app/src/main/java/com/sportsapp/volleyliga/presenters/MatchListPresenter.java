@@ -1,7 +1,5 @@
 package com.sportsapp.volleyliga.presenters;
 
-import android.util.Log;
-
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 import com.sportsapp.volleyliga.models.MatchModel;
 import com.sportsapp.volleyliga.repositories.MatchRepository;
@@ -13,10 +11,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-import rx.Observable;
 import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 public class MatchListPresenter extends MvpBasePresenter<MatchListActivityView> {
     private static final String TAG = "MatchListPresenter";
@@ -35,14 +30,7 @@ public class MatchListPresenter extends MvpBasePresenter<MatchListActivityView> 
 //                    String[] split = stringResponse.split(";");
 //                    return Observable.from(split);
 //                })
-
-        Observable.from(matchIds)
-                .flatMap(federationMatchNumber -> {
-                    Log.d(TAG, "loadMatches: Loading url: " + federationMatchNumber);
-                    return MatchRepository.instance.getMatch(federationMatchNumber);
-                })
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
+        MatchRepository.instance.getMatchesFromCache(MatchModel.Type.PAST)
                 .subscribe(new Subscriber<MatchModel>() {
                     @Override
                     public void onCompleted() {
