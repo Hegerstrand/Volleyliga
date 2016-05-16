@@ -2,12 +2,11 @@ package com.sportsapp.volleyliga.views.controllers;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
-import com.sportsapp.volleyliga.R;
 import com.sportsapp.volleyliga.models.MatchModel;
+import com.sportsapp.volleyliga.views.FutureMatchView;
+import com.sportsapp.volleyliga.views.MatchWithScoreView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +17,7 @@ public class MatchListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private static final int MATCH_WITH_SCORE = 1;
 
     private List<MatchModel> items = new ArrayList<>();
+    private List<Integer> matchNumbers = new ArrayList<>();
     private Context context;
 
     private MatchClickListener clickListener;
@@ -33,13 +33,12 @@ public class MatchListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         if(viewType == MATCH_WITH_SCORE){
-            View itemView = inflater.inflate(R.layout.match_view_holder, parent, false);
-            return new MatchWithScoreViewHolder(itemView);
+            MatchWithScoreView matchView = new MatchWithScoreView(context);
+            return new MatchWithScoreViewHolder(matchView);
         } else if(viewType == FUTURE_MATCH){
-            View itemView = inflater.inflate(R.layout.match_future_view_holder, parent, false);
-            return new MatchFutureViewHolder(itemView);
+            FutureMatchView matchView = new FutureMatchView(context);
+            return new MatchFutureViewHolder(matchView);
         }
         return null;
     }
@@ -83,8 +82,12 @@ public class MatchListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         return items.size();
     }
 
+
     public void setItems(List<MatchModel> data) {
-        items = data;
+        items = new ArrayList<>();
+        for (MatchModel match : data) {
+            items.add(match);
+        }
         notifyDataSetChanged();
     }
 

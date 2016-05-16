@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/instagramSignInPromptContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:text="Sign in to see posts from Instagram"
+                android:textAppearance="?attr/textAppearanceListItemSmall"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnSignInWithInstagram"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:background="@drawable/instagram_background"
+                android:text="Sign in"
+                android:textColor="@android:color/white" />
+            <!--<com.dd.CircularProgressButton-->
+            <!--android:id="@+id/btnSignInWithInstagram"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="center_horizontal|center_vertical"-->
+            <!--android:textSize="18sp"-->
+            <!--app:cpb_cornerRadius="48dp"-->
+            <!--app:cpb_textComplete="@string/signed_in"-->
+            <!--app:cpb_textError="@string/sign_in_error"-->
+            <!--app:cpb_textIdle="@string/sign_in_with_instagram" />-->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/instagramFeedContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFF"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/instagramRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</merge>

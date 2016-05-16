@@ -1,5 +1,7 @@
 package com.sportsapp.volleyliga.models;
 
+import org.joda.time.DateTime;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,17 +15,10 @@ import java.util.Locale;
 
 public class MatchModel {
 
-
-
     public enum Type {
         PAST,
-        LIVE,
+        TODAY,
         FUTURE
-    }
-    public enum League{
-        MALE,
-        FEMALE,
-        UNKNOWN,
     }
 
     public Type matchType;
@@ -46,7 +41,7 @@ public class MatchModel {
 
 
     //Cleaned up parameters
-    public League league;
+    public League league = League.UNKNOWN;
     public int championshipMatchID; //ID of the Match in Data Project's DB
     public int federationMatchNumber = 110236; //Identifies in unique way the match in Organization's DB
     public String federationMatchID; //Identifies in unique way the match in Organization's DB
@@ -99,6 +94,10 @@ public class MatchModel {
         return teamHome.shortName + " " + setsWonByHome + " - " + setsWonByGuest + " " + teamGuest.shortName;
     }
 
+    public String getHashtag() {
+        return "#" + teamHome.initials + "vs" + teamGuest.initials;
+    }
+
     public boolean isOnFutureDay() {
         Calendar calendar = Calendar.getInstance();
         GregorianCalendar nextMidnight = new GregorianCalendar(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
@@ -113,12 +112,21 @@ public class MatchModel {
         if(isOnFutureDay()){
             return Type.FUTURE;
         }
-        return Type.LIVE;
+        return Type.TODAY;
     }
 
     public static class MatchComparator implements Comparator<MatchModel> {
         public int compare(MatchModel entry1, MatchModel entry2) {
             return entry1.matchDateTime.compareTo(entry2.matchDateTime);
         }
+    }
+
+    @Override
+    public String toString() {
+        if(teamHome != null && teamGuest != null){
+            DateTime time = new DateTime(matchDateTime);
+            return String.format("%d: %s - %s - %s", federationMatchNumber, teamHome.name, teamGuest.name, time.toString("dd.MMM HH:mm"));
+        }
+        return "";
     }
 }

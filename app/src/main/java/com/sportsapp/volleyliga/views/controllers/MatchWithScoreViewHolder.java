@@ -1,49 +1,22 @@
 package com.sportsapp.volleyliga.views.controllers;
 
-import android.graphics.Typeface;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.sportsapp.volleyliga.R;
 import com.sportsapp.volleyliga.models.MatchModel;
-
-import java.text.SimpleDateFormat;
-import java.util.Locale;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
+import com.sportsapp.volleyliga.views.MatchWithScoreView;
 
 public class MatchWithScoreViewHolder extends RecyclerView.ViewHolder
         implements View.OnClickListener {
 
-//    @Bind(R.id.allSetsView)
-//    public SetSummaryView allSetsView;
-    @Bind(R.id.tvHomeTeam)
-    public TextView tvHomeTeam;
-    @Bind(R.id.ivHomeTeam)
-    public ImageView ivHomeTeam;
-    @Bind(R.id.tvHomeTeamScore)
-    public TextView tvHomeTeamScore;
-    @Bind(R.id.tvGuestTeam)
-    public TextView tvGuestTame;
-    @Bind(R.id.ivGuestTeam)
-    public ImageView ivGuestTame;
-    @Bind(R.id.tvGuestTeamScore)
-    public TextView tvGuestTeamScore;
-    @Bind(R.id.tvMatchDate)
-    public TextView tvMatchDate;
 
-
+    private final MatchWithScoreView matchView;
     private ClickListener clickListener;
     private MatchModel match;
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yy - HH:mm", Locale.getDefault());
 
-    public MatchWithScoreViewHolder(View itemView) {
+    public MatchWithScoreViewHolder(MatchWithScoreView itemView) {
         super(itemView);
-        ButterKnife.bind(this, itemView);
+        matchView = itemView;
 
         // We set listeners to the whole item view, but we could also
         // specify listeners for the title or the icon.
@@ -52,23 +25,7 @@ public class MatchWithScoreViewHolder extends RecyclerView.ViewHolder
 
     public void setMatchModel(MatchModel match) {
         this.match = match;
-        int homeTypeface = match.setsWonByHome > match.setsWonByGuest ? Typeface.BOLD : Typeface.NORMAL;
-        int guestTypeface = match.setsWonByHome < match.setsWonByGuest ? Typeface.BOLD : Typeface.NORMAL;
-//        allSetsView.setStats(match.getSetList());
-
-        ivHomeTeam.setImageDrawable(ContextCompat.getDrawable(itemView.getContext(), match.teamHome.logoRef));
-        tvHomeTeam.setText(match.teamHome.initials);
-        tvHomeTeamScore.setText("" + match.setsWonByHome);
-        tvHomeTeam.setTypeface(null, homeTypeface);
-        tvHomeTeamScore.setTypeface(null, homeTypeface);
-
-        ivGuestTame.setImageDrawable(ContextCompat.getDrawable(itemView.getContext(), match.teamGuest.logoRef));
-        tvGuestTame.setText(match.teamGuest.initials);
-        tvGuestTame.setTypeface(null, guestTypeface);
-        tvGuestTeamScore.setTypeface(null, guestTypeface);
-        tvGuestTeamScore.setText("" + match.setsWonByGuest);
-
-        tvMatchDate.setText(dateFormat.format(match.matchDateTime));
+        matchView.setMatchModel(match, true);
     }
 
 

@@ -2,9 +2,11 @@ package com.sportsapp.volleyliga.repositories;
 
 import com.google.common.io.CharStreams;
 import com.sportsapp.volleyliga.models.MatchModel;
-import com.sportsapp.volleyliga.utilities.volley.match.MatchXmlPullParser;
+import com.sportsapp.volleyliga.repositories.xmlParsers.MatchXmlPullParser;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.ResponseBody;
+
+import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -14,7 +16,14 @@ import retrofit.Converter;
 public class MatchRetrofitConverterFactory implements Converter.Factory {
     @Override
     public Converter<MatchModel> get(Type type) {
-        return new MatchRetrofitConverter();
+        if (!(type instanceof Class)) {
+            return null;
+        }
+        Class<?> cls = (Class<?>) type;
+        if (cls.equals(MatchModel.class)) {
+            return new MatchRetrofitConverter();
+        }
+        return null;
     }
 
     private class MatchRetrofitConverter implements Converter<MatchModel> {
@@ -24,7 +33,11 @@ public class MatchRetrofitConverterFactory implements Converter.Factory {
         public MatchModel fromBody(ResponseBody body) throws IOException {
             String response = CharStreams.toString(body.charStream());
             MatchXmlPullParser parser = new MatchXmlPullParser();
-            return parser.parse(response);
+            try {
+                return parser.parse(response);
+            } catch (XmlPullParserException e) {
+                throw new IllegalArgumentException("Test");
+            }
         }
 
         @Override

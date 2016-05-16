@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="toolbarAccentColor">@android:color/white</color>
+    <color name="snackbar_background_color">@color/primary</color>
+    <color name="snackbar_text_color" >#F3A524</color>
+
+    <color name="primary">#d50000</color>
+    <color name="primary_dark">#991717</color>
+    <color name="accent">#37196D</color>
+    <color name="accent_translucent">#8037196D</color>
+    <color name="accent_bright">#cdb3ff</color>
+    <color name="headerTextColor">#37196D</color>
+
+
+    <color name="home_color">#ff222222</color>
+    <color name="home_color_light">#BB222222</color>
+    <color name="guest_color">#ff222222</color>
+    <color name="guest_color_light">#BB222222</color>
+</resources>

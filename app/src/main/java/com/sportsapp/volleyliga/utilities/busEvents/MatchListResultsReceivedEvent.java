@@ -2,26 +2,27 @@ package com.sportsapp.volleyliga.utilities.busEvents;
 
 import com.sportsapp.volleyliga.models.MatchModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MatchListResultsReceivedEvent {
 
-    public List<MatchModel> past;
-    public List<MatchModel> live;
-    public List<MatchModel> future;
+    public List<MatchModel> past = new ArrayList<>();
+    public List<MatchModel> today = new ArrayList<>();
+    public List<MatchModel> future = new ArrayList<>();
 
-    public MatchListResultsReceivedEvent(List<MatchModel> past, List<MatchModel> live, List<MatchModel> future) {
+    public MatchListResultsReceivedEvent(List<MatchModel> past, List<MatchModel> today, List<MatchModel> future) {
         this.past = past;
-        this.live = live;
+        this.today = today;
         this.future = future;
     }
 
     public List<MatchModel> getMatches(MatchModel.Type type) {
-        switch(type){
+        switch (type) {
             case PAST:
                 return past;
-            case LIVE:
-                return live;
+            case TODAY:
+                return today;
             case FUTURE:
                 return future;
         }

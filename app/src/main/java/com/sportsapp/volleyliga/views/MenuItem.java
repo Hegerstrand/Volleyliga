@@ -5,6 +5,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sportsapp.volleyliga.R;
@@ -37,7 +38,7 @@ public class MenuItem extends FrameLayout {
     @Bind(R.id.arrow)
     public View arrow;
     @Bind(R.id.icon)
-    public View iconView;
+    public ImageView iconView;
 
 
     public MenuItem(Context context) {
@@ -107,7 +108,7 @@ public class MenuItem extends FrameLayout {
         tvValue.setText(value);
         arrow.setVisibility(includeArrow ? View.VISIBLE : View.GONE);
         if(iconRef > 0) {
-            iconView.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), iconRef));
+            iconView.setImageDrawable(ContextCompat.getDrawable(getContext(), iconRef));
         } else {
             iconView.setVisibility(GONE);
         }

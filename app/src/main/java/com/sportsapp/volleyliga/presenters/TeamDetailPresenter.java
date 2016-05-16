@@ -1,11 +1,67 @@
 package com.sportsapp.volleyliga.presenters;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
+import com.sportsapp.volleyliga.models.MatchModel;
+import com.sportsapp.volleyliga.models.TeamModel;
+import com.sportsapp.volleyliga.repositories.MatchRepository;
+import com.sportsapp.volleyliga.repositories.TeamRepository;
 import com.sportsapp.volleyliga.views.TeamDetailView;
 
-public class TeamDetailPresenter extends MvpBasePresenter<TeamDetailView> {
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-    private String teamXml = "<team><teamID>3</teamID><teamName>Gentofte Volley</teamName><shortTeamName>Gentofte</shortTeamName><teamInitials>GV</teamInitials><teamHomePage>http://www.gentoftevolley.dk/</teamHomePage><teamFb>gentoftevolley</teamFb><teamMail>info@gentoftevolley.dk</teamMail><teamPhone>24254846</teamPhone><teamGym>Kildeskovshallen</teamGym><teamGymAdress>Adolphsvej 25, 2820 Gentofte</teamGymAdress><teamMaps>https://www.google.dk/maps/place/Kildeskovshallen/@55.7462775,12.5499378,17z/data=!3m1!4b1!4m2!3m1!1s0x46524df33640513b:0x8951549494bb486f</teamMaps><teamGymAddress>Adolphsvej 25, 2820 Gentofte</teamGymAddress><teamLat>55.74632</teamLat><teamLon>12.551912</teamLon></team>";
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+
+public class TeamDetailPresenter extends MvpBasePresenter<TeamDetailView> {
+    private List<MatchModel> matches = new ArrayList<>();
+    private TeamModel team;
+
+    public TeamDetailPresenter() {
+    }
+
+    public void setTeam(TeamModel team) {
+        matches.clear();
+        this.team = team;
+        if (team != null) {
+            loadMatches();
+        }
+    }
+
+    public void setTeamId(int teamId) {
+        team = TeamRepository.instance.getTeam(teamId);
+        getView().setTeamModel(team);
+        loadMatches();
+    }
+
+    public void loadMatches() {
+        matches = new ArrayList<>();
+
+        MatchRepository.instance.getMatchesForTeamFromCache(team.id)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<MatchModel>() {
+                    @Override
+                    public void onCompleted() {
+                        Collections.sort(matches, new MatchModel.MatchComparator());
+                        if (isViewAttached()) {
+                            getView().setData(matches);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        String s = "";
+                    }
+
+                    @Override
+                    public void onNext(MatchModel match) {
+                        matches.add(match);
+                    }
+                });
+    }
 
     @Override
     public void attachView(TeamDetailView view) {
@@ -16,4 +72,5 @@ public class TeamDetailPresenter extends MvpBasePresenter<TeamDetailView> {
     public void detachView(boolean retainInstance) {
         super.detachView(retainInstance);
     }
+
 }

@@ -2,6 +2,9 @@ package com.sportsapp.volleyliga.utilities;
 
 public class Constants {
     public static final String URL_BASE = "http://dk.volleyapp.net/";
+//    public static final String URL_BASE = "http://www.pocketpalsson.com/";
+
+
     public static String TEAM_XML = "<teams>\n" +
             "<team>\n" +
             "<teamID>1</teamID>\n" +

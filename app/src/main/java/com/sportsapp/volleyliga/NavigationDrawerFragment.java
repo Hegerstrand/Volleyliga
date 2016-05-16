@@ -74,7 +74,7 @@ public class NavigationDrawerFragment extends Fragment {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
 
-        activityContent = getActivity().findViewById(R.id.activity_content);
+        activityContent = getActivity().findViewById(R.id.fragment_container);
         setContentPivot();
 
         // ActionBarDrawerToggle ties together the the proper interactions

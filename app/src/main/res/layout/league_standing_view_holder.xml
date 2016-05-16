@@ -1,90 +1,83 @@
-<?xml version="1.0" encoding="utf-8"?><!--<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:card_view="http://schemas.android.com/apk/res-auto"--><!--xmlns:tools="http://schemas.android.com/tools"--><!--android:id="@+id/card_view"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:layout_gravity="center"--><!--card_view:cardCornerRadius="4dp">-->
+<?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="4dp">
+    android:layout_height="wrap_content"
+    android:foreground="?attr/selectableItemBackground"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+
+    <ImageView
+        android:id="@+id/ivTeam"
+        android:layout_width="@dimen/league_standing_view_holder_logo_dimension"
+        android:layout_height="@dimen/league_standing_view_holder_logo_dimension"
+        android:layout_marginRight="8dp"
+        tools:src="@drawable/gentofte" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:weightSum="1">
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/ivTeam"
-            android:layout_width="@dimen/league_standing_view_holder_logo_dimension"
-            android:layout_height="@dimen/league_standing_view_holder_logo_dimension"
-            android:layout_marginRight="8dp"
-            tools:src="@drawable/gentofte" />
+        <TextView
+            android:id="@+id/tvTeamName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/home_color"
+            android:textSize="@dimen/match_view_holder_title_size"
+            tools:text="Gentofte volley" />
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvTeamName"
-                android:layout_width="match_parent"
+                android:id="@+id/tvWonGames"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                android:textColor="@color/home_color"
-                android:textSize="@dimen/match_view_holder_title_size"
-                tools:text="Gentofte volley" />
+                android:layout_marginRight="8dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textSize="10sp"
+                tools:text="Won: 5" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tvLostGames"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tvWonGames"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textSize="10sp"
-                    tools:text="Won: 5" />
-
-                <TextView
-                    android:id="@+id/tvLostGames"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textSize="10sp"
-                    tools:text="Lost: 5" />
-            </LinearLayout>
+                android:layout_marginRight="8dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textSize="10sp"
+                tools:text="Lost: 5" />
         </LinearLayout>
+    </LinearLayout>
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvPoints"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="right"
-            android:orientation="vertical">
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/home_color"
+            android:textSize="@dimen/league_standing_view_holder_point_size"
+            tools:text="3" />
 
-            <TextView
-                android:id="@+id/tvPoints"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                android:textColor="@color/home_color"
-                android:textSize="@dimen/league_standing_view_holder_point_size"
-                android:textStyle="bold"
-                tools:text="3" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="points"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textSize="10sp" />
-        </LinearLayout>
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="points"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textSize="10sp" />
     </LinearLayout>
-</LinearLayout><!--</android.support.v7.widget.CardView>-->
+
+</LinearLayout>

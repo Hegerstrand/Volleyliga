@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
-import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -47,8 +46,6 @@ public class LargeSetView extends LinearLayout {
         inflate(getContext(), R.layout.large_set_view, this);
         setOrientation(HORIZONTAL);
         ButterKnife.bind(this);
-        backgroundDrawable = (GradientDrawable) ContextCompat.getDrawable(getContext(), R.drawable.set_result_background);
-        scoreContainer.setBackgroundDrawable(backgroundDrawable);
     }
 
     public void setStat(SetInfoModel stat) {

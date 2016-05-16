@@ -8,5 +8,5 @@ import java.util.List;
 public interface TeamDetailMatchListView extends MvpView {
     void openMatch(int federationMatchNumber);
 
-    void setData(List<MatchModel> data);
+    void setMatches(List<MatchModel> data);
 }

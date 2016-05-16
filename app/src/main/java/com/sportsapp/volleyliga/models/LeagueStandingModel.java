@@ -1,15 +1,45 @@
 package com.sportsapp.volleyliga.models;
 
-public class LeagueStandingModel {
-    public TeamModel team;
-    public int playedGames, wonGames, lostGames, points, position;
+import com.sportsapp.volleyliga.repositories.TeamRepository;
+import com.sportsapp.volleyliga.utilities.Util;
 
-    public LeagueStandingModel(TeamModel team, int playedGames, int wonGames, int lostGames, int points, int position) {
-        this.team = team;
-        this.playedGames = playedGames;
-        this.wonGames = wonGames;
-        this.lostGames = lostGames;
-        this.points = points;
-        this.position = position;
+import java.util.Comparator;
+
+public class LeagueStandingModel {
+    public String teamName;
+    public int points, position, matchesWon, matchesLost, pointsWon, pointsLost, disqualifications, penalties, matches30, matches31, matches32, matches23, matches13, matches03, setRatio, pointsRatio;
+
+    public LeagueStandingModel() {
+    }
+
+    public TeamModel getTeam() {
+        if(Util.isNullOrEmpty(teamName)){
+            return null;
+        }
+        return TeamRepository.instance.getTeam(teamName);
+    }
+
+    public String getPositionText() {
+        String suffix;
+        switch(position % 10){
+            case 1:
+                suffix = "st";
+                break;
+            case 2:
+                suffix = "nd";
+                break;
+            case 3:
+                suffix = "rd";
+                break;
+            default:
+                suffix = "th";
+        }
+        return position + suffix;
+    }
+
+    public static class LeagueStandingComparator implements Comparator<LeagueStandingModel> {
+        public int compare(LeagueStandingModel entry1, LeagueStandingModel entry2) {
+            return entry1.position - entry2.position;
+        }
     }
 }

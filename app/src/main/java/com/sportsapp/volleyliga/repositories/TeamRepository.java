@@ -1,15 +1,22 @@
 package com.sportsapp.volleyliga.repositories;
 
+import android.content.Context;
+
+import com.sportsapp.volleyliga.R;
+import com.sportsapp.volleyliga.models.League;
 import com.sportsapp.volleyliga.models.TeamModel;
+import com.sportsapp.volleyliga.repositories.xmlParsers.TeamXmlPullParser;
 import com.sportsapp.volleyliga.utilities.Constants;
-import com.sportsapp.volleyliga.utilities.volley.match.TeamXmlPullParser;
+import com.sportsapp.volleyliga.utilities.Preferences;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 import retrofit.Retrofit;
@@ -120,9 +127,112 @@ public class TeamRepository {
     }
 
     public TeamModel getTeam(String name) {
+        if(name.equalsIgnoreCase("Team Køge")){
+            name = "Team Køge Volley";
+        }
         if (nameToTeam.containsKey(name.toLowerCase())) {
             return nameToTeam.get(name.toLowerCase());
         }
         return null;
+    }
+
+    public League getLeagueForTeam(TeamModel team) {
+        if(0 < team.id && team.id < 9){
+            return League.MALE;
+        } else if (8 < team.id && team.id < 17){
+            return League.FEMALE;
+        }
+        return League.UNKNOWN;
+    }
+
+    public int getTeamMenuItemId(int teamId) {
+        switch(teamId){
+            case 1:
+                return R.id.asv_aarhus;
+            case 2:
+                return R.id.marienlyst;
+            case 3:
+                return R.id.gentofte;
+            case 4:
+                return R.id.hvidovre;
+            case 5:
+                return R.id.ishoj;
+            case 6:
+                return R.id.lyngby_gladsaxe;
+            case 7:
+                return R.id.middelfart;
+            case 8:
+                return R.id.randers;
+            case 9:
+                return R.id.amager;
+            case 10:
+                return R.id.brondby;
+            case 11:
+                return R.id.odense;
+            case 12:
+                return R.id.eliteVolleyAarhus;
+            case 13:
+                return R.id.fortuna;
+            case 14:
+                return R.id.holte;
+            case 15:
+                return R.id.lyngbyVolleyFemale;
+            case 16:
+                return R.id.koge;
+//            case 17:
+//                return R.id.randersNovoIkast;
+//            case 18:
+//                return R.id.esbjerg;
+//            case 19:
+//                return R.id.vestsjaelland;
+//            case 20:
+//                return R.id.bedsted
+        }
+        return 0;
+    }
+
+    public void setIsFavoriteTeam(Context context, int teamId, boolean isFavorite) {
+        Preferences.with(context).setFavoriteTeam(teamId, isFavorite);
+        if(isFavorite){
+
+        } else {
+
+        }
+    }
+
+    public List<TeamModel> getFavoriteTeams(Context context) {
+        HashSet<Integer> favoriteTeamIds = Preferences.with(context).getFavoriteTeams();
+        List<TeamModel> result = new ArrayList<>();
+        for (Integer id : favoriteTeamIds) {
+            TeamModel team = getTeam(id);
+            if(team != null){
+                result.add(team);
+            }
+        }
+        return result;
+    }
+
+    public List<TeamModel> getTeams(League league) {
+        List<TeamModel> result = new ArrayList<>();
+        int startIndex = 0;
+        switch(league){
+            case MALE:
+                startIndex = 1;
+                break;
+            case FEMALE:
+                startIndex = 8;
+                break;
+        }
+        for (int i = startIndex; i < startIndex + 8; i++) {
+            TeamModel team = getTeam(i);
+            if(team != null){
+                result.add(team);
+            }
+        }
+        return result;
+    }
+
+    public boolean isFavorite(int teamId, Context context) {
+        return Preferences.with(context).isFavoriteTeam(teamId);
     }
 }

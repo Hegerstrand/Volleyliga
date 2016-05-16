@@ -10,26 +10,17 @@ import rx.Observable;
 
 public interface VolleyBallApi {
 
-//
-//    public static URLFetcher getInstance(String url) {
-//        RestAdapter restAdapter = new RestAdapter.Builder()
-//                .setEndpoint(url)
-//                .setExecutors(Executors.newFixedThreadPool(5), null)
-//                .build();
-//        return restAdapter.create(URLFetcher.class);
-//    }
-
     @GET("/xml/{fileName}.xml")
     Observable<MatchModel> getMatch(@Path("fileName") int matchNumber);
 
     @GET("/collections/past.xml")
-    Observable<MatchModel> updatePastMatches();
+    Observable<MatchCollection> getPastMatches();
 
     @GET("/collections/today.xml")
-    Observable<MatchModel> updateTodayMatches();
+    Observable<MatchCollection> getTodayMatches();
 
     @GET("/collections/future.xml")
-    Observable<MatchModel> updateFutureMatches();
+    Observable<MatchCollection> getFutureMatches();
 
     @GET("/teamsandplayers.xml")
     Observable<Response<ResponseBody>> getTeamXml();

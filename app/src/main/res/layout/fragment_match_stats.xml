@@ -24,80 +24,143 @@
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp">
 
-                <RelativeLayout android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center">
-
-                    <com.sportsapp.volleyliga.views.SquareImageView
-                        android:id="@+id/ivHomeLogo"
-                        android:layout_width="72dp"
-                        android:layout_height="72dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerVertical="true"
-                        tools:src="@drawable/gentofte" />
-
-                    <com.sportsapp.volleyliga.views.SquareImageView
-                        android:id="@+id/ivGuestLogo"
-                        android:layout_width="72dp"
-                        android:layout_height="72dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerVertical="true"
-                        tools:src="@drawable/marienlyst" />
-
-                    <com.sportsapp.volleyliga.views.SetFullDetailView
-                        android:id="@+id/allSetsView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_toLeftOf="@+id/ivGuestLogo"
-                        android:layout_toRightOf="@+id/ivHomeLogo"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                    </com.sportsapp.volleyliga.views.SetFullDetailView>
-                </RelativeLayout>
-
-                <View
+                <android.support.v7.widget.CardView
+                    android:id="@+id/leagueStandingCard"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="8dp"
-                    android:background="?android:attr/listDivider" />
+                    android:background="#FFFFFF">
 
-                <com.sportsapp.volleyliga.views.MatchStatsView
-                    android:id="@+id/stats_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="8dp">
 
-                <TextView
-                    android:id="@+id/tvRefereeTitle"
+                        <com.sportsapp.volleyliga.views.SquareImageView
+                            android:id="@+id/ivHomeLogo"
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerVertical="true"
+                            android:foreground="?attr/selectableItemBackground"
+                            tools:src="@drawable/gentofte" />
+
+                        <com.sportsapp.volleyliga.views.SquareImageView
+                            android:id="@+id/ivGuestLogo"
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerVertical="true"
+                            android:foreground="?attr/selectableItemBackground"
+                            tools:src="@drawable/marienlyst" />
+
+                        <com.sportsapp.volleyliga.views.SetFullDetailView
+                            android:id="@+id/allSetsView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_toLeftOf="@+id/ivGuestLogo"
+                            android:layout_toRightOf="@+id/ivHomeLogo"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                        </com.sportsapp.volleyliga.views.SetFullDetailView>
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Referees"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:visibility="gone" />
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="#FFFFFF">
 
-                <TextView
-                    android:id="@+id/tvReferee1"
-                    android:layout_width="match_parent"
-                    android:layout_height="24dp"
-                    android:gravity="center_vertical"
-                    android:textAppearance="?android:attr/textAppearance"
-                    android:visibility="gone"
-                    tools:text="Sten Storgaard" />
+                    <com.sportsapp.volleyliga.views.MatchStatsView
+                        android:id="@+id/stats_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </android.support.v7.widget.CardView>
 
-                <TextView
-                    android:id="@+id/tvReferee2"
+                <android.support.v7.widget.CardView
+                    android:id="@+id/lastMatchCard"
                     android:layout_width="match_parent"
-                    android:layout_height="24dp"
-                    android:gravity="center_vertical"
-                    android:textAppearance="?android:attr/textAppearance"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="#FFFFFF"
+                    android:clickable="true"
                     android:visibility="gone"
-                    tools:text="Hans-Ole Nielsen" />
+                    android:foreground="?attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Last match"
+                            android:textAppearance="@style/cardTitle" />
+
+                        <com.sportsapp.volleyliga.views.MatchWithScoreView
+                            android:id="@+id/lastMatch"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+                <!--<TextView-->
+                <!--android:id="@+id/tvRefereeTitle"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Referees"-->
+                <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                <!--android:visibility="gone" />-->
+
+                <!--<TextView-->
+                <!--android:id="@+id/tvReferee1"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="24dp"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:textAppearance="?android:attr/textAppearance"-->
+                <!--android:visibility="gone"-->
+                <!--tools:text="Sten Storgaard" />-->
+
+                <!--<TextView-->
+                <!--android:id="@+id/tvReferee2"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="24dp"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:textAppearance="?android:attr/textAppearance"-->
+                <!--android:visibility="gone"-->
+                <!--tools:text="Hans-Ole Nielsen" />-->
+
+                <!--<RelativeLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="48dp"-->
+                <!--android:layout_marginTop="16dp"-->
+                <!--android:background="@drawable/instagram_background">-->
+                <!--<ImageView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="28dp"-->
+                <!--android:adjustViewBounds="true"-->
+                <!--android:layout_marginTop="13dp"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:src="@drawable/instagram_text_logo"/>-->
+                <!--</RelativeLayout>-->
+                <!---->
+
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
     </android.support.v4.widget.SwipeRefreshLayout>

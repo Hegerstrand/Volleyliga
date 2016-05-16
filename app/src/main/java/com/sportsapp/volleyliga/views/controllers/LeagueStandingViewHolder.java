@@ -41,11 +41,11 @@ public class LeagueStandingViewHolder extends RecyclerView.ViewHolder
 
     public void setLeagueStandingModel(LeagueStandingModel input) {
         this.leagueStanding = input;
-        tvTeamName.setText(leagueStanding.team.name);
-        ivTeam.setImageDrawable(ContextCompat.getDrawable(itemView.getContext(), leagueStanding.team.logoRef));
+        tvTeamName.setText(leagueStanding.teamName);
+        ivTeam.setImageDrawable(ContextCompat.getDrawable(itemView.getContext(), leagueStanding.getTeam().logoRef));
         tvPoints.setText("" + leagueStanding.points);
-        tvWonGames.setText("Won: " + leagueStanding.wonGames);
-        tvLostGames.setText("Lost: " + leagueStanding.lostGames);
+        tvWonGames.setText("Won: " + leagueStanding.matchesWon);
+        tvLostGames.setText("Lost: " + leagueStanding.matchesLost);
     }
 
 

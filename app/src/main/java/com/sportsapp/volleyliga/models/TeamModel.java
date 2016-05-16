@@ -2,15 +2,17 @@ package com.sportsapp.volleyliga.models;
 
 import com.sportsapp.volleyliga.R;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
-public class TeamModel{
-    public String name;
-    public int logoRef;
-    public int id;
-    public String shortName, initials, homePage, facebookId, email, stadium, stadiumAddress, mapsUrl, phoneNumber;
-    public double lat, lon;
-    public List<TeamPlayer> players;
+public class TeamModel {
+    public String name = "";
+    public int logoRef = R.drawable.ic_cloud_off;
+    public int id = 0;
+    public String shortName = "", initials = "", homePage = "", facebookId = "", email = "", stadium = "", stadiumAddress = "", mapsUrl = "", phoneNumber = "";
+    public double lat = 0, lon = 0;
+    public List<TeamPlayer> players = new ArrayList<>();
 
     public TeamModel(String name) {
         setName(name);
@@ -72,13 +74,20 @@ public class TeamModel{
             case "holte if":
                 return R.drawable.holte;
             case "team køge":
+            case "team køge volley":
                 return R.drawable.koge;
             case "elite volley aarhus":
                 return R.drawable.eva;
             case "brøndby vk":
                 return R.drawable.brondby;
             default:
-                return R.drawable.ic_cloud_off;
+                return R.drawable.ic_error_outline_black_48dp;
+        }
+    }
+
+    public static class TeamComparator implements Comparator<TeamModel> {
+        public int compare(TeamModel entry1, TeamModel entry2) {
+            return entry1.name.compareTo(entry2.name);
         }
     }
 }

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
-import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -42,8 +41,6 @@ public class SetView extends LinearLayout {
 
     private void init() {
         inflate(getContext(), R.layout.set_view, this);
-        backgroundDrawable = (GradientDrawable) ContextCompat.getDrawable(getContext(), R.drawable.set_result_background);
-        setBackgroundDrawable(backgroundDrawable);
         setOrientation(HORIZONTAL);
         ButterKnife.bind(this);
     }
