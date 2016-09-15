@@ -5,8 +5,8 @@
   <string name="title_section2">Section 2</string>
   <string name="title_section3">Section 3</string>
 
-  <string name="navigation_drawer_open">Åbne navigation drawer</string>
-  <string name="navigation_drawer_close">Lukke navigation drawer</string>
+  <string name="navigation_drawer_open">Åbne navigation</string>
+  <string name="navigation_drawer_close">Lukke navigation</string>
 
   <string name="action_example">Eksempel</string>
 
@@ -18,8 +18,9 @@
   <string name="signed_in">Signed in</string>
   <string name="sign_in_error">Error</string>
   <string name="no_favorite_team_selected">Ingen hold valgt</string>
-  <string name="select_favorite_team">Valgte favoritter</string>
-  <string name="choose">Vælg</string>
+  <string name="select_favorite_team">Kommer</string>
+  <string name="choose">Modtaget</string>
+  <string name="clear_all">.</string>
   <string name="notify_in_advance_title">Notification i forkant af kamp</string>
   <string name="OK">OK</string>
   <string name="Cancel">Cancel</string>
@@ -27,9 +28,22 @@
   <string name="days">dage</string>
   <string name="hours">timer</string>
   <string name="minutes">minutter</string>
-  <string name="empty" />
   <string name="before">før</string>
   <string name="postpone">Påmind mig senere</string>
+  <string name="matches">Kampe</string>
+  <string name="league_standings">Tabellen</string>
+  <string name="settings">Indstillinger</string>
+  <string name="male">Herrer</string>
+  <string name="female">Damer</string>
+  <string name="enable">Enable</string>
+  <string name="receive_notifications">Modtag notifications i forkant af kampe med dine favorithold</string>
+  <string name="archived">arkiverede</string>
+  <string name="today">dagens</string>
+  <string name="future">fremtidige</string>
+  <string name="matches_found">kampe fundet</string>
+  <string name="no">Ingen</string>
+  <string name="info">Information</string>
+  <string name="tmatches">Kampe</string>
 
   <string-array name="gender_type">
     <item>Herrer</item>

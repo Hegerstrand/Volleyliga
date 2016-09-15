@@ -4,16 +4,16 @@
     <item
         android:id="@+id/match_list"
         android:icon="@drawable/ic_view_list_black_24dp"
-        android:title="Matches" />
+        android:title="@string/matches" />
     <item
         android:id="@+id/standings"
         android:icon="@drawable/ic_rankings"
-        android:title="League standings" />
+        android:title="@string/league_standings" />
     <item
         android:id="@+id/settings"
         android:icon="@drawable/ic_settings_black_24dp"
-        android:title="Settings" />
-    <item android:title="Male">
+        android:title="@string/settings" />
+    <item android:title="@string/male">
         <menu>
             <group
                 android:id="@+id/maleTeamGroup"
@@ -50,10 +50,14 @@
                     android:id="@+id/randers"
                     android:icon="@drawable/randers"
                     android:title="Randers Novo Volley" />
+                <item
+                    android:id="@+id/vestsjalland"
+                    android:icon="@drawable/vestsjalland"
+                    android:title="VK Væstsjælland" />
             </group>
         </menu>
     </item>
-    <item android:title="Female">
+    <item android:title="@string/female">
         <menu>
             <group
                 android:id="@+id/femaleTeamGroup"
@@ -82,10 +86,6 @@
                     android:id="@+id/holte"
                     android:icon="@drawable/holte"
                     android:title="Holte IF" />
-                <item
-                    android:id="@+id/lyngbyVolleyFemale"
-                    android:icon="@drawable/lyngby"
-                    android:title="Lyngby Volley" />
                 <item
                     android:id="@+id/koge"
                     android:icon="@drawable/koge"

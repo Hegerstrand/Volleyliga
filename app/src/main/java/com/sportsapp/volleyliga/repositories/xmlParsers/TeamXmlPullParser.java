@@ -71,9 +71,9 @@ public class TeamXmlPullParser {
             case "teamMail":
                 team.email = parser.getText();
                 break;
-            case "teamPhone":
+/*            case "teamPhone":
                 team.phoneNumber = parser.getText();
-                break;
+                break;*/
             case "teamGym":
                 team.stadium = parser.getText();
                 break;

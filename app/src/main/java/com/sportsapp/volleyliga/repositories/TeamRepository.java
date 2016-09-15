@@ -42,7 +42,7 @@ public class TeamRepository {
 
     public void saveXml(String teamXml) {
         try {
-            File file = new File(filesDir, "Teams.xml");
+            File file = new File(filesDir, "teams.xml");
 
             FileWriter fileWriter = new FileWriter(file, false);
             fileWriter.write(teamXml);
@@ -55,7 +55,7 @@ public class TeamRepository {
 
     public String getXml() {
         try {
-            File file = new File(filesDir, "Teams.xml");
+            File file = new File(filesDir, "teams.xml");
             if (!file.exists()) {
                 fetchTeamXml();
                 return Constants.TEAM_XML;
@@ -137,9 +137,9 @@ public class TeamRepository {
     }
 
     public League getLeagueForTeam(TeamModel team) {
-        if(0 < team.id && team.id < 9){
+        if(100 < team.id && team.id < 200){
             return League.MALE;
-        } else if (8 < team.id && team.id < 17){
+        } else if (200 < team.id && team.id < 300){
             return League.FEMALE;
         }
         return League.UNKNOWN;
@@ -147,46 +147,36 @@ public class TeamRepository {
 
     public int getTeamMenuItemId(int teamId) {
         switch(teamId){
-            case 1:
+            case 101:
                 return R.id.asv_aarhus;
-            case 2:
+            case 102:
                 return R.id.marienlyst;
-            case 3:
+            case 103:
                 return R.id.gentofte;
-            case 4:
+            case 104:
                 return R.id.hvidovre;
-            case 5:
+            case 105:
                 return R.id.ishoj;
-            case 6:
+            case 106:
                 return R.id.lyngby_gladsaxe;
-            case 7:
+            case 107:
                 return R.id.middelfart;
-            case 8:
-                return R.id.randers;
-            case 9:
+            case 108:
+                return R.id.vestsjalland;
+            case 201:
                 return R.id.amager;
-            case 10:
+            case 202:
                 return R.id.brondby;
-            case 11:
+            case 203:
                 return R.id.odense;
-            case 12:
+            case 204:
                 return R.id.eliteVolleyAarhus;
-            case 13:
+            case 205:
                 return R.id.fortuna;
-            case 14:
+            case 206:
                 return R.id.holte;
-            case 15:
-                return R.id.lyngbyVolleyFemale;
-            case 16:
+            case 207:
                 return R.id.koge;
-//            case 17:
-//                return R.id.randersNovoIkast;
-//            case 18:
-//                return R.id.esbjerg;
-//            case 19:
-//                return R.id.vestsjaelland;
-//            case 20:
-//                return R.id.bedsted
         }
         return 0;
     }
@@ -220,9 +210,10 @@ public class TeamRepository {
                 startIndex = 1;
                 break;
             case FEMALE:
-                startIndex = 8;
+                startIndex = 9;
                 break;
         }
+
         for (int i = startIndex; i < startIndex + 8; i++) {
             TeamModel team = getTeam(i);
             if(team != null){

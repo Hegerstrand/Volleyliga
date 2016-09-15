@@ -168,7 +168,7 @@ public class SettingsFragment extends Fragment {
                     return true;
                 })
                 .positiveText(R.string.choose)
-                .neutralText("Clear all")
+                .neutralText(R.string.clear_all)
                 .autoDismiss(false)
                 .onNeutral((dialog1, which1) -> dialog1.clearSelectedIndices())
                 .onPositive((dialog, which) -> {

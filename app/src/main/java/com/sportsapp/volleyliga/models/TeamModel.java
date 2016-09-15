@@ -10,7 +10,8 @@ public class TeamModel {
     public String name = "";
     public int logoRef = R.drawable.ic_cloud_off;
     public int id = 0;
-    public String shortName = "", initials = "", homePage = "", facebookId = "", email = "", stadium = "", stadiumAddress = "", mapsUrl = "", phoneNumber = "";
+    public String shortName = "", initials = "", homePage = "", facebookId = "", email = "", stadium = "", stadiumAddress = "", mapsUrl = "";
+    //, phoneNumber = "";
     public double lat = 0, lon = 0;
     public List<TeamPlayer> players = new ArrayList<>();
 
@@ -65,13 +66,16 @@ public class TeamModel {
                 return R.drawable.lyngby;
             case "middelfart vk":
                 return R.drawable.middelfart;
-            case "randers novo volley":
+            case "randers":
                 return R.drawable.randers;
+            case "vestsjælland":
+                return R.drawable.vestsjalland;
             case "amager vk":
                 return R.drawable.amager;
             case "fortuna odense volley":
                 return R.drawable.fortuna;
             case "holte if":
+            case "holte":
                 return R.drawable.holte;
             case "team køge":
             case "team køge volley":

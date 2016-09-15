@@ -71,7 +71,9 @@ public class TeamFragment extends Fragment implements DrawerFragment, TeamDetail
 
 
     private TeamDetailPagerAdapter pagerAdapter;
-    private String PHOTO_BASE_URL = "http://www.pocketpalsson.com/volleyball/";
+    private String PHOTO_BASE_URL = "http://res.cloudinary.com/volleyapp/image/upload/w_1000/";
+    //private String PHOTO_BASE_URL = "http://res.cloudinary.com/volleyapp/image/upload/w_300/";
+    //http://res.cloudinary.com/volleyapp/image/upload/w_300,r_max/
 
     private TeamDetailPresenter presenter;
     private MainActivityListener activityListener;
@@ -243,9 +245,9 @@ public class TeamFragment extends Fragment implements DrawerFragment, TeamDetail
         @Override
         public CharSequence getPageTitle(int position) {
             if (position == 0) {
-                return "Information";
+                return getString(R.string.info);
             } else if (position == 1) {
-                return "Matches";
+                return getString(R.string.tmatches);
             }
             return "";
         }
