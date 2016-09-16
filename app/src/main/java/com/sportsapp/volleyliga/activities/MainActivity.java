@@ -218,49 +218,49 @@ public class MainActivity extends AppCompatActivity implements MainActivityListe
                 openSettings();
                 break;
             case R.id.asv_aarhus:
-                openTeam(101);
+                openTeam(1101);
                 break;
             case R.id.marienlyst:
-                openTeam(102);
+                openTeam(1102);
                 break;
             case R.id.gentofte:
-                openTeam(103);
+                openTeam(1103);
                 break;
             case R.id.hvidovre:
-                openTeam(104);
+                openTeam(1104);
                 break;
             case R.id.ishoj:
-                openTeam(105);
+                openTeam(1105);
                 break;
             case R.id.lyngby_gladsaxe:
-                openTeam(106);
+                openTeam(1106);
                 break;
             case R.id.middelfart:
-                openTeam(107);
+                openTeam(1107);
                 break;
             case R.id.vestsjalland:
-                openTeam(108);
+                openTeam(1108);
                 break;
             case R.id.amager:
-                openTeam(201);
+                openTeam(1201);
                 break;
             case R.id.brondby:
-                openTeam(202);
-                break;
-            case R.id.odense:
-                openTeam(203);
+                openTeam(1202);
                 break;
             case R.id.eliteVolleyAarhus:
-                openTeam(204);
+                openTeam(1204);
                 break;
             case R.id.fortuna:
-                openTeam(205);
+                openTeam(1205);
                 break;
             case R.id.holte:
-                openTeam(206);
+                openTeam(1206);
+                break;
+            case R.id.ikast:
+                openTeam(203);
                 break;
             case R.id.koge:
-                openTeam(207);
+                openTeam(1207);
                 break;
         }
         return false;

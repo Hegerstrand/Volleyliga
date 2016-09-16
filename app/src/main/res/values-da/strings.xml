@@ -44,6 +44,7 @@
   <string name="no">Ingen</string>
   <string name="info">Information</string>
   <string name="tmatches">Kampe</string>
+  <string name="favorited">Favorited! You will now receive notifications prior to this teams games.</string>
 
   <string-array name="gender_type">
     <item>Herrer</item>

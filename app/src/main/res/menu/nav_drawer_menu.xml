@@ -71,10 +71,6 @@
                     android:icon="@drawable/brondby"
                     android:title="Brøndby VK" />
                 <item
-                    android:id="@+id/odense"
-                    android:icon="@drawable/dhv"
-                    android:title="DHV Odense" />
-                <item
                     android:id="@+id/eliteVolleyAarhus"
                     android:icon="@drawable/eva"
                     android:title="Elite Volley Aarhus" />
@@ -86,6 +82,10 @@
                     android:id="@+id/holte"
                     android:icon="@drawable/holte"
                     android:title="Holte IF" />
+                <item
+                    android:id="@+id/ikast"
+                    android:icon="@drawable/ikast"
+                    android:title="Ikast KFUM" />
                 <item
                     android:id="@+id/koge"
                     android:icon="@drawable/koge"

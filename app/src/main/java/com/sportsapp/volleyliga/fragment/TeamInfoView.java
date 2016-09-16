@@ -227,6 +227,8 @@ public class TeamInfoView extends LinearLayout {
         }
     }
 */
+
+
     @OnClick(R.id.facebook)
     public void openFacebook() {
         if (team == null) {

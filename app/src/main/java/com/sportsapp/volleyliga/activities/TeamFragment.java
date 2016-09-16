@@ -154,7 +154,7 @@ public class TeamFragment extends Fragment implements DrawerFragment, TeamDetail
         btnFavorite.setLiked(isFavorite);
         TeamRepository.instance.setIsFavoriteTeam(getActivity(), teamId, isFavorite);
         if(isFavorite) {
-            snackbar = Snackbar.make(coordinatorLayout, "Favorited! You will now receive notifications prior to this teams games.", Snackbar.LENGTH_LONG);
+            snackbar = Snackbar.make(coordinatorLayout, R.string.favorited, Snackbar.LENGTH_LONG);
             View snackbarView = snackbar.getView();
             ViewGroup group = (ViewGroup) snackbar.getView();
             TextView tv = (TextView) group.findViewById(android.support.design.R.id.snackbar_text);

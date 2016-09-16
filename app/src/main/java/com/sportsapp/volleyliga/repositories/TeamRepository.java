@@ -125,11 +125,11 @@ public class TeamRepository {
         }
         return null;
     }
-
+//JOLN
     public TeamModel getTeam(String name) {
-        if(name.equalsIgnoreCase("Team Køge")){
+/*        if(name.equalsIgnoreCase("Team Køge")){
             name = "Team Køge Volley";
-        }
+        }*/
         if (nameToTeam.containsKey(name.toLowerCase())) {
             return nameToTeam.get(name.toLowerCase());
         }
@@ -137,9 +137,9 @@ public class TeamRepository {
     }
 
     public League getLeagueForTeam(TeamModel team) {
-        if(100 < team.id && team.id < 200){
+        if(1100 < team.id && team.id < 1200){
             return League.MALE;
-        } else if (200 < team.id && team.id < 300){
+        } else if (1200 < team.id && team.id < 1300){
             return League.FEMALE;
         }
         return League.UNKNOWN;
@@ -147,35 +147,35 @@ public class TeamRepository {
 
     public int getTeamMenuItemId(int teamId) {
         switch(teamId){
-            case 101:
+            case 1101:
                 return R.id.asv_aarhus;
-            case 102:
+            case 1102:
                 return R.id.marienlyst;
-            case 103:
+            case 1103:
                 return R.id.gentofte;
-            case 104:
+            case 1104:
                 return R.id.hvidovre;
-            case 105:
+            case 1105:
                 return R.id.ishoj;
-            case 106:
+            case 1106:
                 return R.id.lyngby_gladsaxe;
-            case 107:
+            case 1107:
                 return R.id.middelfart;
-            case 108:
+            case 1108:
                 return R.id.vestsjalland;
-            case 201:
+            case 1201:
                 return R.id.amager;
-            case 202:
+            case 1202:
                 return R.id.brondby;
-            case 203:
-                return R.id.odense;
-            case 204:
+            case 1203:
+                return R.id.ikast;
+            case 1204:
                 return R.id.eliteVolleyAarhus;
-            case 205:
+            case 1205:
                 return R.id.fortuna;
-            case 206:
+            case 1206:
                 return R.id.holte;
-            case 207:
+            case 1207:
                 return R.id.koge;
         }
         return 0;
