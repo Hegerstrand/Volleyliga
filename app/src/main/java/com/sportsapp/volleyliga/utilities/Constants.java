@@ -6,8 +6,8 @@ public class Constants {
 
 
     public static String TEAM_XML = "<teams>\n" +
-            "<team>\n" +
-            "<teamID>1</teamID>\n" +
+/*            "<team>\n" +
+            "<teamID>1101</teamID>\n" +
             "<teamName>ASV Århus</teamName>\n" +
             "<shortTeamName>Århus</shortTeamName>\n" +
             "<teamInitials>ASV</teamInitials>\n" +
@@ -1797,7 +1797,7 @@ public class Constants {
             "</player>\n" +
             "</players>\n" +
             "</team>\n" +
-            "<team>\n" +
+                        "<team>\n" +
             "<teamID>15</teamID>\n" +
             "<teamName>Lyngby Volley</teamName>\n" +
             "<shortTeamName>Lyngby</shortTeamName>\n" +
@@ -1942,8 +1942,9 @@ public class Constants {
             "</player>\n" +
             "</players>\n" +
             "</team>\n" +
+*/
             "<team>\n" +
-            "<teamID>16</teamID>\n" +
+            "<teamID>1207</teamID>\n" +
             "<teamName>Team Køge Volley</teamName>\n" +
             "<shortTeamName>Køge</shortTeamName>\n" +
             "<teamInitials>TKV</teamInitials>\n" +

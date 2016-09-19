@@ -49,10 +49,10 @@ public class TeamInfoView extends LinearLayout {
     public MenuItem email;
     @Bind(R.id.emailDivider)
     public View emailDivider;
-    @Bind(R.id.phone)
-    public MenuItem phone;
-    @Bind(R.id.phoneDivider)
-    public View phoneDivider;
+//    @Bind(R.id.phone)
+//    public MenuItem phone;
+//    @Bind(R.id.phoneDivider)
+//    public View phoneDivider;
     @Bind(R.id.nextMatch)
     public FutureMatchView nextMatchView;
     @Bind(R.id.nextMatchCard)
@@ -102,10 +102,10 @@ public class TeamInfoView extends LinearLayout {
             int emailVisibility = Util.isNullOrEmpty(team.email) ? View.GONE : View.VISIBLE;
             email.setVisibility(emailVisibility);
             emailDivider.setVisibility(emailVisibility);
-            phone.setValue(formatPhoneNumber(team.phoneNumber));
-            int phoneVisibility = Util.isNullOrEmpty(team.phoneNumber) ? View.GONE : View.VISIBLE;
-            phone.setVisibility(phoneVisibility);
-            phoneDivider.setVisibility(phoneVisibility);
+//            phone.setValue(formatPhoneNumber(team.phoneNumber));
+//           int phoneVisibility = Util.isNullOrEmpty(team.phoneNumber) ? View.GONE : View.VISIBLE
+//           phone.setVisibility(phoneVisibility);
+//            phoneDivider.setVisibility(phoneVisibility);
             tvStadium.setText(team.stadium);
             tvStadium.setVisibility(Util.isNullOrEmpty(team.stadium) ? View.GONE : View.VISIBLE);
             tvStadiumAddress.setText(team.stadiumAddress);
@@ -125,13 +125,13 @@ public class TeamInfoView extends LinearLayout {
         return result;
     }
 
-    private String formatPhoneNumber(String phoneNumber) {
+/*    private String formatPhoneNumber(String phoneNumber) {
         if(phoneNumber.length() < 8){
             return "";
         }
         return String.format("+45 %s %s %s %s", phoneNumber.substring(0, 2), phoneNumber.substring(2, 4), phoneNumber.substring(4, 6), phoneNumber.substring(6, 8));
     }
-
+*/
     private void updateStanding() {
         if (leagueStandingCard == null) {
             return;
@@ -217,7 +217,7 @@ public class TeamInfoView extends LinearLayout {
             getContext().startActivity(Intent.createChooser(emailIntent, "Send email..."));
         }
     }
-
+/*
     @OnClick(R.id.phone)
     public void callPhoneNumber() {
         if (team != null) {
@@ -226,6 +226,8 @@ public class TeamInfoView extends LinearLayout {
             getContext().startActivity(intent);
         }
     }
+*/
+
 
     @OnClick(R.id.facebook)
     public void openFacebook() {

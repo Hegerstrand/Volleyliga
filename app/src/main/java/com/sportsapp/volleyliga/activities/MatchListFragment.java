@@ -99,6 +99,8 @@ public class MatchListFragment extends Fragment implements DrawerFragment, Match
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
 
+
+
         ArrayAdapter adapter = ArrayAdapter.createFromResource(getActivity(), R.array.gender_type, R.layout.spinner_selected_item);
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         spinner.setAdapter(adapter);

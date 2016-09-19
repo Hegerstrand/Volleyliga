@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityListe
 
     public static final String FEDERATION_MATCH_NUMBER = "federationMatchNumber";
 
-    public static DateTime referenceTime = new DateTime(2016, 1, 9, 0, 0);
+//    public static DateTime referenceTime = new DateTime(2016, 1, 9, 0, 0);
     private int activeMenuItemId = -1;
 
     @Override
@@ -218,52 +218,49 @@ public class MainActivity extends AppCompatActivity implements MainActivityListe
                 openSettings();
                 break;
             case R.id.asv_aarhus:
-                openTeam(1);
+                openTeam(1101);
                 break;
             case R.id.marienlyst:
-                openTeam(2);
+                openTeam(1102);
                 break;
             case R.id.gentofte:
-                openTeam(3);
+                openTeam(1103);
                 break;
             case R.id.hvidovre:
-                openTeam(4);
+                openTeam(1104);
                 break;
             case R.id.ishoj:
-                openTeam(5);
+                openTeam(1105);
                 break;
             case R.id.lyngby_gladsaxe:
-                openTeam(6);
+                openTeam(1106);
                 break;
             case R.id.middelfart:
-                openTeam(7);
+                openTeam(1107);
                 break;
-            case R.id.randers:
-                openTeam(8);
+            case R.id.vestsjalland:
+                openTeam(1108);
                 break;
             case R.id.amager:
-                openTeam(9);
+                openTeam(1201);
                 break;
             case R.id.brondby:
-                openTeam(10);
-                break;
-            case R.id.odense:
-                openTeam(11);
+                openTeam(1202);
                 break;
             case R.id.eliteVolleyAarhus:
-                openTeam(12);
+                openTeam(1204);
                 break;
             case R.id.fortuna:
-                openTeam(13);
+                openTeam(1205);
                 break;
             case R.id.holte:
-                openTeam(14);
+                openTeam(1206);
                 break;
-            case R.id.lyngbyVolleyFemale:
-                openTeam(15);
+            case R.id.ikast:
+                openTeam(203);
                 break;
             case R.id.koge:
-                openTeam(16);
+                openTeam(1207);
                 break;
         }
         return false;
@@ -276,3 +273,4 @@ public class MainActivity extends AppCompatActivity implements MainActivityListe
         }
     }
 }
+

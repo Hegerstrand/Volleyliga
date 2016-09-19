@@ -71,7 +71,9 @@ public class TeamFragment extends Fragment implements DrawerFragment, TeamDetail
 
 
     private TeamDetailPagerAdapter pagerAdapter;
-    private String PHOTO_BASE_URL = "http://www.pocketpalsson.com/volleyball/";
+    private String PHOTO_BASE_URL = "http://res.cloudinary.com/volleyapp/image/upload/w_1000/";
+    //private String PHOTO_BASE_URL = "http://res.cloudinary.com/volleyapp/image/upload/w_300/";
+    //http://res.cloudinary.com/volleyapp/image/upload/w_300,r_max/
 
     private TeamDetailPresenter presenter;
     private MainActivityListener activityListener;
@@ -152,7 +154,7 @@ public class TeamFragment extends Fragment implements DrawerFragment, TeamDetail
         btnFavorite.setLiked(isFavorite);
         TeamRepository.instance.setIsFavoriteTeam(getActivity(), teamId, isFavorite);
         if(isFavorite) {
-            snackbar = Snackbar.make(coordinatorLayout, "Favorited! You will now receive notifications prior to this teams games.", Snackbar.LENGTH_LONG);
+            snackbar = Snackbar.make(coordinatorLayout, R.string.favorited, Snackbar.LENGTH_LONG);
             View snackbarView = snackbar.getView();
             ViewGroup group = (ViewGroup) snackbar.getView();
             TextView tv = (TextView) group.findViewById(android.support.design.R.id.snackbar_text);
@@ -243,9 +245,9 @@ public class TeamFragment extends Fragment implements DrawerFragment, TeamDetail
         @Override
         public CharSequence getPageTitle(int position) {
             if (position == 0) {
-                return "Information";
+                return getString(R.string.info);
             } else if (position == 1) {
-                return "Matches";
+                return getString(R.string.tmatches);
             }
             return "";
         }

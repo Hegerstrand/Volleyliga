@@ -93,7 +93,7 @@ public class MatchListView extends LinearLayout implements OnRefreshListener {
             if (matches.isEmpty()) {
                 recyclerView.setVisibility(View.GONE);
                 emptyView.setVisibility(View.VISIBLE);
-                tvNoMatchesFound.setText("No " + getTypeName() + " matches found");
+                tvNoMatchesFound.setText(getContext().getString(R.string.no) + getTypeName() + getContext().getString(R.string.matches_found));
             } else {
                 recyclerView.setVisibility(View.VISIBLE);
                 emptyView.setVisibility(View.GONE);
@@ -106,11 +106,11 @@ public class MatchListView extends LinearLayout implements OnRefreshListener {
     private String getTypeName() {
         switch (matchType) {
             case PAST:
-                return "archived";
+                return getContext().getString(R.string.archived);
             case TODAY:
-                return "today";
+                return getContext().getString(R.string.today);
             case FUTURE:
-                return "future";
+                return getContext().getString(R.string.future);
         }
         return "";
     }

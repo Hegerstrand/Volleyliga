@@ -23,7 +23,7 @@
                 android:id="@+id/tvLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Enable"
+                android:text="@string/enable"
                 android:textAppearance="?android:attr/textAppearanceListItem" />
 
             <TextView
@@ -33,7 +33,7 @@
                 android:layout_alignLeft="@id/tvLabel"
                 android:layout_below="@id/tvLabel"
                 android:maxLines="10"
-                android:text="Receive notifications prior to matches by your favorite teams"
+                android:text="@string/receive_notifications"
                 android:textColor="?android:attr/textColorSecondary"
                 android:textSize="14sp" />
 

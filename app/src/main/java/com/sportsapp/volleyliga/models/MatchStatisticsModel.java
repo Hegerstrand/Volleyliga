@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Parcel
+//JOLN
 public class MatchStatisticsModel {
     public StatisticModel attacks = new StatisticModel("Attacks");
     public StatisticModel blocks = new StatisticModel("Blocks");

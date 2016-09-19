@@ -91,10 +91,10 @@ public class MatchModel {
     }
 
     public String getTitle() {
-        return teamHome.shortName + " " + setsWonByHome + " - " + setsWonByGuest + " " + teamGuest.shortName;
+/*        return teamHome.shortName + " " + setsWonByHome + " - " + setsWonByGuest + " " + teamGuest.shortName;
     }
 
-    public String getHashtag() {
+    public String getHashtag() {*/
         return "#" + teamHome.initials + "vs" + teamGuest.initials;
     }
 
