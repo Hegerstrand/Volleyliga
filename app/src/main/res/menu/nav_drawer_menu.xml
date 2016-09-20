@@ -47,10 +47,6 @@
                     android:icon="@drawable/middelfart"
                     android:title="Middelfart VK" />
                 <item
-                    android:id="@+id/randers"
-                    android:icon="@drawable/randers"
-                    android:title="Randers Novo Volley" />
-                <item
                     android:id="@+id/vestsjalland"
                     android:icon="@drawable/vestsjalland"
                     android:title="VK Væstsjælland" />

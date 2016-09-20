@@ -1,5 +1,6 @@
 package com.sportsapp.volleyliga.models;
 
+import com.koushikdutta.ion.Ion;
 import com.sportsapp.volleyliga.R;
 
 import java.util.ArrayList;
@@ -12,6 +13,9 @@ public class TeamModel {
     public int id = 0;
     public String shortName = "", initials = "", homePage = "", facebookId = "", email = "", stadium = "", stadiumAddress = "", mapsUrl = "";
     //, phoneNumber = "";
+
+//    private String LOGO_BASE_URL = "http://res.cloudinary.com/volleyapp/image/upload/w_200/";
+
     public double lat = 0, lon = 0;
     public List<TeamPlayer> players = new ArrayList<>();
 
@@ -42,12 +46,9 @@ public class TeamModel {
 
     }
 
-    @Override
-    public int hashCode() {
-        return name != null ? name.hashCode() : 0;
-    }
 
     private int getLogoRef() {
+
         switch (name.toLowerCase()) {
             case "asv århus":
                 return R.drawable.asvaarhus;
@@ -66,8 +67,6 @@ public class TeamModel {
                 return R.drawable.lyngby;
             case "middelfart vk":
                 return R.drawable.middelfart;
-            case "randers":
-                return R.drawable.randers;
             case "vestsjælland":
                 return R.drawable.vestsjalland;
             case "amager vk":

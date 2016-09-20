@@ -19,6 +19,8 @@ import butterknife.ButterKnife;
 
 public class FutureMatchView extends FrameLayout {
 
+    @SuppressWarnings("ResourceType")
+
     @Bind(R.id.tvHomeTeam)
     public TextView tvHomeTeam;
     @Bind(R.id.ivHomeTeam)

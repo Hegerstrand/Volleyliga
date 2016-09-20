@@ -174,7 +174,7 @@ public class TeamFragment extends Fragment implements DrawerFragment, TeamDetail
         if (activityListener != null && activityListener.isFragmentShown(this)) {
             activityListener.setupContainerUI(toolbar, navigationView, TeamRepository.instance.getTeamMenuItemId(teamId));
             if (team != null) {
-                activityListener.getSupportActionbar().setTitle(team.name);
+                activityListener.getSupportActionbar().setTitle("");//team.name);
             }
         }
     }
@@ -212,7 +212,7 @@ public class TeamFragment extends Fragment implements DrawerFragment, TeamDetail
     @Override
     public void setTeamModel(TeamModel team) {
         if (activityListener != null) {
-            activityListener.getSupportActionbar().setTitle(team.name);
+            activityListener.getSupportActionbar().setTitle("");//team.name);
         }
         this.team = team;
         pagerAdapter.infoView.setTeamModel(team);
@@ -245,9 +245,9 @@ public class TeamFragment extends Fragment implements DrawerFragment, TeamDetail
         @Override
         public CharSequence getPageTitle(int position) {
             if (position == 0) {
-                return getString(R.string.info);
-            } else if (position == 1) {
                 return getString(R.string.tmatches);
+            } else if (position == 1) {
+                return getString(R.string.info);
             }
             return "";
         }
@@ -262,10 +262,10 @@ public class TeamFragment extends Fragment implements DrawerFragment, TeamDetail
             View view = null;
             switch (position) {
                 case 0:
-                    view = infoView;
+                    view = teamMatchView;
                     break;
                 case 1:
-                    view = teamMatchView;
+                    view = infoView;
                     break;
                 default:
                     return null;

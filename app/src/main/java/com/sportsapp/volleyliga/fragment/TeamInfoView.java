@@ -102,10 +102,12 @@ public class TeamInfoView extends LinearLayout {
             int emailVisibility = Util.isNullOrEmpty(team.email) ? View.GONE : View.VISIBLE;
             email.setVisibility(emailVisibility);
             emailDivider.setVisibility(emailVisibility);
-//            phone.setValue(formatPhoneNumber(team.phoneNumber));
-//           int phoneVisibility = Util.isNullOrEmpty(team.phoneNumber) ? View.GONE : View.VISIBLE
-//           phone.setVisibility(phoneVisibility);
-//            phoneDivider.setVisibility(phoneVisibility);
+            /*
+            phone.setValue(formatPhoneNumber(team.phoneNumber));
+            int phoneVisibility = Util.isNullOrEmpty(team.phoneNumber) ? View.GONE : View.VISIBLE
+            phone.setVisibility(phoneVisibility);
+            phoneDivider.setVisibility(phoneVisibility);
+            */
             tvStadium.setText(team.stadium);
             tvStadium.setVisibility(Util.isNullOrEmpty(team.stadium) ? View.GONE : View.VISIBLE);
             tvStadiumAddress.setText(team.stadiumAddress);

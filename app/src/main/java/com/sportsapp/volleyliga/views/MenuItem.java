@@ -31,6 +31,8 @@ public class MenuItem extends FrameLayout {
     @StyledAttr(R.styleable.MenuItem_includeArrow)
     public boolean includeArrow;
 
+    @SuppressWarnings("ResourceType")
+
     @Bind(R.id.tvTitle)
     public TextView tvTitle;
     @Bind(R.id.tvValue)
@@ -39,7 +41,6 @@ public class MenuItem extends FrameLayout {
     public View arrow;
     @Bind(R.id.icon)
     public ImageView iconView;
-
 
     public MenuItem(Context context) {
         super(context);
@@ -56,6 +57,13 @@ public class MenuItem extends FrameLayout {
         Barber.style(this, attrs, R.styleable.MenuItem, defStyleAttr);
         init();
     }
+/*
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public MenuItem(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        Barber.style(this, attrs, R.styleable.MenuItem, defStyleAttr, defStyleRes);
+    }
+*/
 
     private void init() {
         inflate(getContext(), R.layout.menu_item, this);

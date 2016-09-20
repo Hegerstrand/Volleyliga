@@ -20,7 +20,7 @@ import android.view.ViewGroup;
 import com.sportsapp.volleyliga.utilities.SharedPrefsHelper;
 
 public class NavigationDrawerFragment extends Fragment {
-
+    @SuppressWarnings("ResourceType")
 
     private ActionBarDrawerToggle drawerToggle;
 
