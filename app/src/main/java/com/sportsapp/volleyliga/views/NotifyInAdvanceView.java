@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.views;
+package com.volleyapp.volleyliga.views;
 
 import android.content.Context;
 import android.widget.EditText;
@@ -6,9 +6,9 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 
-import com.sportsapp.volleyliga.R;
-import com.sportsapp.volleyliga.models.TimeUnit;
-import com.sportsapp.volleyliga.utilities.Preferences;
+import com.volleyapp.volleyliga.R;
+import com.volleyapp.volleyliga.models.TimeUnit;
+import com.volleyapp.volleyliga.utilities.Preferences;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

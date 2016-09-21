@@ -38,7 +38,7 @@
                         android:gravity="center"
                         android:padding="8dp">
 
-                        <com.sportsapp.volleyliga.views.SquareImageView
+                        <com.volleyapp.volleyliga.views.SquareImageView
                             android:id="@+id/ivHomeLogo"
                             android:layout_width="72dp"
                             android:layout_height="72dp"
@@ -48,7 +48,7 @@
                             android:foreground="?attr/selectableItemBackground"
                             tools:src="@drawable/gentofte" />
 
-                        <com.sportsapp.volleyliga.views.SquareImageView
+                        <com.volleyapp.volleyliga.views.SquareImageView
                             android:id="@+id/ivGuestLogo"
                             android:layout_width="72dp"
                             android:layout_height="72dp"
@@ -58,7 +58,7 @@
                             android:foreground="?attr/selectableItemBackground"
                             tools:src="@drawable/marienlyst" />
 
-                        <com.sportsapp.volleyliga.views.SetFullDetailView
+                        <com.volleyapp.volleyliga.views.SetFullDetailView
                             android:id="@+id/allSetsView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
                             android:orientation="vertical"
                             android:padding="16dp">
 
-                        </com.sportsapp.volleyliga.views.SetFullDetailView>
+                        </com.volleyapp.volleyliga.views.SetFullDetailView>
                     </RelativeLayout>
 
                 </android.support.v7.widget.CardView>
@@ -83,7 +83,7 @@
                     android:layout_marginTop="8dp"
                     android:background="#FFFFFF">
 
-                    <com.sportsapp.volleyliga.views.MatchStatsView
+                    <com.volleyapp.volleyliga.views.MatchStatsView
                         android:id="@+id/stats_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
@@ -112,7 +112,7 @@
                             android:text="Last match"
                             android:textAppearance="@style/cardTitle" />
 
-                        <com.sportsapp.volleyliga.views.MatchWithScoreView
+                        <com.volleyapp.volleyliga.views.MatchWithScoreView
                             android:id="@+id/lastMatch"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />

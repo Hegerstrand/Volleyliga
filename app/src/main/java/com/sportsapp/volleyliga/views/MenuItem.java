@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.views;
+package com.volleyapp.volleyliga.views;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
@@ -8,7 +8,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.sportsapp.volleyliga.R;
+import com.volleyapp.volleyliga.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

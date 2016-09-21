@@ -74,7 +74,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1" />
 
-                        <com.sportsapp.volleyliga.views.SetSummaryView
+                        <com.volleyapp.volleyliga.views.SetSummaryView
                             android:id="@+id/allSetsView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -91,12 +91,12 @@
                         android:layout_height="1dp"
                         android:background="?android:attr/listDivider" />
 
-                    <com.sportsapp.volleyliga.views.MatchStatsView
+                    <com.volleyapp.volleyliga.views.MatchStatsView
                         android:id="@+id/stats_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
-                    <com.sportsapp.volleyliga.views.MatchStatsView
+                    <com.volleyapp.volleyliga.views.MatchStatsView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                 </LinearLayout>

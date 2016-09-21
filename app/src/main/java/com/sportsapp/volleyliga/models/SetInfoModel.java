@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.models;
+package com.volleyapp.volleyliga.models;
 
 public class SetInfoModel {
     public int scoreHome, scoreGuest, minutesPlayed;

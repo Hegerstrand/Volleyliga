@@ -42,9 +42,10 @@
   <string name="future">fremtidige</string>
   <string name="matches_found">kampe fundet</string>
   <string name="no">Ingen</string>
+  <string name="empty">tom</string>
   <string name="info">Information</string>
   <string name="tmatches">Kampe</string>
-  <string name="favorited">Favorited! You will now receive notifications prior to this teams games.</string>
+  <string name="favorited">Favorit! Denne funktion er under udvikling.</string>
 
   <string-array name="gender_type">
     <item>Herrer</item>

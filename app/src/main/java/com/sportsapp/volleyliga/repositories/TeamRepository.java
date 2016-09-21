@@ -1,13 +1,13 @@
-package com.sportsapp.volleyliga.repositories;
+package com.volleyapp.volleyliga.repositories;
 
 import android.content.Context;
 
-import com.sportsapp.volleyliga.R;
-import com.sportsapp.volleyliga.models.League;
-import com.sportsapp.volleyliga.models.TeamModel;
-import com.sportsapp.volleyliga.repositories.xmlParsers.TeamXmlPullParser;
-import com.sportsapp.volleyliga.utilities.Constants;
-import com.sportsapp.volleyliga.utilities.Preferences;
+import com.volleyapp.volleyliga.R;
+import com.volleyapp.volleyliga.models.League;
+import com.volleyapp.volleyliga.models.TeamModel;
+import com.volleyapp.volleyliga.repositories.xmlParsers.TeamXmlPullParser;
+import com.volleyapp.volleyliga.utilities.Constants;
+import com.volleyapp.volleyliga.utilities.Preferences;
 
 import java.io.BufferedReader;
 import java.io.File;

@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.fragment;
+package com.volleyapp.volleyliga.fragment;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
@@ -7,18 +7,18 @@ import android.support.v7.widget.CardView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.sportsapp.volleyliga.R;
-import com.sportsapp.volleyliga.models.MatchModel;
-import com.sportsapp.volleyliga.repositories.MatchRepository;
-import com.sportsapp.volleyliga.utilities.BusProvider;
-import com.sportsapp.volleyliga.utilities.CustomBus;
-import com.sportsapp.volleyliga.utilities.busEvents.DestructionEvent;
-import com.sportsapp.volleyliga.utilities.busEvents.OpenMatchEvent;
-import com.sportsapp.volleyliga.utilities.busEvents.OpenTeamEvent;
-import com.sportsapp.volleyliga.utilities.busEvents.TriggerMatchLoadingEvent;
-import com.sportsapp.volleyliga.views.MatchStatsView;
-import com.sportsapp.volleyliga.views.MatchWithScoreView;
-import com.sportsapp.volleyliga.views.SetFullDetailView;
+import com.volleyapp.volleyliga.R;
+import com.volleyapp.volleyliga.models.MatchModel;
+import com.volleyapp.volleyliga.repositories.MatchRepository;
+import com.volleyapp.volleyliga.utilities.BusProvider;
+import com.volleyapp.volleyliga.utilities.CustomBus;
+import com.volleyapp.volleyliga.utilities.busEvents.DestructionEvent;
+import com.volleyapp.volleyliga.utilities.busEvents.OpenMatchEvent;
+import com.volleyapp.volleyliga.utilities.busEvents.OpenTeamEvent;
+import com.volleyapp.volleyliga.utilities.busEvents.TriggerMatchLoadingEvent;
+import com.volleyapp.volleyliga.views.MatchStatsView;
+import com.volleyapp.volleyliga.views.MatchWithScoreView;
+import com.volleyapp.volleyliga.views.SetFullDetailView;
 import com.squareup.otto.Subscribe;
 
 import butterknife.Bind;

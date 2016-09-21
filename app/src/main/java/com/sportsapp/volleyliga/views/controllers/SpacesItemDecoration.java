@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.views.controllers;
+package com.volleyapp.volleyliga.views.controllers;
 
 import android.content.Context;
 import android.content.res.TypedArray;

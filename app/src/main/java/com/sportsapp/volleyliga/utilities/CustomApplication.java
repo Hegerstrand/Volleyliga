@@ -1,10 +1,10 @@
-package com.sportsapp.volleyliga.utilities;
+package com.volleyapp.volleyliga.utilities;
 
 
 import com.activeandroid.app.Application;
-import com.sportsapp.volleyliga.repositories.LeagueStandingRepository;
-import com.sportsapp.volleyliga.repositories.MatchRepository;
-import com.sportsapp.volleyliga.repositories.TeamRepository;
+import com.volleyapp.volleyliga.repositories.LeagueStandingRepository;
+import com.volleyapp.volleyliga.repositories.MatchRepository;
+import com.volleyapp.volleyliga.repositories.TeamRepository;
 
 public class CustomApplication extends Application {
 

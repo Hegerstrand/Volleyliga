@@ -1,11 +1,11 @@
-package com.sportsapp.volleyliga.utilities;
+package com.volleyapp.volleyliga.utilities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.common.base.Strings;
-import com.sportsapp.volleyliga.models.League;
-import com.sportsapp.volleyliga.models.TimeUnit;
+import com.volleyapp.volleyliga.models.League;
+import com.volleyapp.volleyliga.models.TimeUnit;
 
 import java.util.HashSet;
 

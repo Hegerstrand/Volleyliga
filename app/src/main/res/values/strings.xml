@@ -42,10 +42,10 @@
     <string name="future">future</string>
     <string name="matches_found">matches found</string>
     <string name="no">no</string>
-    <string name="empty" />
+    <string name="empty">empty</string>
     <string name="info">Information</string>
     <string name="tmatches">Matches</string>
-    <string name="favorited">Favorited! You will now receive notifications prior to this teams games.</string>
+    <string name="favorited">Favorited! This function is under development.</string>
 
     <string-array name="gender_type">
         <item>Male</item>

@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.utilities;
+package com.volleyapp.volleyliga.utilities;
 
 import java.util.ArrayList;
 import java.util.Collection;

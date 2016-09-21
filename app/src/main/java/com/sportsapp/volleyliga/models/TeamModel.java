@@ -1,7 +1,7 @@
-package com.sportsapp.volleyliga.models;
+package com.volleyapp.volleyliga.models;
 
 import com.koushikdutta.ion.Ion;
-import com.sportsapp.volleyliga.R;
+import com.volleyapp.volleyliga.R;
 
 import java.util.ArrayList;
 import java.util.Comparator;

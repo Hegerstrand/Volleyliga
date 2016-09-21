@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.repositories;
+package com.volleyapp.volleyliga.repositories;
 
 import com.google.common.io.CharStreams;
 import com.squareup.okhttp.RequestBody;

@@ -1,6 +1,6 @@
-package com.sportsapp.volleyliga.models;
+package com.volleyapp.volleyliga.models;
 
-import com.sportsapp.volleyliga.utilities.Util;
+import com.volleyapp.volleyliga.utilities.Util;
 
 import org.parceler.Parcel;
 

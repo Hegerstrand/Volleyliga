@@ -1,8 +1,8 @@
-package com.sportsapp.volleyliga.models;
+package com.volleyapp.volleyliga.models;
 
 import android.support.annotation.StringRes;
 
-import com.sportsapp.volleyliga.R;
+import com.volleyapp.volleyliga.R;
 
 public enum TimeUnit {
     Minutes,

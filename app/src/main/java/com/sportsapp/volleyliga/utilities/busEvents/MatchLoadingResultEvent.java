@@ -1,6 +1,6 @@
-package com.sportsapp.volleyliga.utilities.busEvents;
+package com.volleyapp.volleyliga.utilities.busEvents;
 
-import com.sportsapp.volleyliga.models.MatchModel;
+import com.volleyapp.volleyliga.models.MatchModel;
 
 public class MatchLoadingResultEvent {
     public MatchModel match;

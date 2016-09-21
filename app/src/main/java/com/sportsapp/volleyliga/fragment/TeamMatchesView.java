@@ -1,19 +1,19 @@
-package com.sportsapp.volleyliga.fragment;
+package com.volleyapp.volleyliga.fragment;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.LinearLayout;
 
-import com.sportsapp.volleyliga.R;
-import com.sportsapp.volleyliga.models.MatchModel;
-import com.sportsapp.volleyliga.models.TeamModel;
-import com.sportsapp.volleyliga.presenters.TeamDetailMatchPresenter;
-import com.sportsapp.volleyliga.utilities.BusProvider;
-import com.sportsapp.volleyliga.utilities.busEvents.OpenMatchEvent;
-import com.sportsapp.volleyliga.views.TeamDetailMatchListView;
-import com.sportsapp.volleyliga.views.controllers.DividerItemDecoration;
-import com.sportsapp.volleyliga.views.controllers.MatchListAdapter;
+import com.volleyapp.volleyliga.R;
+import com.volleyapp.volleyliga.models.MatchModel;
+import com.volleyapp.volleyliga.models.TeamModel;
+import com.volleyapp.volleyliga.presenters.TeamDetailMatchPresenter;
+import com.volleyapp.volleyliga.utilities.BusProvider;
+import com.volleyapp.volleyliga.utilities.busEvents.OpenMatchEvent;
+import com.volleyapp.volleyliga.views.TeamDetailMatchListView;
+import com.volleyapp.volleyliga.views.controllers.DividerItemDecoration;
+import com.volleyapp.volleyliga.views.controllers.MatchListAdapter;
 
 import java.util.Collections;
 import java.util.List;

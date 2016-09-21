@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.activities;
+package com.volleyapp.volleyliga.activities;
 
 import android.support.annotation.IdRes;
 import android.support.design.widget.NavigationView;

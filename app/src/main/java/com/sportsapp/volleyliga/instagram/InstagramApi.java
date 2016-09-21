@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.instagram;
+package com.volleyapp.volleyliga.instagram;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,12 +6,12 @@ import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.sportsapp.volleyliga.instagram.busEvents.InstagramAuthCancelledEvent;
-import com.sportsapp.volleyliga.instagram.busEvents.InstagramAuthErrorEvent;
-import com.sportsapp.volleyliga.instagram.busEvents.InstagramTokenReceivedEvent;
-import com.sportsapp.volleyliga.instagram.gsonModels.GInstagramTagResponse;
-import com.sportsapp.volleyliga.utilities.CustomBus;
-import com.sportsapp.volleyliga.utilities.EpochDateConverter;
+import com.volleyapp.volleyliga.instagram.busEvents.InstagramAuthCancelledEvent;
+import com.volleyapp.volleyliga.instagram.busEvents.InstagramAuthErrorEvent;
+import com.volleyapp.volleyliga.instagram.busEvents.InstagramTokenReceivedEvent;
+import com.volleyapp.volleyliga.instagram.gsonModels.GInstagramTagResponse;
+import com.volleyapp.volleyliga.utilities.CustomBus;
+import com.volleyapp.volleyliga.utilities.EpochDateConverter;
 import com.squareup.otto.Subscribe;
 
 import java.util.Date;

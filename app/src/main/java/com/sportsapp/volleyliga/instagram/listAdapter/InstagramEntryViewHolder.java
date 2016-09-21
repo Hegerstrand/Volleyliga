@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.instagram.listAdapter;
+package com.volleyapp.volleyliga.instagram.listAdapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -6,8 +6,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.koushikdutta.ion.Ion;
-import com.sportsapp.volleyliga.R;
-import com.sportsapp.volleyliga.instagram.InstagramEntryModel;
+import com.volleyapp.volleyliga.R;
+import com.volleyapp.volleyliga.instagram.InstagramEntryModel;
 
 import java.util.Date;
 

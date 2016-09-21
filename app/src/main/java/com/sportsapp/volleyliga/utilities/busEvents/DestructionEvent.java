@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.utilities.busEvents;
+package com.volleyapp.volleyliga.utilities.busEvents;
 
 public class DestructionEvent {
 }

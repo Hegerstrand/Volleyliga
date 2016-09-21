@@ -96,7 +96,7 @@
             android:background="@drawable/circular_background"
             app:icon_size="24dp"
             app:icon_type="star"
-            app:layout_behavior="com.sportsapp.volleyliga.views.ScrollAwareFABBehavior"
+            app:layout_behavior="com.volleyapp.volleyliga.views.ScrollAwareFABBehavior"
             app:like_drawable="@drawable/ic_star_yellow_24dp"
             app:unlike_drawable="@drawable/ic_star_border_white_24dp" />
 

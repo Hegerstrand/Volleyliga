@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.instagram.gsonModels;
+package com.volleyapp.volleyliga.instagram.gsonModels;
 
 import com.google.gson.annotations.SerializedName;
 

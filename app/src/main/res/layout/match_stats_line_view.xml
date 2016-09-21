@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <com.sportsapp.volleyliga.views.MatchStatsBar
+        <com.volleyapp.volleyliga.views.MatchStatsBar
             android:id="@+id/leftBar"
             android:layout_width="0dp"
             android:layout_height="10dp"
@@ -68,7 +68,7 @@
             android:layout_height="3dp"
             android:background="@color/primary" />
 
-        <com.sportsapp.volleyliga.views.MatchStatsBar
+        <com.volleyapp.volleyliga.views.MatchStatsBar
             android:id="@+id/rightBar"
             android:layout_width="0dp"
             android:layout_height="10dp"

@@ -1,13 +1,13 @@
-package com.sportsapp.volleyliga.views;
+package com.volleyapp.volleyliga.views;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.widget.LinearLayout;
 
-import com.sportsapp.volleyliga.R;
-import com.sportsapp.volleyliga.models.SetInfoModel;
-import com.sportsapp.volleyliga.utilities.ContextHelper;
+import com.volleyapp.volleyliga.R;
+import com.volleyapp.volleyliga.models.SetInfoModel;
+import com.volleyapp.volleyliga.utilities.ContextHelper;
 
 import java.util.List;
 

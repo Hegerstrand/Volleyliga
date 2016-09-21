@@ -1,8 +1,8 @@
-package com.sportsapp.volleyliga.repositories;
+package com.volleyapp.volleyliga.repositories;
 
 import com.google.common.io.CharStreams;
-import com.sportsapp.volleyliga.models.MatchModel;
-import com.sportsapp.volleyliga.repositories.xmlParsers.MatchXmlPullParser;
+import com.volleyapp.volleyliga.models.MatchModel;
+import com.volleyapp.volleyliga.repositories.xmlParsers.MatchXmlPullParser;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.ResponseBody;
 

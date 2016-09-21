@@ -1,6 +1,6 @@
-package com.sportsapp.volleyliga.instagram;
+package com.volleyapp.volleyliga.instagram;
 
-import com.sportsapp.volleyliga.instagram.gsonModels.GInstagramEntry;
+import com.volleyapp.volleyliga.instagram.gsonModels.GInstagramEntry;
 
 import java.util.Date;
 

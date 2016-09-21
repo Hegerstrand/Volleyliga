@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.activities;
+package com.volleyapp.volleyliga.activities;
 
 public interface DrawerFragment {
 

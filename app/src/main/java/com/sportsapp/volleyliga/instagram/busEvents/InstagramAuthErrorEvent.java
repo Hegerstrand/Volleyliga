@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.instagram.busEvents;
+package com.volleyapp.volleyliga.instagram.busEvents;
 
 public class InstagramAuthErrorEvent {
     public String description;

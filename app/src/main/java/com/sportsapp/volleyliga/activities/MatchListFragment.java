@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.activities;
+package com.volleyapp.volleyliga.activities;
 
 import android.app.Activity;
 import android.content.Context;
@@ -23,18 +23,18 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import com.sportsapp.volleyliga.R;
-import com.sportsapp.volleyliga.fragment.MatchListView;
-import com.sportsapp.volleyliga.models.League;
-import com.sportsapp.volleyliga.models.MatchModel;
-import com.sportsapp.volleyliga.presenters.MatchListPresenter;
-import com.sportsapp.volleyliga.utilities.CustomBus;
-import com.sportsapp.volleyliga.utilities.Preferences;
-import com.sportsapp.volleyliga.utilities.busEvents.DestructionEvent;
-import com.sportsapp.volleyliga.utilities.busEvents.MatchListResultsReceivedEvent;
-import com.sportsapp.volleyliga.utilities.busEvents.TriggerMatchListLoadingEvent;
-import com.sportsapp.volleyliga.views.MatchListActivityView;
-import com.sportsapp.volleyliga.views.controllers.MatchListAdapter;
+import com.volleyapp.volleyliga.R;
+import com.volleyapp.volleyliga.fragment.MatchListView;
+import com.volleyapp.volleyliga.models.League;
+import com.volleyapp.volleyliga.models.MatchModel;
+import com.volleyapp.volleyliga.presenters.MatchListPresenter;
+import com.volleyapp.volleyliga.utilities.CustomBus;
+import com.volleyapp.volleyliga.utilities.Preferences;
+import com.volleyapp.volleyliga.utilities.busEvents.DestructionEvent;
+import com.volleyapp.volleyliga.utilities.busEvents.MatchListResultsReceivedEvent;
+import com.volleyapp.volleyliga.utilities.busEvents.TriggerMatchListLoadingEvent;
+import com.volleyapp.volleyliga.views.MatchListActivityView;
+import com.volleyapp.volleyliga.views.controllers.MatchListAdapter;
 import com.squareup.otto.Produce;
 import com.squareup.otto.Subscribe;
 

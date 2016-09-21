@@ -1,10 +1,10 @@
-package com.sportsapp.volleyliga.views.controllers;
+package com.volleyapp.volleyliga.views.controllers;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.sportsapp.volleyliga.models.MatchModel;
-import com.sportsapp.volleyliga.views.FutureMatchView;
+import com.volleyapp.volleyliga.models.MatchModel;
+import com.volleyapp.volleyliga.views.FutureMatchView;
 
 public class MatchFutureViewHolder extends RecyclerView.ViewHolder
         implements View.OnClickListener {

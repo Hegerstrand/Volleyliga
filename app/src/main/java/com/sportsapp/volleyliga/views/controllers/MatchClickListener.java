@@ -1,6 +1,6 @@
-package com.sportsapp.volleyliga.views.controllers;
+package com.volleyapp.volleyliga.views.controllers;
 
-import com.sportsapp.volleyliga.models.MatchModel;
+import com.volleyapp.volleyliga.models.MatchModel;
 
 public interface MatchClickListener {
     void matchClicked(MatchModel match);

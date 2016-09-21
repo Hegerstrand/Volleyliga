@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.fragment;
+package com.volleyapp.volleyliga.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -22,20 +22,20 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import com.sportsapp.volleyliga.R;
-import com.sportsapp.volleyliga.activities.DrawerFragment;
-import com.sportsapp.volleyliga.activities.MainActivityListener;
-import com.sportsapp.volleyliga.models.League;
-import com.sportsapp.volleyliga.models.LeagueStandingModel;
-import com.sportsapp.volleyliga.models.TeamModel;
-import com.sportsapp.volleyliga.presenters.LeagueStandingPresenter;
-import com.sportsapp.volleyliga.repositories.TeamRepository;
-import com.sportsapp.volleyliga.utilities.BusProvider;
-import com.sportsapp.volleyliga.utilities.Preferences;
-import com.sportsapp.volleyliga.utilities.busEvents.OpenTeamEvent;
-import com.sportsapp.volleyliga.views.ILeagueStandingView;
-import com.sportsapp.volleyliga.views.controllers.DividerItemDecoration;
-import com.sportsapp.volleyliga.views.controllers.LeagueStandingAdapter;
+import com.volleyapp.volleyliga.R;
+import com.volleyapp.volleyliga.activities.DrawerFragment;
+import com.volleyapp.volleyliga.activities.MainActivityListener;
+import com.volleyapp.volleyliga.models.League;
+import com.volleyapp.volleyliga.models.LeagueStandingModel;
+import com.volleyapp.volleyliga.models.TeamModel;
+import com.volleyapp.volleyliga.presenters.LeagueStandingPresenter;
+import com.volleyapp.volleyliga.repositories.TeamRepository;
+import com.volleyapp.volleyliga.utilities.BusProvider;
+import com.volleyapp.volleyliga.utilities.Preferences;
+import com.volleyapp.volleyliga.utilities.busEvents.OpenTeamEvent;
+import com.volleyapp.volleyliga.views.ILeagueStandingView;
+import com.volleyapp.volleyliga.views.controllers.DividerItemDecoration;
+import com.volleyapp.volleyliga.views.controllers.LeagueStandingAdapter;
 
 import java.util.List;
 

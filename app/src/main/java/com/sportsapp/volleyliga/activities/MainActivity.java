@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.activities;
+package com.volleyapp.volleyliga.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,13 +13,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.sportsapp.volleyliga.R;
-import com.sportsapp.volleyliga.fragment.LeagueStandingFragment;
-import com.sportsapp.volleyliga.fragment.SettingsFragment;
-import com.sportsapp.volleyliga.utilities.BusProvider;
-import com.sportsapp.volleyliga.utilities.ToolbarColorizer;
-import com.sportsapp.volleyliga.utilities.busEvents.OpenMatchEvent;
-import com.sportsapp.volleyliga.utilities.busEvents.OpenTeamEvent;
+import com.volleyapp.volleyliga.R;
+import com.volleyapp.volleyliga.fragment.LeagueStandingFragment;
+import com.volleyapp.volleyliga.fragment.SettingsFragment;
+import com.volleyapp.volleyliga.utilities.BusProvider;
+import com.volleyapp.volleyliga.utilities.ToolbarColorizer;
+import com.volleyapp.volleyliga.utilities.busEvents.OpenMatchEvent;
+import com.volleyapp.volleyliga.utilities.busEvents.OpenTeamEvent;
 import com.squareup.otto.Subscribe;
 
 import org.joda.time.DateTime;

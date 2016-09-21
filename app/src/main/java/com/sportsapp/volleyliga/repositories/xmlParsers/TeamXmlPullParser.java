@@ -1,9 +1,9 @@
-package com.sportsapp.volleyliga.repositories.xmlParsers;
+package com.volleyapp.volleyliga.repositories.xmlParsers;
 
 import android.util.Xml;
 
-import com.sportsapp.volleyliga.models.TeamModel;
-import com.sportsapp.volleyliga.models.TeamPlayer;
+import com.volleyapp.volleyliga.models.TeamModel;
+import com.volleyapp.volleyliga.models.TeamPlayer;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;

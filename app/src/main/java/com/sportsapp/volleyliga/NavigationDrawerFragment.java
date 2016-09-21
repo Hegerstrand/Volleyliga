@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga;
+package com.volleyapp.volleyliga;
 
 
 import android.app.ActionBar;
@@ -17,7 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.sportsapp.volleyliga.utilities.SharedPrefsHelper;
+import com.volleyapp.volleyliga.utilities.SharedPrefsHelper;
 
 public class NavigationDrawerFragment extends Fragment {
     @SuppressWarnings("ResourceType")

@@ -1,14 +1,14 @@
-package com.sportsapp.volleyliga.repositories.xmlParsers;
+package com.volleyapp.volleyliga.repositories.xmlParsers;
 
 import android.util.Log;
 import android.util.Xml;
 
-import com.sportsapp.volleyliga.models.MatchModel;
-import com.sportsapp.volleyliga.models.PlayerStatisticsModel;
-import com.sportsapp.volleyliga.models.SetInfoModel;
-import com.sportsapp.volleyliga.models.TeamModel;
-import com.sportsapp.volleyliga.repositories.TeamRepository;
-import com.sportsapp.volleyliga.utilities.Util;
+import com.volleyapp.volleyliga.models.MatchModel;
+import com.volleyapp.volleyliga.models.PlayerStatisticsModel;
+import com.volleyapp.volleyliga.models.SetInfoModel;
+import com.volleyapp.volleyliga.models.TeamModel;
+import com.volleyapp.volleyliga.repositories.TeamRepository;
+import com.volleyapp.volleyliga.utilities.Util;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;

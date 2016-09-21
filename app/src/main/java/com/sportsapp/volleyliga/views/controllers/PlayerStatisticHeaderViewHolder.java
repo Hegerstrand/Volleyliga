@@ -1,12 +1,12 @@
-package com.sportsapp.volleyliga.views.controllers;
+package com.volleyapp.volleyliga.views.controllers;
 
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.sportsapp.volleyliga.R;
-import com.sportsapp.volleyliga.models.PlayerStatisticModelWrapper;
+import com.volleyapp.volleyliga.R;
+import com.volleyapp.volleyliga.models.PlayerStatisticModelWrapper;
 
 public class PlayerStatisticHeaderViewHolder extends RecyclerView.ViewHolder {
 

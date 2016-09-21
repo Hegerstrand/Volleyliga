@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.models;
+package com.volleyapp.volleyliga.models;
 
 public class TeamPlayer {
     public String id;

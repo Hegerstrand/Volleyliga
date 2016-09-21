@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.fragment;
+package com.volleyapp.volleyliga.fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,17 +11,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.koushikdutta.ion.Ion;
-import com.sportsapp.volleyliga.R;
-import com.sportsapp.volleyliga.models.LeagueStandingModel;
-import com.sportsapp.volleyliga.models.MatchModel;
-import com.sportsapp.volleyliga.models.TeamModel;
-import com.sportsapp.volleyliga.repositories.LeagueStandingRepository;
-import com.sportsapp.volleyliga.utilities.BusProvider;
-import com.sportsapp.volleyliga.utilities.Util;
-import com.sportsapp.volleyliga.utilities.busEvents.OpenMatchEvent;
-import com.sportsapp.volleyliga.views.FutureMatchView;
-import com.sportsapp.volleyliga.views.MatchWithScoreView;
-import com.sportsapp.volleyliga.views.MenuItem;
+import com.volleyapp.volleyliga.R;
+import com.volleyapp.volleyliga.models.LeagueStandingModel;
+import com.volleyapp.volleyliga.models.MatchModel;
+import com.volleyapp.volleyliga.models.TeamModel;
+import com.volleyapp.volleyliga.repositories.LeagueStandingRepository;
+import com.volleyapp.volleyliga.utilities.BusProvider;
+import com.volleyapp.volleyliga.utilities.Util;
+import com.volleyapp.volleyliga.utilities.busEvents.OpenMatchEvent;
+import com.volleyapp.volleyliga.views.FutureMatchView;
+import com.volleyapp.volleyliga.views.MatchWithScoreView;
+import com.volleyapp.volleyliga.views.MenuItem;
 
 import java.util.List;
 

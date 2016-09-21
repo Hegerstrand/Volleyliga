@@ -1,11 +1,11 @@
-package com.sportsapp.volleyliga.views;
+package com.volleyapp.volleyliga.views;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
-import com.sportsapp.volleyliga.R;
-import com.sportsapp.volleyliga.models.MatchStatisticsModel;
+import com.volleyapp.volleyliga.R;
+import com.volleyapp.volleyliga.models.MatchStatisticsModel;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

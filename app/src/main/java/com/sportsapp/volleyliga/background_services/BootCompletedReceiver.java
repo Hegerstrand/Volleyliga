@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.background_services;
+package com.volleyapp.volleyliga.background_services;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;

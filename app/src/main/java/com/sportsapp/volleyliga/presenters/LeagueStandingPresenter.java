@@ -1,10 +1,10 @@
-package com.sportsapp.volleyliga.presenters;
+package com.volleyapp.volleyliga.presenters;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
-import com.sportsapp.volleyliga.models.League;
-import com.sportsapp.volleyliga.models.LeagueStandingModel;
-import com.sportsapp.volleyliga.repositories.LeagueStandingRepository;
-import com.sportsapp.volleyliga.views.ILeagueStandingView;
+import com.volleyapp.volleyliga.models.League;
+import com.volleyapp.volleyliga.models.LeagueStandingModel;
+import com.volleyapp.volleyliga.repositories.LeagueStandingRepository;
+import com.volleyapp.volleyliga.views.ILeagueStandingView;
 
 import java.util.List;
 

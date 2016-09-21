@@ -1,9 +1,9 @@
-package com.sportsapp.volleyliga.views;
+package com.volleyapp.volleyliga.views;
 
 import android.content.Context;
 
 import com.hannesdorfmann.mosby.mvp.MvpView;
-import com.sportsapp.volleyliga.models.MatchModel;
+import com.volleyapp.volleyliga.models.MatchModel;
 
 public interface MatchView extends MvpView {
     Context getActivity();

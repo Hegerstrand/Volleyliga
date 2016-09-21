@@ -1,11 +1,11 @@
-package com.sportsapp.volleyliga.presenters;
+package com.volleyapp.volleyliga.presenters;
 
 import android.widget.Toast;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
-import com.sportsapp.volleyliga.models.MatchModel;
-import com.sportsapp.volleyliga.repositories.MatchRepository;
-import com.sportsapp.volleyliga.views.MatchListActivityView;
+import com.volleyapp.volleyliga.models.MatchModel;
+import com.volleyapp.volleyliga.repositories.MatchRepository;
+import com.volleyapp.volleyliga.views.MatchListActivityView;
 
 import java.util.ArrayList;
 import java.util.HashMap;

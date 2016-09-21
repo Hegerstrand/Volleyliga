@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.views;
+package com.volleyapp.volleyliga.views;
 
 import android.content.Context;
 import android.util.AttributeSet;

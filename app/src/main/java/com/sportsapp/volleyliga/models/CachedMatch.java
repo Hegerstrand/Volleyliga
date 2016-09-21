@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.models;
+package com.volleyapp.volleyliga.models;
 
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;

@@ -1,12 +1,12 @@
-package com.sportsapp.volleyliga.views.controllers;
+package com.volleyapp.volleyliga.views.controllers;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import com.sportsapp.volleyliga.models.MatchModel;
-import com.sportsapp.volleyliga.views.FutureMatchView;
-import com.sportsapp.volleyliga.views.MatchWithScoreView;
+import com.volleyapp.volleyliga.models.MatchModel;
+import com.volleyapp.volleyliga.views.FutureMatchView;
+import com.volleyapp.volleyliga.views.MatchWithScoreView;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.activities;
+package com.volleyapp.volleyliga.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -21,15 +21,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.sportsapp.volleyliga.R;
-import com.sportsapp.volleyliga.fragment.MatchStatView;
-import com.sportsapp.volleyliga.fragment.PlayerStatsView;
-import com.sportsapp.volleyliga.models.MatchModel;
-import com.sportsapp.volleyliga.presenters.MatchPresenter;
-import com.sportsapp.volleyliga.utilities.CustomBus;
-import com.sportsapp.volleyliga.utilities.busEvents.DestructionEvent;
-import com.sportsapp.volleyliga.utilities.busEvents.TriggerMatchLoadingEvent;
-import com.sportsapp.volleyliga.views.MatchView;
+import com.volleyapp.volleyliga.R;
+import com.volleyapp.volleyliga.fragment.MatchStatView;
+import com.volleyapp.volleyliga.fragment.PlayerStatsView;
+import com.volleyapp.volleyliga.models.MatchModel;
+import com.volleyapp.volleyliga.presenters.MatchPresenter;
+import com.volleyapp.volleyliga.utilities.CustomBus;
+import com.volleyapp.volleyliga.utilities.busEvents.DestructionEvent;
+import com.volleyapp.volleyliga.utilities.busEvents.TriggerMatchLoadingEvent;
+import com.volleyapp.volleyliga.views.MatchView;
 import com.squareup.otto.Subscribe;
 
 import java.util.concurrent.TimeUnit;

@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.instagram;
+package com.volleyapp.volleyliga.instagram;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -12,10 +12,10 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.RelativeLayout;
 
-import com.sportsapp.volleyliga.R;
-import com.sportsapp.volleyliga.instagram.busEvents.InstagramAuthCancelledEvent;
-import com.sportsapp.volleyliga.instagram.busEvents.InstagramAuthErrorEvent;
-import com.sportsapp.volleyliga.instagram.busEvents.InstagramTokenReceivedEvent;
+import com.volleyapp.volleyliga.R;
+import com.volleyapp.volleyliga.instagram.busEvents.InstagramAuthCancelledEvent;
+import com.volleyapp.volleyliga.instagram.busEvents.InstagramAuthErrorEvent;
+import com.volleyapp.volleyliga.instagram.busEvents.InstagramTokenReceivedEvent;
 
 import org.json.JSONObject;
 import org.json.JSONTokener;

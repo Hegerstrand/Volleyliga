@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.views.controllers;
+package com.volleyapp.volleyliga.views.controllers;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -6,8 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.sportsapp.volleyliga.R;
-import com.sportsapp.volleyliga.models.LeagueStandingModel;
+import com.volleyapp.volleyliga.R;
+import com.volleyapp.volleyliga.models.LeagueStandingModel;
 
 import java.util.ArrayList;
 import java.util.List;

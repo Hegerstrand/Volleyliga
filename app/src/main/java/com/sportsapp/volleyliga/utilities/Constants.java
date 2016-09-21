@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.utilities;
+package com.volleyapp.volleyliga.utilities;
 
 public class Constants {
     public static final String URL_BASE = "http://dk.volleyapp.net/";

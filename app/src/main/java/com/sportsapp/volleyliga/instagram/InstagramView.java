@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.instagram;
+package com.volleyapp.volleyliga.instagram;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,11 +10,11 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import com.sportsapp.volleyliga.R;
-import com.sportsapp.volleyliga.instagram.gsonModels.GInstagramEntry;
-import com.sportsapp.volleyliga.instagram.gsonModels.GInstagramTagResponse;
-import com.sportsapp.volleyliga.instagram.listAdapter.InstagramListAdapter;
-import com.sportsapp.volleyliga.views.controllers.DividerItemDecoration;
+import com.volleyapp.volleyliga.R;
+import com.volleyapp.volleyliga.instagram.gsonModels.GInstagramEntry;
+import com.volleyapp.volleyliga.instagram.gsonModels.GInstagramTagResponse;
+import com.volleyapp.volleyliga.instagram.listAdapter.InstagramListAdapter;
+import com.volleyapp.volleyliga.views.controllers.DividerItemDecoration;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -105,7 +105,7 @@ public class InstagramView extends LinearLayout {
         }
         signInPromptContainer.setVisibility(View.GONE);
         instagramFeedContainer.setVisibility(View.VISIBLE);
-        instagramApi.getTagEntriesForTag("sportsappdk")
+        instagramApi.getTagEntriesForTag("volleyappdk")
                 .subscribe(new Subscriber<GInstagramTagResponse>() {
                     @Override
                     public void onCompleted() {

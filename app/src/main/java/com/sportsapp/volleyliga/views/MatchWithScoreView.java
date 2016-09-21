@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.views;
+package com.volleyapp.volleyliga.views;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -8,8 +8,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.sportsapp.volleyliga.R;
-import com.sportsapp.volleyliga.models.MatchModel;
+import com.volleyapp.volleyliga.R;
+import com.volleyapp.volleyliga.models.MatchModel;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;

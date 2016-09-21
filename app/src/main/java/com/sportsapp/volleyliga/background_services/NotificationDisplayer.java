@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.background_services;
+package com.volleyapp.volleyliga.background_services;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -13,10 +13,10 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.ContextCompat;
 
-import com.sportsapp.volleyliga.R;
-import com.sportsapp.volleyliga.activities.MainActivity;
-import com.sportsapp.volleyliga.models.MatchModel;
-import com.sportsapp.volleyliga.models.TeamModel;
+import com.volleyapp.volleyliga.R;
+import com.volleyapp.volleyliga.activities.MainActivity;
+import com.volleyapp.volleyliga.models.MatchModel;
+import com.volleyapp.volleyliga.models.TeamModel;
 
 import org.joda.time.Days;
 import org.joda.time.LocalDate;

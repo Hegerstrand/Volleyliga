@@ -1,10 +1,10 @@
-package com.sportsapp.volleyliga.views.controllers;
+package com.volleyapp.volleyliga.views.controllers;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.sportsapp.volleyliga.models.MatchModel;
-import com.sportsapp.volleyliga.views.MatchWithScoreView;
+import com.volleyapp.volleyliga.models.MatchModel;
+import com.volleyapp.volleyliga.views.MatchWithScoreView;
 
 public class MatchWithScoreViewHolder extends RecyclerView.ViewHolder
         implements View.OnClickListener {

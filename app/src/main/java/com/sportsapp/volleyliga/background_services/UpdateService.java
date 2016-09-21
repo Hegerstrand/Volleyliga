@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.background_services;
+package com.volleyapp.volleyliga.background_services;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -9,12 +9,12 @@ import android.os.IBinder;
 import android.os.PowerManager;
 import android.support.annotation.Nullable;
 
-import com.sportsapp.volleyliga.models.MatchModel;
-import com.sportsapp.volleyliga.models.TeamModel;
-import com.sportsapp.volleyliga.models.TimeUnit;
-import com.sportsapp.volleyliga.repositories.MatchRepository;
-import com.sportsapp.volleyliga.repositories.TeamRepository;
-import com.sportsapp.volleyliga.utilities.Preferences;
+import com.volleyapp.volleyliga.models.MatchModel;
+import com.volleyapp.volleyliga.models.TeamModel;
+import com.volleyapp.volleyliga.models.TimeUnit;
+import com.volleyapp.volleyliga.repositories.MatchRepository;
+import com.volleyapp.volleyliga.repositories.TeamRepository;
+import com.volleyapp.volleyliga.utilities.Preferences;
 
 import org.joda.time.DateTime;
 

@@ -1,6 +1,6 @@
-package com.sportsapp.volleyliga.repositories;
+package com.volleyapp.volleyliga.repositories;
 
-import com.sportsapp.volleyliga.models.MatchModel;
+import com.volleyapp.volleyliga.models.MatchModel;
 
 import java.util.List;
 

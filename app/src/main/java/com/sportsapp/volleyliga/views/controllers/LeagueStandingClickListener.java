@@ -1,6 +1,6 @@
-package com.sportsapp.volleyliga.views.controllers;
+package com.volleyapp.volleyliga.views.controllers;
 
-import com.sportsapp.volleyliga.models.LeagueStandingModel;
+import com.volleyapp.volleyliga.models.LeagueStandingModel;
 
 public interface LeagueStandingClickListener {
     void leagueStandingClicked(LeagueStandingModel leagueStanding);

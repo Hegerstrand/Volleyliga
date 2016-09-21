@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.utilities;
+package com.volleyapp.volleyliga.utilities;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;

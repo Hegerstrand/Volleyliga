@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.views;
+package com.volleyapp.volleyliga.views;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -10,8 +10,8 @@ import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.sportsapp.volleyliga.R;
-import com.sportsapp.volleyliga.utilities.ContextHelper;
+import com.volleyapp.volleyliga.R;
+import com.volleyapp.volleyliga.utilities.ContextHelper;
 
 import io.sweers.barber.Barber;
 import io.sweers.barber.Required;

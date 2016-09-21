@@ -1,9 +1,9 @@
-package com.sportsapp.volleyliga.repositories;
+package com.volleyapp.volleyliga.repositories;
 
 import com.activeandroid.query.Select;
 import com.google.gson.Gson;
-import com.sportsapp.volleyliga.models.CachedMatch;
-import com.sportsapp.volleyliga.models.MatchModel;
+import com.volleyapp.volleyliga.models.CachedMatch;
+import com.volleyapp.volleyliga.models.MatchModel;
 
 import java.io.File;
 import java.util.ArrayList;

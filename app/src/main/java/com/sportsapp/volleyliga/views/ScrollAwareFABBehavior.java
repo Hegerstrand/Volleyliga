@@ -1,4 +1,4 @@
-package com.sportsapp.volleyliga.views;
+package com.volleyapp.volleyliga.views;
 
 
 import android.content.Context;
@@ -15,7 +15,7 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
 
 import com.like.LikeButton;
-import com.sportsapp.volleyliga.R;
+import com.volleyapp.volleyliga.R;
 
 public class ScrollAwareFABBehavior extends CoordinatorLayout.Behavior<LikeButton> {
     private static final Interpolator INTERPOLATOR = new FastOutSlowInInterpolator();

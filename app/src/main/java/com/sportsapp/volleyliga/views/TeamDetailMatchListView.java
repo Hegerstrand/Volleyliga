@@ -1,7 +1,7 @@
-package com.sportsapp.volleyliga.views;
+package com.volleyapp.volleyliga.views;
 
 import com.hannesdorfmann.mosby.mvp.MvpView;
-import com.sportsapp.volleyliga.models.MatchModel;
+import com.volleyapp.volleyliga.models.MatchModel;
 
 import java.util.List;
 
