@@ -35,8 +35,8 @@ public class TeamInfoView extends LinearLayout {
 
     @Bind(R.id.ivMap)
     public ImageView ivMap;
-    //    @Bind(R.id.ivTeam)
-//    public ImageView ivTeam;
+    @Bind(R.id.ivTeam)
+    public ImageView ivTeam;
     @Bind(R.id.tvStadiumAddress)
     public TextView tvStadiumAddress;
     @Bind(R.id.tvStadium)

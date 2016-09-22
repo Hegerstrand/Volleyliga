@@ -1,7 +1,8 @@
 package com.volleyapp.volleyliga.utilities;
 
 public class Constants {
-    public static final String URL_BASE = "http://dk.volleyapp.net/";
+    public static final String URL_BASE = "http://volleyapp.dk/";
+    //"http://dk.volleyapp.net/";
 //    public static final String URL_BASE = "http://www.pocketpalsson.com/";
 
 

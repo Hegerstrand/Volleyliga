@@ -149,10 +149,6 @@ public class TeamRepository {
         switch(teamId){
             case 1101:
                 return R.id.asv_aarhus;
-            case 1102:
-                return R.id.marienlyst;
-            case 1103:
-                return R.id.gentofte;
             case 1104:
                 return R.id.hvidovre;
             case 1105:
@@ -163,6 +159,10 @@ public class TeamRepository {
                 return R.id.middelfart;
             case 1108:
                 return R.id.vestsjalland;
+            case 1110:
+                return R.id.marienlyst;
+            case 1114:
+                return R.id.gentofte;
             case 1201:
                 return R.id.amager;
             case 1202:
@@ -214,7 +214,7 @@ public class TeamRepository {
                 break;
         }
 
-        for (int i = startIndex; i < startIndex + 8; i++) {
+        for (int i = startIndex; i < startIndex + 7; i++) {
             TeamModel team = getTeam(i);
             if(team != null){
                 result.add(team);

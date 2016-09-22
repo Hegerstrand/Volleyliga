@@ -221,12 +221,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityListe
             case R.id.asv_aarhus:
                 openTeam(1101);
                 break;
-            case R.id.marienlyst:
-                openTeam(1102);
-                break;
-            case R.id.gentofte:
-                openTeam(1103);
-                break;
             case R.id.hvidovre:
                 openTeam(1104);
                 break;
@@ -242,11 +236,20 @@ public class MainActivity extends AppCompatActivity implements MainActivityListe
             case R.id.vestsjalland:
                 openTeam(1108);
                 break;
+            case R.id.marienlyst:
+                openTeam(1110);
+                break;
+            case R.id.gentofte:
+                openTeam(1114);
+                break;
             case R.id.amager:
                 openTeam(1201);
                 break;
             case R.id.brondby:
                 openTeam(1202);
+                break;
+            case R.id.ikast:
+                openTeam(1203);
                 break;
             case R.id.eliteVolleyAarhus:
                 openTeam(1204);
@@ -256,9 +259,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityListe
                 break;
             case R.id.holte:
                 openTeam(1206);
-                break;
-            case R.id.ikast:
-                openTeam(1203);
                 break;
             case R.id.koge:
                 openTeam(1207);

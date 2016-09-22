@@ -23,7 +23,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/build/intermediates/classes/free/debug" />
     <output-test url="file://$MODULE_DIR$/build/intermediates/classes/test/free/debug" />
     <exclude-output />
@@ -43,12 +43,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/freeDebug/jni" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/freeDebug/rs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/freeDebug/shaders" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/androidTest/free/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/aidl/androidTest/free/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/androidTest/free/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/androidTest/free/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/androidTest/free/debug" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/resValues/androidTest/free/debug" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testFreeDebug/res" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testFreeDebug/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testFreeDebug/assets" type="java-test-resource" />
@@ -57,6 +51,12 @@
       <sourceFolder url="file://$MODULE_DIR$/src/testFreeDebug/jni" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testFreeDebug/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testFreeDebug/shaders" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/androidTest/free/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/aidl/androidTest/free/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/androidTest/free/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/androidTest/free/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/androidTest/free/debug" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/resValues/androidTest/free/debug" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/free/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/free/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/free/assets" type="java-resource" />
@@ -188,14 +188,14 @@
     <orderEntry type="library" exported="" name="materialdrawer-4.6.4" level="project" />
     <orderEntry type="library" exported="" name="RxCache-0.4.2" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-23.2.1" level="project" />
-    <orderEntry type="library" exported="" name="adapter-rxjava-2.0.0-beta1" level="project" />
     <orderEntry type="library" exported="" name="parceler-api-1.0.4" level="project" />
+    <orderEntry type="library" exported="" name="adapter-rxjava-2.0.0-beta1" level="project" />
     <orderEntry type="library" exported="" name="guava-19.0" level="project" />
     <orderEntry type="library" exported="" name="materialize-0.5.1" level="project" />
     <orderEntry type="library" exported="" name="gson-2.5" level="project" />
     <orderEntry type="library" exported="" name="core-0.8.5.7" level="project" />
-    <orderEntry type="library" exported="" name="rxandroid-0.25.0" level="project" />
     <orderEntry type="library" exported="" name="retrofit-2.0.0-beta1" level="project" />
+    <orderEntry type="library" exported="" name="rxandroid-0.25.0" level="project" />
     <orderEntry type="library" exported="" name="dagger-2.0.1" level="project" />
     <orderEntry type="library" exported="" name="javax.inject-1" level="project" />
     <orderEntry type="library" exported="" name="rxjava-1.1.0" level="project" />
