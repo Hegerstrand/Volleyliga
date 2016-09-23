@@ -1,0 +1,30 @@
+package com.volleyapp.volleyliga.views.controllers;
+
+import android.graphics.Color;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
+
+import com.volleyapp.volleyliga.R;
+import com.volleyapp.volleyliga.models.PlayerStatisticModelWrapper;
+
+public class PlayerStatisticHeaderViewHolder extends RecyclerView.ViewHolder {
+
+    public TextView tvTitle;
+    public TextView tvValue;
+
+
+    public PlayerStatisticHeaderViewHolder(View itemView) {
+        super(itemView);
+        tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
+        tvValue = (TextView) itemView.findViewById(R.id.tvValue);
+    }
+
+    public void setEntry(PlayerStatisticModelWrapper entry) {
+        int textColor = entry.isNegativeStat ? Color.parseColor("#B71C1C") : Color.BLACK;
+        tvTitle.setTextColor(textColor);
+        tvTitle.setText(entry.title);
+        tvValue.setTextColor(textColor);
+        tvValue.setText("" + entry.value);
+    }
+}

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sportsapp.volleyliga">
+    package="com.volleyapp.volleyliga">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
-        android:name="com.sportsapp.volleyliga.utilities.CustomApplication"
+        android:name="com.volleyapp.volleyliga.utilities.CustomApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,10 +16,10 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="AA_MODELS"
-            android:value="com.sportsapp.volleyliga.models.CachedMatch" />
+            android:value="com.volleyapp.volleyliga.models.CachedMatch" />
 
         <activity
-            android:name="com.sportsapp.volleyliga.activities.MainActivity"
+            android:name="com.volleyapp.volleyliga.activities.MainActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:windowSoftInputMode="stateHidden">
@@ -30,21 +30,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.sportsapp.volleyliga.instagram.InstagramAuthActivity"
+            android:name="com.volleyapp.volleyliga.instagram.InstagramAuthActivity"
             android:label=""
             android:launchMode="singleTop"
             android:windowSoftInputMode="stateHidden" />
 
-        <receiver android:name=".background_services.BootCompletedReceiver">
+        <receiver android:name="com.volleyapp.volleyliga.background_services.BootCompletedReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.QUICKBOOT_POWERON" />
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".background_services.NotificationDisplayer" />
+        <receiver android:name="com.volleyapp.volleyliga.background_services.NotificationDisplayer" />
         <service
-            android:name=".background_services.UpdateService"
+            android:name="com.volleyapp.volleyliga.background_services.UpdateService"
             android:enabled="true" />
     </application>
 

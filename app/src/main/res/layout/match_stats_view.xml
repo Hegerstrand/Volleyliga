@@ -4,31 +4,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.sportsapp.volleyliga.views.MatchStatsLineView
+    <com.volleyapp.volleyliga.views.MatchStatsLineView
         android:id="@+id/attacks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/stats_line_margin" />
 
-    <com.sportsapp.volleyliga.views.MatchStatsLineView
+    <com.volleyapp.volleyliga.views.MatchStatsLineView
         android:id="@+id/serves"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/stats_line_margin" />
 
-    <com.sportsapp.volleyliga.views.MatchStatsLineView
+    <com.volleyapp.volleyliga.views.MatchStatsLineView
         android:id="@+id/blocks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/stats_line_margin" />
 
-    <com.sportsapp.volleyliga.views.MatchStatsLineView
+    <com.volleyapp.volleyliga.views.MatchStatsLineView
         android:id="@+id/errors"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/stats_line_margin" />
 
-    <com.sportsapp.volleyliga.views.MatchStatsLineView
+    <com.volleyapp.volleyliga.views.MatchStatsLineView
         android:id="@+id/receptionPercentage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
