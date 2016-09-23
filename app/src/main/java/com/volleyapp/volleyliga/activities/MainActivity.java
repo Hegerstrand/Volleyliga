@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityListe
         addFragment(fragment, "team_" + id, true);
     }
 
-    @SuppressWarnings("ResourceType")
+//    @SuppressWarnings("ResourceType")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         closeActiveFragmentDrawer();

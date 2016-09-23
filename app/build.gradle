@@ -44,21 +44,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
+/*
     productFlavors{
         free {
             applicationId = "com.volleyapp.volleyliga"
             versionName = "Volleyligaen DK"
         }
     }
+
     lintOptions {
         // set to true to turn off analysis progress reporting by lint
         quiet true
         // if true, stop the gradle build if errors are found
         abortOnError true
         // if true, only report errors
-        ignoreWarnings true
-    }
+        ignoreWarnings false
+    } */
 }
 
 dependencies {
