@@ -222,10 +222,10 @@ public class MainActivity extends AppCompatActivity implements MainActivityListe
                 openTeam(1101);
                 break;
             case R.id.marienlyst:
-                openTeam(1102);
+                openTeam(1110);
                 break;
             case R.id.gentofte:
-                openTeam(1103);
+                openTeam(1114);
                 break;
             case R.id.hvidovre:
                 openTeam(1104);

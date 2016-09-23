@@ -149,9 +149,9 @@ public class TeamRepository {
         switch(teamId){
             case 1101:
                 return R.id.asv_aarhus;
-            case 1102:
+            case 1110:
                 return R.id.marienlyst;
-            case 1103:
+            case 1114:
                 return R.id.gentofte;
             case 1104:
                 return R.id.hvidovre;
