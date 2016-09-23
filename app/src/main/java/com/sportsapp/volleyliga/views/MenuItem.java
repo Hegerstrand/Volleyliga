@@ -31,7 +31,6 @@ public class MenuItem extends FrameLayout {
     @StyledAttr(R.styleable.MenuItem_includeArrow)
     public boolean includeArrow;
 
-    @SuppressWarnings("ResourceType")
 
     @Bind(R.id.tvTitle)
     public TextView tvTitle;
@@ -64,7 +63,7 @@ public class MenuItem extends FrameLayout {
         Barber.style(this, attrs, R.styleable.MenuItem, defStyleAttr, defStyleRes);
     }
 */
-
+    @SuppressWarnings("ResourceType")
     private void init() {
         inflate(getContext(), R.layout.menu_item, this);
         ButterKnife.bind(this);
