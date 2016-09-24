@@ -98,7 +98,7 @@ public class MatchRepository {
                                 filename = "past";
                                 break;
                         }
-                        Response response = client.newCall(new Request.Builder().url(URL_BASE + filename + ".xml").build()).execute();
+                        Response response = client.newCall(new Request.Builder().url(URL_BASE + "collections/" + filename + ".xml").build()).execute();
                         String result = response.body().string();
                         MatchCollectionXmlPullParser parser = new MatchCollectionXmlPullParser();
                         MatchCollection parsedCollection = parser.parse(result);

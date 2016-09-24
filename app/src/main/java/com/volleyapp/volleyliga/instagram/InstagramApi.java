@@ -35,7 +35,7 @@ public class InstagramApi {
 
     public static final String CLIENT_ID = "d70b7e83298e47c9afb2d8efdd16d53d";
     public static final String CLIENT_SECRET = "f761df595b224642b79ba8b70707e6d3";
-    public static final String CALLBACK_URL = "http://dk.volleyapp.net/";
+    public static final String CALLBACK_URL = "http://volleyapp.dk/";
     private static final String SHARED = "Instagram_Preferences";
     private static final String API_USERNAME = "username";
     private static final String API_ID = "id";
