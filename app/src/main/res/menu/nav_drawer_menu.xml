@@ -85,7 +85,7 @@
                 <item
                     android:id="@+id/koge"
                     android:icon="@drawable/koge"
-                    android:title="Team Køge Volley" />
+                    android:title="Team Køge" />
             </group>
         </menu>
     </item>

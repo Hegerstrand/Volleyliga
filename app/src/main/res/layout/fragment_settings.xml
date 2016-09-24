@@ -54,7 +54,7 @@
             android:maxLines="10"
             android:textColor="?android:attr/textColorSecondary"
             android:textSize="14sp"
-            tools:text="Gentofte Volley, Team Køge Volley" />
+            tools:text="Gentofte Volley, Team Køge" />
     </LinearLayout>
 
     <View

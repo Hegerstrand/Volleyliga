@@ -231,6 +231,7 @@ public class MatchXmlPullParser {
             case "TimeGoldenSet":
                 rawSetInfo.goldenSetTime = Integer.parseInt(parser.getText());
                 break;
+
             case "Referee1Name":
                 String referee1 = parser.getText();
                 if (referee1 == null) {

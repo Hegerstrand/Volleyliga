@@ -126,10 +126,11 @@ public class TeamRepository {
         return null;
     }
 //JOLN
+
     public TeamModel getTeam(String name) {
-/*        if(name.equalsIgnoreCase("Team Køge")){
-            name = "Team Køge Volley";
-        }*/
+//        if(name.equalsIgnoreCase("Team Køge")){
+//            name = "team køge";
+//        }
         if (nameToTeam.containsKey(name.toLowerCase())) {
             return nameToTeam.get(name.toLowerCase());
         }

@@ -57,7 +57,7 @@ public class TeamMatchesView extends LinearLayout implements TeamDetailMatchList
 
     @Override
     public void setMatches(List<MatchModel> data) {
-        Collections.reverse(data);
+//        Collections.reverse(data);
         if (adapter != null) {
             adapter.setItems(data);
         }

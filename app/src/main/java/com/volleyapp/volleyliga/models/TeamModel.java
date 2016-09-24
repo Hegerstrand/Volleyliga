@@ -66,17 +66,17 @@ public class TeamModel {
                 return R.drawable.lyngby;
             case "middelfart vk":
                 return R.drawable.middelfart;
-            case "vestsjælland":
+            case "vk vestsjælland":
                 return R.drawable.vestsjalland;
             case "amager vk":
                 return R.drawable.amager;
             case "fortuna odense volley":
                 return R.drawable.fortuna;
-            case "holte":
-//            case "holte if":
+//            case "holte":
+            case "holte if":
                 return R.drawable.holte;
-            case "team køge volley":
-//            case "team køge":
+//            case "team køge volley":
+            case "team køge":
                 return R.drawable.koge;
             case "elite volley aarhus":
                 return R.drawable.eva;
