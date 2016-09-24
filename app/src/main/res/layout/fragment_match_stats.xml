@@ -109,7 +109,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Last match"
+                            android:text="@string/last_match"
                             android:textAppearance="@style/cardTitle" />
 
                         <com.volleyapp.volleyliga.views.MatchWithScoreView

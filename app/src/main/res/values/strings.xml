@@ -37,15 +37,17 @@
     <string name="female">Female</string>
     <string name="enable">Enable</string>
     <string name="receive_notifications">Receive notifications prior to matches by your favorite teams</string>
-    <string name="archived">archived</string>
+    <string name="archived">archived </string>
     <string name="today">today</string>
-    <string name="future">future</string>
+    <string name="future">future </string>
     <string name="matches_found">matches found</string>
     <string name="no">no</string>
     <string name="empty" />
     <string name="info">Information</string>
-    <string name="tmatches">Matches</string>
-    <string name="favorited">Favorited! You will now receive notifications prior to this teams games.</string>
+    <string name="tmatches">Matches </string>
+    <string name="favorited">Favorited! This feature will soon be available.</string>
+    <string name="next_match">Next match</string>
+    <string name="last_match">Last match</string>
 
     <string-array name="gender_type">
         <item>Male</item>

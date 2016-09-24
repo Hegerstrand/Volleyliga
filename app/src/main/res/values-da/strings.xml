@@ -37,15 +37,17 @@
   <string name="female">Damer</string>
   <string name="enable">Enable</string>
   <string name="receive_notifications">Modtag notifications i forkant af kampe med dine favorithold</string>
-  <string name="archived">arkiverede</string>
+  <string name="archived">arkiverede </string>
   <string name="today">dagens</string>
   <string name="future">fremtidige</string>
   <string name="matches_found">kampe fundet</string>
-  <string name="no">Ingen</string>
+  <string name="no">Ingen </string>
   <string name="empty" />
   <string name="info">Information</string>
   <string name="tmatches">Kampe</string>
-  <string name="favorited">Favorited! You will now receive notifications prior to this teams games.</string>
+  <string name="favorited">Favorited! Denne funktion er under udvikling.</string>
+  <string name="next_match">Næste kamp</string>
+  <string name="last_match">Forrige kamp</string>
 
   <string-array name="gender_type">
     <item>Herrer</item>

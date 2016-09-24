@@ -1,7 +1,7 @@
 package com.volleyapp.volleyliga.utilities;
 
 public class Constants {
-    public static final String URL_BASE = "http://dk.volleyapp.net/";
+    public static final String URL_BASE = "http://volleyapp.dk/";
 //    public static final String URL_BASE = "http://www.pocketpalsson.com/";
 
 
@@ -1942,7 +1942,6 @@ public class Constants {
             "</player>\n" +
             "</players>\n" +
             "</team>\n" +
-*/
             "<team>\n" +
             "<teamID>1207</teamID>\n" +
             "<teamName>Team Køge Volley</teamName>\n" +
@@ -2026,6 +2025,7 @@ public class Constants {
             "<teamLon>12.4974193</teamLon>\n" +
             "<players/>\n" +
             "</team>\n" +
+    */
             "</teams>";
 
 }

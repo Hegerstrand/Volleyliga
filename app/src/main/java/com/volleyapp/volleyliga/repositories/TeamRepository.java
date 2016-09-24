@@ -137,9 +137,9 @@ public class TeamRepository {
     }
 
     public League getLeagueForTeam(TeamModel team) {
-        if(1100 < team.id && team.id < 1200){
+        if(1200 < team.id && team.id < 1235){
             return League.MALE;
-        } else if (1200 < team.id && team.id < 1300){
+        } else if (1235 < team.id && team.id < 1350){
             return League.FEMALE;
         }
         return League.UNKNOWN;
@@ -147,35 +147,35 @@ public class TeamRepository {
 
     public int getTeamMenuItemId(int teamId) {
         switch(teamId){
-            case 1101:
+            case 1229:
                 return R.id.asv_aarhus;
-            case 1110:
+            case 1227:
                 return R.id.marienlyst;
-            case 1114:
+            case 1231:
                 return R.id.gentofte;
-            case 1104:
+            case 1222:
                 return R.id.hvidovre;
-            case 1105:
+            case 1226:
                 return R.id.ishoj;
-            case 1106:
+            case 1232:
                 return R.id.lyngby_gladsaxe;
-            case 1107:
+            case 1228:
                 return R.id.middelfart;
-            case 1108:
+            case 1223:
                 return R.id.vestsjalland;
-            case 1201:
+            case 1281:
                 return R.id.amager;
-            case 1202:
+            case 1284:
                 return R.id.brondby;
-            case 1203:
+            case 1338:
                 return R.id.ikast;
-            case 1204:
+            case 1287:
                 return R.id.eliteVolleyAarhus;
-            case 1205:
+            case 1285:
                 return R.id.fortuna;
-            case 1206:
+            case 1288:
                 return R.id.holte;
-            case 1207:
+            case 1283:
                 return R.id.koge;
         }
         return 0;
@@ -205,16 +205,19 @@ public class TeamRepository {
     public List<TeamModel> getTeams(League league) {
         List<TeamModel> result = new ArrayList<>();
         int startIndex = 0;
+        int teamsIndex = 0;
         switch(league){
             case MALE:
                 startIndex = 1;
+                teamsIndex = 8;
                 break;
             case FEMALE:
                 startIndex = 9;
+                teamsIndex = 7;
                 break;
         }
 
-        for (int i = startIndex; i < startIndex + 8; i++) {
+        for (int i = startIndex; i < startIndex + teamsIndex; i++) {
             TeamModel team = getTeam(i);
             if(team != null){
                 result.add(team);

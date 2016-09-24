@@ -199,7 +199,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityListe
         addFragment(fragment, "team_" + id, true);
     }
 
-    @SuppressWarnings("ResourceType")
+//    @SuppressWarnings("ResourceType")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         closeActiveFragmentDrawer();
@@ -217,49 +217,49 @@ public class MainActivity extends AppCompatActivity implements MainActivityListe
                 openSettings();
                 break;
             case R.id.asv_aarhus:
-                openTeam(1101);
+                openTeam(1229);
                 break;
             case R.id.marienlyst:
-                openTeam(1110);
+                openTeam(1227);
                 break;
             case R.id.gentofte:
-                openTeam(1114);
+                openTeam(1231);
                 break;
             case R.id.hvidovre:
-                openTeam(1104);
+                openTeam(1222);
                 break;
             case R.id.ishoj:
-                openTeam(1105);
+                openTeam(1226);
                 break;
             case R.id.lyngby_gladsaxe:
-                openTeam(1106);
+                openTeam(1232);
                 break;
             case R.id.middelfart:
-                openTeam(1107);
+                openTeam(1228);
                 break;
             case R.id.vestsjalland:
-                openTeam(1108);
+                openTeam(1223);
                 break;
             case R.id.amager:
-                openTeam(1201);
+                openTeam(1281);
                 break;
             case R.id.brondby:
-                openTeam(1202);
+                openTeam(1284);
                 break;
             case R.id.eliteVolleyAarhus:
-                openTeam(1204);
+                openTeam(1287);
                 break;
             case R.id.fortuna:
-                openTeam(1205);
+                openTeam(1285);
                 break;
             case R.id.holte:
-                openTeam(1206);
+                openTeam(1288);
                 break;
             case R.id.ikast:
-                openTeam(1203);
+                openTeam(1338);
                 break;
             case R.id.koge:
-                openTeam(1207);
+                openTeam(1283);
                 break;
         }
         return false;

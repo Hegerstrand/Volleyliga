@@ -93,7 +93,7 @@ public class MatchListView extends LinearLayout implements OnRefreshListener {
             if (matches.isEmpty()) {
                 recyclerView.setVisibility(View.GONE);
                 emptyView.setVisibility(View.VISIBLE);
-                tvNoMatchesFound.setText(getContext().getString(R.string.no) + getTypeName() + getContext().getString(R.string.matches_found));
+                tvNoMatchesFound.setText(getContext().getString(R.string.no) + " " + getTypeName() + " " + getContext().getString(R.string.matches_found));
             } else {
                 recyclerView.setVisibility(View.VISIBLE);
                 emptyView.setVisibility(View.GONE);
