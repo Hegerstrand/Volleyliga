@@ -48,6 +48,10 @@
   <string name="favorited">Favorited! Denne funktion er under udvikling.</string>
   <string name="next_match">Næste kamp</string>
   <string name="last_match">Forrige kamp</string>
+  <string name="rank">Placering</string>
+  <string name="won">Sejre</string>
+  <string name="lost">Tab</string>
+  <string name="points">Points</string>
 
   <string-array name="gender_type">
     <item>Herrer</item>

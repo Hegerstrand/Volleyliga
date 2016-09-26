@@ -100,24 +100,24 @@ public class MatchXmlPullParser {
             case "Players_GuestTeam":
                 match.statistics.statsByPlayerGuest = parsePlayerStatistics(parser);
                 return;
-//            case "Referee1Name":
-//                String refeere1 = parser.getText();
-//                if(refeere1 == null){
-//                    //Exit right away since otherwise we go out of sync
-//                    match.referee1Name = "";
-//                    parser.next();
-//                    return;
-//                }
-//                break;
-//            case "Referee2Name":
-//                String refeere2 = parser.getText();
-//                if(refeere2 == null){
-//                    //Exit right away since otherwise we go out of sync
-//                    match.referee2Name = "";
-//                    parser.next();
-//                    return;
-//                }
-//                break;
+            case "Referee1Name":
+                String refeere1 = parser.getText();
+                if(refeere1 == null){
+                    //Exit right away since otherwise we go out of sync
+                    match.referee1Name = "";
+                    parser.next();
+                    return;
+                }
+                break;
+            case "Referee2Name":
+                String refeere2 = parser.getText();
+                if(refeere2 == null){
+                    //Exit right away since otherwise we go out of sync
+                    match.referee2Name = "";
+                    parser.next();
+                    return;
+                }
+                break;
         }
         parser.next();
         switch (name) {

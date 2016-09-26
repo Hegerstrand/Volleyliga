@@ -48,6 +48,10 @@
     <string name="favorited">Favorited! This feature will soon be available.</string>
     <string name="next_match">Next match</string>
     <string name="last_match">Last match</string>
+    <string name="rank">Rank</string>
+    <string name="won">Won</string>
+    <string name="lost">Lost</string>
+    <string name="points">Points</string>
 
     <string-array name="gender_type">
         <item>Male</item>

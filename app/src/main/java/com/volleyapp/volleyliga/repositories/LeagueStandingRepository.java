@@ -18,7 +18,7 @@ import rx.schedulers.Schedulers;
 
 
 public class LeagueStandingRepository {
-    public static final String URL_BASE = "http://volleyapp.dk/";
+    public static final String URL_BASE = "http://volleyapp.dk";
 
     public static LeagueStandingRepository instance;
     private final OkHttpClient client;
@@ -47,7 +47,7 @@ public class LeagueStandingRepository {
                                 path = "volleyliga-damer";
                                 break;
                         }
-                        response = client.newCall(new Request.Builder().url(URL_BASE + "rankings/" + path + ".xml").build()).execute();
+                        response = client.newCall(new Request.Builder().url(URL_BASE + "/rankings/" + path + ".xml").build()).execute();
                         String result = response.body().string();
                         LeagueStandingXmlPullParser parser = new LeagueStandingXmlPullParser();
                         List<LeagueStandingModel> parsedStandings = parser.parse(result);

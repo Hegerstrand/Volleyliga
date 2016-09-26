@@ -5,12 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.volleyapp.volleyliga.R;
-import com.volleyapp.volleyliga.models.LeagueStandingModel;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+
+import com.volleyapp.volleyliga.models.LeagueStandingModel;
+
 
 public class LeagueStandingViewHolder extends RecyclerView.ViewHolder
         implements View.OnClickListener {
@@ -43,9 +44,9 @@ public class LeagueStandingViewHolder extends RecyclerView.ViewHolder
         this.leagueStanding = input;
         tvTeamName.setText(leagueStanding.teamName);
         ivTeam.setImageDrawable(ContextCompat.getDrawable(itemView.getContext(), leagueStanding.getTeam().logoRef));
-        tvPoints.setText("" + leagueStanding.points);
-        tvWonGames.setText("Won: " + leagueStanding.matchesWon);
-        tvLostGames.setText("Lost: " + leagueStanding.matchesLost);
+        tvPoints.setText("Points" + ": " + leagueStanding.points);
+        tvWonGames.setText("" + leagueStanding.matchesWon);
+        tvLostGames.setText("Lost" + ": " + leagueStanding.matchesLost);
     }
 
 

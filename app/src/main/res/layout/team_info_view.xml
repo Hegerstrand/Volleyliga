@@ -57,7 +57,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="Rank"
+                                android:text="@string/rank"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                                 android:textColor="@color/primary"
                                 android:textStyle="bold" />
@@ -84,7 +84,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="Won"
+                                android:text="@string/won"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                                 android:textColor="@color/primary"
                                 android:textStyle="bold" />
@@ -112,7 +112,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="Lost"
+                                android:text="@string/lost"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                                 android:textColor="@color/primary"
                                 android:textStyle="bold" />
@@ -138,7 +138,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="Points"
+                                android:text="@string/points"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                                 android:textColor="@color/primary"
                                 android:textStyle="bold" />
@@ -176,7 +176,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Last match"
+                        android:text="@string/last_match"
                         android:textAppearance="@style/cardTitle" />
 
                     <com.volleyapp.volleyliga.views.MatchWithScoreView

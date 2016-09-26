@@ -43,7 +43,7 @@ public class MatchModel {
     //Cleaned up parameters
     public League league = League.UNKNOWN;
     public int championshipMatchID; //ID of the Match in Data Project's DB
-    public int federationMatchNumber = 110236; //Identifies in unique way the match in Organization's DB
+    public int federationMatchNumber; //Identifies in unique way the match in Organization's DB
     public String federationMatchID; //Identifies in unique way the match in Organization's DB
     public String stadium; //Stadium Name
     public String stadiumCity; //Stadium City
