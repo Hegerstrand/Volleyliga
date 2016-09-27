@@ -82,7 +82,7 @@ public class MatchListView extends LinearLayout implements OnRefreshListener {
     @Subscribe
     public void matchDataReceived(MatchListResultsReceivedEvent event) {
         if (matchType != MatchModel.Type.PAST) {
-            return;
+//            return;
         }
         matches = event.getMatches(matchType);
         setData(matches);
